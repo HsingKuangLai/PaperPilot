@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ObjectRepositoryTargetData ContentHash="jMFJ2VUf5E-Z--dVQIhtzQ" Reference="TWC6cPYJp0eiyoRZ_9DkWQ/79F_OWeer0O11OjSKpRqEg" xmlns="http://schemas.uipath.com/workflow/activities/uix" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ObjectRepositoryTargetData.Data>
+    <TargetAnchorable x:Key="TargetAnchorable" BrowserURL="https://mops.twse.com.tw/mops/web/t100sb11" CvType="InputBox" DesignTimeRectangle="1422, 368, 63, 22" DesignTimeScaleFactor="1.25" ElementType="InputBox" FriendlyName="'INPUT year'" FullSelectorArgument="&lt;webctrl parentid='search' tableRow='1' tag='TABLE' /&gt;&lt;webctrl id='year' tableRow='1' tag='INPUT' /&gt;" FuzzySelectorArgument="&lt;webctrl parentid='search' tag='TABLE' /&gt;&lt;webctrl id='year' type='text' tag='INPUT' class='textbox' aaname='' /&gt;" Guid="02bc10e6-983c-4d74-a6d0-05a27e12c0f5" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAFAAAAAgCAYAAACFM/9sAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAADtSURBVGhD7dA7DsJADIRh3/9sOQUg3s8QQhaQTFxM5QR5cTsj/W52q08Wx17Z/xEwGQGTyfLUq9U0DasIbrI6P9Wa+sTmg5sD5H7PAa4vT7UIGBuc4Cab66AWAWODE9wIWDkHuB2PRcDY4AQ3AlaOgMk5wN1tUIuAscEJbrJvi1oEjA1OcCNg5QiYHAGTI2ByDvAwHouAscEJbgSsnAM8jsciYGxwgpuc7kUtAsYGJ7gRsHIETM4BnruiFgFjgxPc5PJ4qUXA2OAENwJWjoDJETA5B9j2L7XwwGLBTbrhrdbUJzYf3ORRPsr+7aNfUi2edzprixQAAAAASUVORK5CYII=" ScopeSelectorArgument="&lt;html app='msedge.exe' title='公開資訊觀測站' /&gt;" SearchSteps="FuzzySelector, Image, CV" Version="V2" Visibility="Interactive">
+      <TargetAnchorable.Anchors>
+        <scg:List x:TypeArguments="ITarget" Capacity="4">
+          <Target DesignTimeRectangle="1517, 359, 62, 30" ElementType="Button" FriendlyName="'查詢'" FullSelectorArgument="&lt;webctrl parentid='form1' tableCol='16' tableRow='1' tag='TABLE' /&gt;&lt;webctrl tableRow='1' tag='INPUT' /&gt;" FuzzySelectorArgument="&lt;webctrl parentid='form1' tag='TABLE' /&gt;&lt;webctrl type='button' tag='INPUT' class='' aaname=' 查詢 ' check:text='查詢' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAE8AAAAoCAYAAAC/xadkAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAACjSURBVGhD7dYxDsJAEENR3/+A9BRQISERhWjDbswd7PZ/6V3AmmK0bZuR0b7vRkbHcRgZjTGMjM7zNDKacxoZrbWMjK7rMjIyxTFeEeMVMV4R4xUxXhHjFek7ppHR7fExMnq+DyOj8VtGhssr6P76GhnGKzBegSe5iPGKGK+I8YoYr4jxihiviPGKGK+I8YoYr4jxihiviPGKGK+I8YoYL87+AwjvkAzipsJYAAAAAElFTkSuQmCC" SearchSteps="FuzzySelector, Image" />
+        </scg:List>
+      </TargetAnchorable.Anchors>
+      <imageRef attrName="InformativeScreenshot" originalValue="4a8a942595f281bf84743596183d0775.png" xmlns="">0HxWwHTszoUOxeShQ3nn7qw</imageRef>
+    </TargetAnchorable>
+    <x:String x:Key="ActivityType">None</x:String>
+  </ObjectRepositoryTargetData.Data>
+</ObjectRepositoryTargetData>
