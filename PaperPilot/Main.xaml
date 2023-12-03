@@ -1,6 +1,6 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1101.6,998.4000000000001" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:str="clr-namespace:System.Text.RegularExpressions;assembly=System.Text.RegularExpressions" xmlns:ugdm="clr-namespace:UiPath.GSuite.Drive.Models;assembly=UiPath.GSuite" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1115.2,998.4000000000001" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:str="clr-namespace:System.Text.RegularExpressions;assembly=System.Text.RegularExpressions" xmlns:ugdm="clr-namespace:UiPath.GSuite.Drive.Models;assembly=UiPath.GSuite" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:upap="clr-namespace:UiPath.PDF.Activities.PDF;assembly=UiPath.PDF.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="66">
+    <scg:List x:TypeArguments="x:String" Capacity="132">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -67,10 +67,12 @@
       <x:String>UiPath.DataTableUtilities</x:String>
       <x:String>System.Text.RegularExpressions</x:String>
       <x:String>UiPath.PDF.Activities</x:String>
+      <x:String>Microsoft.VisualBasic.CompilerServices</x:String>
+      <x:String>UiPath.PDF.Activities.PDF</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="152">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="79">
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
       <AssemblyReference>PresentationCore</AssemblyReference>
@@ -153,6 +155,9 @@
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="815.2,933.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="ReportCategory" />
+    </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -163,6 +168,8 @@
         <Variable x:TypeArguments="sd:DataTable" Default="[New System.Data.DataTable]" Name="dt_ESGReport" />
         <Variable x:TypeArguments="x:Int32" Name="ReportYear" />
         <Variable x:TypeArguments="x:Int32" Name="Lag" />
+        <Variable x:TypeArguments="x:Int32" Name="idx" />
+        <Variable x:TypeArguments="x:Int32" Name="PageCnt" />
       </Flowchart.Variables>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -186,13 +193,13 @@
             <av:PointCollection x:Key="ConnectorLocation">130,158.46666666666667 130,208.46666666666664</av:PointCollection>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
-        <uix:NApplicationCard sap2010:Annotation.AnnotationText="Obtain the list of companies whose reports are upload to the 公開資訊觀測站.&#xA;" AttachMode="ByInstance" CloseMode="Never" DisplayName="Use Browser Edge: 公開資訊觀測站" sap:VirtualizedContainerService.HintSize="869.6,1362.4" sap2010:WorkflowViewState.IdRef="NApplicationCard_2" InteractionMode="DebuggerApi" ScopeGuid="64c4cede-e0bc-4afd-9e16-0f1e74b8ab06" Version="V2" WindowResize="Maximize">
+        <uix:NApplicationCard sap2010:Annotation.AnnotationText="Obtain the list of companies whose reports are upload to the 公開資訊觀測站.&#xA;" AttachMode="ByInstance" CloseMode="Never" DisplayName="Use Browser Edge: 公開資訊觀測站" sap:VirtualizedContainerService.HintSize="200,124.8" sap2010:WorkflowViewState.IdRef="NApplicationCard_2" InteractionMode="DebuggerApi" ScopeGuid="64c4cede-e0bc-4afd-9e16-0f1e74b8ab06" Version="V2" WindowResize="Maximize">
           <uix:NApplicationCard.Body>
             <ActivityAction x:TypeArguments="x:Object">
               <ActivityAction.Argument>
                 <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
               </ActivityAction.Argument>
-              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="836,1104" sap2010:WorkflowViewState.IdRef="Sequence_4">
+              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="836,1402.4" sap2010:WorkflowViewState.IdRef="Sequence_4">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -206,6 +213,34 @@
                     <InArgument x:TypeArguments="x:Int32">108</InArgument>
                   </Assign.Value>
                 </Assign>
+                <Assign sap:VirtualizedContainerService.HintSize="794.4,61.6" sap2010:WorkflowViewState.IdRef="Assign_12">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:String">[ReportCategory]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:String">公開發行</InArgument>
+                  </Assign.Value>
+                </Assign>
+                <uix:NSelectItem DisplayName="Select Item '永續報告書'" sap:VirtualizedContainerService.HintSize="794.4,156.8" sap2010:WorkflowViewState.IdRef="NSelectItem_3" Item="[ReportCategory]" ScopeIdentifier="64c4cede-e0bc-4afd-9e16-0f1e74b8ab06" Version="V3">
+                  <uix:NSelectItem.Items>
+                    <scg:List x:TypeArguments="x:String" Capacity="4">
+                      <x:String>上市</x:String>
+                      <x:String>上櫃</x:String>
+                      <x:String>興櫃</x:String>
+                      <x:String>公開發行</x:String>
+                    </scg:List>
+                  </uix:NSelectItem.Items>
+                  <uix:NSelectItem.Target>
+                    <uix:TargetAnchorable BrowserURL="https://mops.twse.com.tw/mops/web/t100sb11" DesignTimeRectangle="691, 367, 94, 23" DesignTimeScaleFactor="1.25" ElementType="DropDown" FriendlyName="'上市'" FullSelectorArgument="&lt;webctrl parentid='search' tableRow='1' tag='TABLE' /&gt;&lt;webctrl tableRow='1' tag='SELECT' /&gt;" FuzzySelectorArgument="&lt;webctrl parentid='search' tag='TABLE' /&gt;&lt;webctrl type='' tag='SELECT' class='' aaname='' /&gt;" Guid="06f68bf9-8930-4923-9528-dfd363b0cfa4" InformativeScreenshot="5c521539f3d6571b82f36960777ea83b.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='公開資訊觀測站' /&gt;" SearchSteps="FuzzySelector" Version="V2" Visibility="Interactive">
+                      <uix:TargetAnchorable.Anchors>
+                        <scg:List x:TypeArguments="uix:ITarget" Capacity="2">
+                          <uix:Target DesignTimeRectangle="620, 300, 969, 56" FriendlyName="'永續報告書'" FullSelectorArgument="&lt;webctrl parentid='PageBody' tableRow='1' tag='TABLE' /&gt;&lt;webctrl id='caption' tableRow='1' tag='DIV' /&gt;" FuzzySelectorArgument="&lt;webctrl parentid='PageBody' tag='TABLE' /&gt;&lt;webctrl id='caption' type='' tag='DIV' class='t01' aaname='   永續報告書' check:innerText='永續報告書' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAA80AAAA8CAYAAABckFjUAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAABUkSURBVHhe7d17UFV3YgfwdmxndrPtbLYzO9t2207/2O122m5n225n253Zdmdn+ti0ne4mdZt3upksSySEG8UXGtEgesUICUaBBKOoXB+IooIKKCiCytsnl4cIory8CFzwykPx2/M795zLuYffua/grsbvZ+Y74R64hwNJhvv9/X7nd38DRERERERERCTF0kxERERERERkgaWZiIiIiIiIyAJLMxEREREREZEFlmYiIiIiIiIiCyzNRERERERERBZYmomIiIiIiIgssDQTERERERERWWBpJiIiIiIiIrLA0kxERERERERkgaWZiIiIiIiIyAJLMxEREREREZEFlmYiIiIiIiIiCyzNRERERERERBZYmomIiIiIiIgssDQTERERERERWWBpJiIiIiIiIrLA0kxERERERERkgaWZiIiIiIiIyAJLMxEREREREZEFlmYiIiIiIiIiCyzNRERERERERBYiKs33px7gzth93BqeQNetMbT33lXT0X8X3bfHMTg6iYl7D/DggfYEIiIiIiIiosdQRKV5aPQeyi8OYvWea5hrP48fLK7B9xdW498T6zEvowmflnajo28M45NT2jOIiIiIiIiIHj9hlea7E/dRcLYPK3ZdxfpDnThYN4AKpxtnWt2oUlLRMoyjSpneeqoHtq3N+KioExc7RrRnExERERERET1eQi7N/cMTOFzThw+LrmHryW6cuDKE5r4x3HTfQ/+d++i7c0/5eBKtt8Zxtn0Ejqo+bDjUgS3Hb6CubVg7CxEREREREdHjI6TS3D80juKGfqza04y953rg7PUoRfkeekcm0XH7LnpG7qm5MTyJ60PedAxOovD8gFKyO5F5tBPOrhFM3udybSIiIiIiInp8BC3N9+4/QGljP5btuIzk/CtouzWGa7fHlFI8htZbo6hq7VWOeZTSPKkW5y6lOF8bnECzy5tDjS6syW/F2r3NGHBPYIq7gxEREREREdFjImhpdrnHkXqgFXPtlcg9eRnOfg8q2/pQ2dKHY+dvIGl/NfZXt6O5dwS9SmnudivFeWgSbUphvtg7jsbuu9h5uhvPJJ7GhWtD6n3RRERE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" SearchSteps="FuzzySelector, Image" />
+                          <uix:Target DesignTimeRectangle="644, 357, 46, 44" ElementType="Text" FriendlyName="'市場別'" FullSelectorArgument="&lt;webctrl parentid='search' tableRow='1' tag='TABLE' /&gt;&lt;webctrl isleaf='1' tableRow='1' tag='TD' /&gt;" FuzzySelectorArgument="&lt;webctrl parentid='search' tag='TABLE' /&gt;&lt;webctrl isleaf='1' type='' tag='TD' class='' aaname='市場別' check:innerText='市場別' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAADIAAAAwCAYAAABT9ym6AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAANISURBVGhD7ZnLU9NAHMf375ICKXdvOh48yLuRP6AnBEGYFjh78MHBGQZCy8Xx5AOxFCgottXhyjCgo6I8RKFP2q/bTdJmk4VKQdJkzMyn7H5/u5nfJ4/2AIFLjv8i9Xa4R+TLfhpugKxvH8INkONCEW6AfN5Lww2QzZ0UTieOXo+E3qioJiAawJW2qcqYEBAhPjww7z0HfyFS4gwyZhF9zFE63wWLbNGPClO4Jbx6p6E2VD4Hbb6BNl8eC/eUMO07JyaRk6CCngBeC2s6patsbJTewScGKcvauhXRsOuOfNpNg0c5w+Ml46F5/0IQDe0Kn/1j/H6/6OtXQWtjEHNVswTuNMp4xGWURVWE/RXKGxHsrwEmYv25V9BGm45UzRLooyKPuYyyFISnPUhrEvqW1CwyIMEzkODXXSBM5OvPDHjUpuerZkn0U5FxS6Ze7bYJfi7CM5g07K0dJrKxs4NvdFJBbTpaNauIVOaqAJtPyKxZfR4dpHeFNl4+F62rc31/7TCRFxvrpkKtIiegCZUl6HvB9tC8LH1OmMj9taipUEUkRt8B/fGwrDOgCZAOhc1Ld6T0cuvi4x0S+mOmPTXCRPyrz7B9kKmCgvamIBaEtdNZYALqHdk+SOJuk3YRajyfCCbSuhjB919ZR8NEbsy/EhadBBO5HnkpLDoJd4lce/McP+jEyTCRq7NPhUUnwURuRmex+zvraJhIILlqKkyjU//BM9E5aVynrW0aQYzLLh8mMre1aSqIm4sNeTURY72ORHYPs9jjUJtbNuXLQ6oIXxevvWyYyP5RDjwhdDaPYMWUrwxTkSlzXbz2sjlZRPB+sHfEWSIqK8O3ce+dqFanIgepHERMdHkxtCqqhdBFm39rGdsLOczkIWKy2/podU+XaiF0N4/iPVtnHNsLOcoew0oYPtKDSUMWD3jhC2k1aRRxfV15bC8kRT8sxEch+cJcpoukDM3zY3sh6VwBZhQfgRzms0SgxZKlczOQpTEkuMweSCZfAEe4B8Q3w2cUxdeCYJLPMnlVJMll9kByxwVUWMOI1IOQPv8wBq/+stOGP2p5SDZ8Ccgzhv32QfKFItyAe0RE/1h0IqRQLMINkCIAN+AeEYoLDuAPbgE/X2tJcT0AAAAASUVORK5CYII=" SearchSteps="FuzzySelector, Image" />
+                        </scg:List>
+                      </uix:TargetAnchorable.Anchors>
+                    </uix:TargetAnchorable>
+                  </uix:NSelectItem.Target>
+                </uix:NSelectItem>
                 <uix:NTypeInto ActivateBefore="True" sap2010:Annotation.AnnotationText="Type the reporting year users concern.&#xA;" ClickBeforeMode="Double" DisplayName="Type Into 'INPUT year'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="794.4,260" sap2010:WorkflowViewState.IdRef="NTypeInto_2" InteractionMode="DebuggerApi" ScopeIdentifier="64c4cede-e0bc-4afd-9e16-0f1e74b8ab06" Text="[ReportYear.ToString]" Version="V3">
                   <uix:NTypeInto.Target>
                     <uix:TargetAnchorable BrowserURL="https://mops.twse.com.tw/mops/web/t100sb11" ContentHash="jMFJ2VUf5E-Z--dVQIhtzQ" CvType="InputBox" DesignTimeRectangle="1422, 368, 63, 22" DesignTimeScaleFactor="1.25" ElementType="InputBox" FriendlyName="'INPUT year'" FullSelectorArgument="&lt;webctrl parentid='search' tableRow='1' tag='TABLE' /&gt;&lt;webctrl id='year' tableRow='1' tag='INPUT' /&gt;" FuzzySelectorArgument="&lt;webctrl parentid='search' tag='TABLE' /&gt;&lt;webctrl id='year' type='text' tag='INPUT' class='textbox' aaname='' /&gt;" Guid="02bc10e6-983c-4d74-a6d0-05a27e12c0f5" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAFAAAAAgCAYAAACFM/9sAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAADtSURBVGhD7dA7DsJADIRh3/9sOQUg3s8QQhaQTFxM5QR5cTsj/W52q08Wx17Z/xEwGQGTyfLUq9U0DasIbrI6P9Wa+sTmg5sD5H7PAa4vT7UIGBuc4Cab66AWAWODE9wIWDkHuB2PRcDY4AQ3AlaOgMk5wN1tUIuAscEJbrJvi1oEjA1OcCNg5QiYHAGTI2ByDvAwHouAscEJbgSsnAM8jsciYGxwgpuc7kUtAsYGJ7gRsHIETM4BnruiFgFjgxPc5PJ4qUXA2OAENwJWjoDJETA5B9j2L7XwwGLBTbrhrdbUJzYf3ORRPsr+7aNfUi2edzprixQAAAAASUVORK5CYII=" InformativeScreenshot="4a8a942595f281bf84743596183d0775.png" Reference="TWC6cPYJp0eiyoRZ_9DkWQ/79F_OWeer0O11OjSKpRqEg" ScopeSelectorArgument="&lt;html app='msedge.exe' title='公開資訊觀測站' /&gt;" SearchSteps="FuzzySelector, Image, CV" Version="V2" Visibility="Interactive">
@@ -241,9 +276,9 @@
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <uix:NExtractData AppendResults="False" ContinueOnError="True" DataTable="[dt_ESGReport]" DisplayName="109 above" ExtractDataSettings="&lt;Table xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns:xsd='http://www.w3.org/2001/XMLSchema' Type='Table'&gt;&lt;Column xsi:type='DataColumn' ReferenceName='Column-0' ReferenceIdx='0' Name='CompanyCode'&gt;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&lt;ValidationErrorMessage /&gt;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&lt;Format xsi:type='TextColumnFormat' /&gt;&lt;/Column&gt;&lt;Column xsi:type='DataColumn' ReferenceName='Column-1' ReferenceIdx='1' Name='CompanyName'&gt;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&lt;ValidationErrorMessage /&gt;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&lt;Format xsi:type='TextColumnFormat' /&gt;&lt;/Column&gt;&lt;Column xsi:type='DataColumn' ReferenceName='Column-2' ReferenceIdx='2' Name='Column-2' IsDeleted='true'&gt;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&lt;ValidationErrorMessage /&gt;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&lt;Format xsi:type='TextColumnFormat' /&gt;&lt;/Column&gt;&lt;Column xsi:type='DataColumn' ReferenceName='Column-3' ReferenceIdx='3' Name='ReportReason'&gt;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&lt;ValidationErrorMessage /&gt;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&lt;Format xsi:type='TextColumnFormat' /&gt;&lt;/Column&gt;&lt;Column xsi:type='DataColumn' ReferenceName='Column-4' ReferenceIdx='4' Name='Industry'&gt;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&lt;ValidationErrorMessage /&gt;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&lt;Format xsi:type='TextColumnFormat' /&gt;&lt;/Column&gt;&lt;Column xsi:type='DataColumn' ReferenceName='Column-5' ReferenceIdx='5' Name='Column-5' IsDeleted='true'&gt;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&lt;ValidationErrorMessage /&gt;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&lt;Format xsi:type='TextColumnFormat' /&gt;&lt;/Column&gt;&lt;Column xsi:type='DataColumn' ReferenceName='Column-6' ReferenceIdx='6' Name='Column-6' IsDeleted='true'&gt;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&lt;ValidationErrorMessage /&gt;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&lt;Format xsi:type='TextColumnFormat' /&gt;&lt;/Column&gt;&lt;Column xsi:type='DataColumn' ReferenceName='Column-7' ReferenceIdx='7' Name='Column-7' IsDeleted='true'&gt;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&lt;ValidationErrorMessage /&gt;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&lt;Format xsi:type='TextColumnFormat' /&gt;&lt;/Column&gt;&lt;Column xsi:type='DataColumn' ReferenceName='Column-8' ReferenceIdx='8' Name='Column-8' IsDeleted='true'&gt;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&lt;ValidationErrorMessage /&gt;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&lt;Format xsi:type='TextColumnFormat' /&gt;&lt;/Column&gt;&lt;Column xsi:type='DataColumn' ReferenceName='Column-9' ReferenceIdx='9' Name='Column-9' IsDeleted='true'&gt;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&lt;ValidationErrorMessage /&gt;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&lt;Format xsi:type='TextColumnFormat' /&gt;&lt;/Column&gt;&lt;Column xsi:type='DataColumn' ReferenceName='Column-10' ReferenceIdx='10' Name='Column-10' IsDeleted='true'&gt;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&lt;ValidationErrorMessage /&gt;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&lt;Format xsi:type='TextColumnFormat' /&gt;&lt;/Column&gt;&lt;Column xsi:type='DataColumn' ReferenceName='Column-10 Url' ReferenceIdx='11' Name='Column-10 Url' IsDeleted='true'&gt;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&lt;ValidationErrorMessage /&gt;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&lt;Format xsi:type='TextColumnFormat' /&gt;&lt;/Column&gt;&lt;Column xsi:type='DataColumn' ReferenceName='Column-11' ReferenceIdx='12' Name='' IsDeleted='true'&gt;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&lt;ValidationErrorMessage /&gt;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&lt;Format xsi:type='TextColumnFormat' /&gt;&lt;/Column&gt;&lt;Column xsi:type='DataColumn' ReferenceName='Column-11 Url' ReferenceIdx='13' Name='ReportURL'&gt;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&lt;ValidationErrorMessage /&gt;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&lt;Format xsi:type='TextColumnFormat' /&gt;&lt;/Column&gt;&lt;Column xsi:type='DataColumn' ReferenceName='Column-12' ReferenceIdx='14' Name='UploadDate'&gt;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&lt;ValidationErrorMessage /&gt;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&lt;Format xsi:type='TextColumnFormat' /&gt;&lt;/Column&gt;&lt;Column xsi:type='DataColumn' ReferenceName='Column-13' ReferenceIdx='15' Name='Column-13' IsDeleted='true'&gt;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&lt;ValidationErrorMessage /&gt;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&lt;Format xsi:type='TextColumnFormat' /&gt;&lt;/Column&gt;&lt;Column xsi:type='DataColumn' ReferenceName='Column-13 Url' ReferenceIdx='16' Name='Column-13 Url' IsDeleted='true'&gt;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&lt;ValidationErrorMessage /&gt;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&lt;Format xsi:type='TextColumnFormat' /&gt;&lt;/Column&gt;&lt;Column xsi:type='DataColumn' ReferenceName='Column-14' ReferenceIdx='17' Name='Column-14' IsDeleted='true'&gt;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&lt;ValidationErrorMessage /&gt;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&lt;Format xsi:type='TextColumnFormat' /&gt;&lt;/Column&gt;&lt;Column xsi:type='DataColumn' ReferenceName='Column-14 Url' ReferenceIdx='18' Name='Column-14 Url' IsDeleted='true'&gt;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&lt;ValidationErrorMessage /&gt;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&lt;Format xsi:type='TextColumnFormat' /&gt;&lt;/Column&gt;&lt;Column xsi:type='DataColumn' ReferenceName='Column-15' ReferenceIdx='19' Name='Column-15' IsDeleted='true'&gt;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&lt;ValidationErrorMessage /&gt;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&lt;Format xsi:type='TextColumnFormat' /&gt;&lt;/Column&gt;&lt;Column xsi:type='DataColumn' ReferenceName='Column-16' ReferenceIdx='20' Name='Column-16' IsDeleted='true'&gt;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&lt;ValidationErrorMessage /&gt;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&lt;Format xsi:type='TextColumnFormat' /&gt;&lt;/Column&gt;&lt;Column xsi:type='DataColumn' ReferenceName='Column-16 Url' ReferenceIdx='21' Name='Column-16 Url' IsDeleted='true'&gt;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&lt;ValidationErrorMessage /&gt;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&lt;Format xsi:type='TextColumnFormat' /&gt;&lt;/Column&gt;&lt;Column xsi:type='DataColumn' ReferenceName='Column-17' ReferenceIdx='22' Name='Column-17' IsDeleted='true'&gt;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&lt;ValidationErrorMessage /&gt;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&lt;Format xsi:type='TextColumnFormat' /&gt;&lt;/Column&gt;&lt;Column xsi:type='DataColumn' ReferenceName='Column-18' ReferenceIdx='23' Name='Column-18' IsDeleted='true'&gt;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&lt;ValidationErrorMessage /&gt;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&lt;Format xsi:type='TextColumnFormat' /&gt;&lt;/Column&gt;&lt;Column xsi:type='DataColumn' ReferenceName='Column-18 Url' ReferenceIdx='24' Name='Column-18 Url' IsDeleted='true'&gt;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&lt;ValidationErrorMessage /&gt;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&lt;Format xsi:type='TextColumnFormat' /&gt;&lt;/Column&gt;&lt;Column xsi:type='DataColumn' ReferenceName='Column-19' ReferenceIdx='25' Name='Column-19' IsDeleted='true'&gt;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&lt;ValidationErrorMessage /&gt;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&lt;Format xsi:type='TextColumnFormat' /&gt;&lt;/Column&gt;&lt;Column xsi:type='DataColumn' ReferenceName='Column-20' ReferenceIdx='26' Name='Column-20' IsDeleted='true'&gt;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&lt;ValidationErrorMessage /&gt;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&lt;Format xsi:type='TextColumnFormat' /&gt;&lt;/Column&gt;&lt;Column xsi:type='DataColumn' ReferenceName='Column-21' ReferenceIdx='27' Name='Column-21' IsDeleted='true'&gt;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&lt;ValidationErrorMessage /&gt;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&lt;Format xsi:type='TextColumnFormat' /&gt;&lt;/Column&gt;&lt;/Table&gt;" ExtractMetadata="&lt;extract-table get_columns_name='1' get_empty_columns='1' columns_name_source='Longest'&gt;&lt;column name='Column-0' attr='fulltext' /&gt;&lt;column name='Column-1' attr='fulltext' /&gt;&lt;column name='Column-2' attr='fulltext' /&gt;&lt;column name='Column-3' attr='fulltext' /&gt;&lt;column name='Column-4' attr='fulltext' /&gt;&lt;column name='Column-5' attr='fulltext' /&gt;&lt;column name='Column-6' attr='fulltext' /&gt;&lt;column name='Column-7' attr='fulltext' /&gt;&lt;column name='Column-8' attr='fulltext' /&gt;&lt;column name='Column-9' attr='fulltext' /&gt;&lt;column name='Column-10' attr='fulltext' name2='Column-10 Url' attr2='href' /&gt;&lt;column name='Column-11' attr='fulltext' name2='Column-11 Url' attr2='href' /&gt;&lt;column name='Column-12' attr='fulltext' /&gt;&lt;column name='Column-13' attr='fulltext' name2='Column-13 Url' attr2='href' /&gt;&lt;column name='Column-14' attr='fulltext' name2='Column-14 Url' attr2='href' /&gt;&lt;column name='Column-15' attr='fulltext' /&gt;&lt;column name='Column-16' attr='fulltext' name2='Column-16 Url' attr2='href' /&gt;&lt;column name='Column-17' attr='fulltext' /&gt;&lt;column name='Column-18' attr='fulltext' name2='Column-18 Url' attr2='href' /&gt;&lt;column name='Column-19' attr='fulltext' /&gt;&lt;column name='Column-20' attr='fulltext' /&gt;&lt;column name='Column-21' attr='fulltext' /&gt;&lt;/extract-table&gt;" sap:VirtualizedContainerService.HintSize="333.6,156.8" sap2010:WorkflowViewState.IdRef="NExtractData_3" LimitExtractionTo="None" MaximumResults="0" ScopeIdentifier="64c4cede-e0bc-4afd-9e16-0f1e74b8ab06" Version="V3">
+                      <uix:NExtractData AppendResults="False" ContinueOnError="True" DataTable="[dt_ESGReport]" DisplayName="109 above" ExtractDataSettings="&lt;Table xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns:xsd='http://www.w3.org/2001/XMLSchema' Type='Table'&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Column-0' ReferenceIdx='0' Name='CompanyCode'&gt;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Column-1' ReferenceIdx='1' Name='CompanyName'&gt;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Column-2' ReferenceIdx='2' Name='Column-2' IsDeleted='true'&gt;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Column-3' ReferenceIdx='3' Name='ReportReason'&gt;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Column-4' ReferenceIdx='4' Name='Industry'&gt;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Column-5' ReferenceIdx='5' Name='Column-5' IsDeleted='true'&gt;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Column-6' ReferenceIdx='6' Name='Column-6' IsDeleted='true'&gt;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Column-7' ReferenceIdx='7' Name='Column-7' IsDeleted='true'&gt;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Column-8' ReferenceIdx='8' Name='Column-8' IsDeleted='true'&gt;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Column-9' ReferenceIdx='9' Name='Column-9' IsDeleted='true'&gt;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Column-10' ReferenceIdx='10' Name='Column-10' IsDeleted='true'&gt;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Column-10 Url' ReferenceIdx='11' Name='Column-10 Url' IsDeleted='true'&gt;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Column-11' ReferenceIdx='12' Name='' IsDeleted='true'&gt;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Column-11 Url' ReferenceIdx='13' Name='ReportURL'&gt;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Column-12' ReferenceIdx='14' Name='UploadDate'&gt;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Column-13' ReferenceIdx='15' Name='Column-13' IsDeleted='true'&gt;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Column-13 Url' ReferenceIdx='16' Name='Column-13 Url' IsDeleted='true'&gt;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Column-14' ReferenceIdx='17' Name='Column-14' IsDeleted='true'&gt;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Column-14 Url' ReferenceIdx='18' Name='Column-14 Url' IsDeleted='true'&gt;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Column-15' ReferenceIdx='19' Name='Column-15' IsDeleted='true'&gt;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Column-16' ReferenceIdx='20' Name='Column-16' IsDeleted='true'&gt;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Column-16 Url' ReferenceIdx='21' Name='Column-16 Url' IsDeleted='true'&gt;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Column-17' ReferenceIdx='22' Name='Column-17' IsDeleted='true'&gt;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Column-18' ReferenceIdx='23' Name='Column-18' IsDeleted='true'&gt;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Column-18 Url' ReferenceIdx='24' Name='Column-18 Url' IsDeleted='true'&gt;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Column-19' ReferenceIdx='25' Name='Column-19' IsDeleted='true'&gt;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Column-20' ReferenceIdx='26' Name='Column-20' IsDeleted='true'&gt;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Column-21' ReferenceIdx='27' Name='Column-21' IsDeleted='true'&gt;&#xA;&#x9;&#x9;&lt;IsValidName&gt;true&lt;/IsValidName&gt;&#xA;&#x9;&#x9;&lt;ValidationErrorMessage /&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&lt;/Table&gt;" ExtractMetadata="&lt;extract-table get_columns_name='1' get_empty_columns='1' columns_name_source='Longest'&gt;&lt;column name='Column-0' attr='fulltext' /&gt;&lt;column name='Column-1' attr='fulltext' /&gt;&lt;column name='Column-2' attr='fulltext' /&gt;&lt;column name='Column-3' attr='fulltext' /&gt;&lt;column name='Column-4' attr='fulltext' /&gt;&lt;column name='Column-5' attr='fulltext' /&gt;&lt;column name='Column-6' attr='fulltext' /&gt;&lt;column name='Column-7' attr='fulltext' name2='Column-7 Url' attr2='href' /&gt;&lt;column name='Column-8' attr='fulltext' name2='Column-8 Url' attr2='href' /&gt;&lt;column name='Column-9' attr='fulltext' /&gt;&lt;column name='Column-10' attr='fulltext' name2='Column-10 Url' attr2='href' /&gt;&lt;column name='Column-11' attr='fulltext' name2='Column-11 Url' attr2='href' /&gt;&lt;column name='Column-12' attr='fulltext' /&gt;&lt;column name='Column-13' attr='fulltext' name2='Column-13 Url' attr2='href' /&gt;&lt;column name='Column-14' attr='fulltext' /&gt;&lt;column name='Column-15' attr='fulltext' name2='Column-15 Url' attr2='href' /&gt;&lt;column name='Column-16' attr='fulltext' /&gt;&lt;column name='Column-17' attr='fulltext' /&gt;&lt;column name='Column-18' attr='fulltext' /&gt;&lt;/extract-table&gt;" sap:VirtualizedContainerService.HintSize="333.6,156.8" sap2010:WorkflowViewState.IdRef="NExtractData_3" LimitExtractionTo="None" MaximumResults="0" ScopeIdentifier="64c4cede-e0bc-4afd-9e16-0f1e74b8ab06" Version="V3">
                         <uix:NExtractData.Target>
-                          <uix:TargetAnchorable DesignTimeRectangle="281, 389, 8924, 41393" DesignTimeScaleFactor="1.25" FriendlyName="'公司代號公司名稱英文簡稱申報原因產業類別報告書…'" FullSelectorArgument="&lt;webctrl parentid='table01' tableRow='1' tag='TABLE' /&gt;" Guid="6b4aefba-c0b8-4b93-9a57-b57018e9603f" InformativeScreenshot="9c5010e3cb3dc61a73e50162950ffece.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='公開資訊觀測站' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
+                          <uix:TargetAnchorable DesignTimeRectangle="281, 519, 8218, 27854" DesignTimeScaleFactor="1.25" FriendlyName="'公司代號公司名稱申報原因報告書完成日期報告書內…'" FullSelectorArgument="&lt;webctrl parentid='table01' tableRow='1' tag='TABLE' /&gt;" Guid="1b731c24-8b90-49b5-9406-24c42556d3d6" InformativeScreenshot="9c5010e3cb3dc61a73e50162950ffece.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='公開資訊觀測站' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
                         </uix:NExtractData.Target>
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -295,10 +330,13 @@
             <ui:FilterDataTable DataTable="[dt_ESGReport]" DisplayName="Filter Data Table" FilterRowsMode="Remove" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="FilterDataTable_6" OutputDataTable="[dt_ESGReport]" SelectColumnsMode="Remove">
               <ui:FilterDataTable.Filters>
                 <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
-                  <ui:FilterOperationArgument Operand="{x:Null}" BooleanOperator="And" Operator="EMPTY">
+                  <ui:FilterOperationArgument BooleanOperator="And" Operator="CONTAINS">
                     <ui:FilterOperationArgument.Column>
-                      <InArgument x:TypeArguments="x:Int32">[5]</InArgument>
+                      <InArgument x:TypeArguments="x:Int32">[0]</InArgument>
                     </ui:FilterOperationArgument.Column>
+                    <ui:FilterOperationArgument.Operand>
+                      <InArgument x:TypeArguments="x:String">["公司"]</InArgument>
+                    </ui:FilterOperationArgument.Operand>
                   </ui:FilterOperationArgument>
                 </scg:List>
               </ui:FilterDataTable.Filters>
@@ -319,7 +357,7 @@
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <av:Point x:Key="ShapeLocation">290,394</av:Point>
                     <av:Size x:Key="ShapeSize">200,52</av:Size>
-                    <av:PointCollection x:Key="ConnectorLocation">390,394 390,364 560,364 560,272.4</av:PointCollection>
+                    <av:PointCollection x:Key="ConnectorLocation">390,394 390,364 600,364 600,292.4</av:PointCollection>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
                 <ui:AddDataColumn x:TypeArguments="x:Object" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" DefaultValue="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="RPA_Count" DataTable="[dt_ESGReport]" DisplayName="Add Data Column" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_1">
@@ -333,18 +371,18 @@
                   <FlowStep x:Name="__ReferenceID0">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <av:Point x:Key="ShapeLocation">460.00000000000006,147.6</av:Point>
+                        <av:Point x:Key="ShapeLocation">500,167.6</av:Point>
                         <av:Size x:Key="ShapeSize">200,124.8</av:Size>
-                        <av:PointCollection x:Key="ConnectorLocation">560,147.6 560,117.6 550,117.6 550,86.38</av:PointCollection>
+                        <av:PointCollection x:Key="ConnectorLocation">600,167.6 600,137.6 550,137.6 550,86.38</av:PointCollection>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="Download each ESG report  via http request. And upload these files to the folder created before." DataTable="[dt_ESGReport]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="200,124.8" sap2010:WorkflowViewState.IdRef="ForEachRow_6">
+                    <ui:ForEachRow ColumnNames="{x:Null}" sap2010:Annotation.AnnotationText="Download each ESG report  via http request. And upload these files to the folder created before." CurrentIndex="[idx]" DataTable="[dt_ESGReport]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="799.2,3440" sap2010:WorkflowViewState.IdRef="ForEachRow_6">
                       <ui:ForEachRow.Body>
                         <ActivityAction x:TypeArguments="sd:DataRow">
                           <ActivityAction.Argument>
                             <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
                           </ActivityAction.Argument>
-                          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="524.8,1544" sap2010:WorkflowViewState.IdRef="Sequence_37">
+                          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="765.6,3293.6" sap2010:WorkflowViewState.IdRef="Sequence_37">
                             <Sequence.Variables>
                               <Variable x:TypeArguments="x:Int32" Name="ResponseStatus" />
                               <Variable x:TypeArguments="x:String" Name="FileName" />
@@ -357,20 +395,61 @@
                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
-                            <Assign sap2010:Annotation.AnnotationText="Use the FileName variable to store file path" sap:VirtualizedContainerService.HintSize="483.2,102.4" sap2010:WorkflowViewState.IdRef="Assign_7">
+                            <If Condition="[ReportYear&gt;108]" sap:VirtualizedContainerService.HintSize="724,353.6" sap2010:WorkflowViewState.IdRef="If_3">
+                              <If.Then>
+                                <Sequence sap:VirtualizedContainerService.HintSize="304.8,195.2" sap2010:WorkflowViewState.IdRef="Sequence_46">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <Assign sap2010:Annotation.AnnotationText="Use the FileName variable to store file path" sap:VirtualizedContainerService.HintSize="263.2,102.4" sap2010:WorkflowViewState.IdRef="Assign_7">
+                                    <Assign.To>
+                                      <OutArgument x:TypeArguments="x:String">[FileName]</OutArgument>
+                                    </Assign.To>
+                                    <Assign.Value>
+                                      <InArgument x:TypeArguments="x:String">[Environment.CurrentDirectory+"\"+CurrentRow("Industry").ToString+"_"+CurrentRow("CompanyName").ToString+".pdf"]</InArgument>
+                                    </Assign.Value>
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                  </Assign>
+                                </Sequence>
+                              </If.Then>
+                              <If.Else>
+                                <Sequence sap:VirtualizedContainerService.HintSize="304.8,195.2" sap2010:WorkflowViewState.IdRef="Sequence_47">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <Assign sap2010:Annotation.AnnotationText="Use the FileName variable to store file path" sap:VirtualizedContainerService.HintSize="263.2,102.4" sap2010:WorkflowViewState.IdRef="Assign_13">
+                                    <Assign.To>
+                                      <OutArgument x:TypeArguments="x:String">[FileName]</OutArgument>
+                                    </Assign.To>
+                                    <Assign.Value>
+                                      <InArgument x:TypeArguments="x:String">[Environment.CurrentDirectory+"\"+CurrentRow("CompanyName").ToString+".pdf"]</InArgument>
+                                    </Assign.Value>
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                  </Assign>
+                                </Sequence>
+                              </If.Else>
+                            </If>
+                            <Assign sap:VirtualizedContainerService.HintSize="724,60" sap2010:WorkflowViewState.IdRef="Assign_14">
                               <Assign.To>
                                 <OutArgument x:TypeArguments="x:String">[FileName]</OutArgument>
                               </Assign.To>
                               <Assign.Value>
-                                <InArgument x:TypeArguments="x:String">[Environment.CurrentDirectory+"\"+CurrentRow("Industry").ToString+"_"+CurrentRow("CompanyName").ToString+".pdf"]</InArgument>
+                                <InArgument x:TypeArguments="x:String">[FileName.Replace("*","")]</InArgument>
                               </Assign.Value>
-                              <sap:WorkflowViewStateService.ViewState>
-                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                                </scg:Dictionary>
-                              </sap:WorkflowViewStateService.ViewState>
                             </Assign>
-                            <Assign sap:VirtualizedContainerService.HintSize="483.2,60" sap2010:WorkflowViewState.IdRef="Assign_10">
+                            <Assign sap:VirtualizedContainerService.HintSize="724,60" sap2010:WorkflowViewState.IdRef="Assign_10">
                               <Assign.To>
                                 <OutArgument x:TypeArguments="x:Int32">[Lag]</OutArgument>
                               </Assign.To>
@@ -378,37 +457,170 @@
                                 <InArgument x:TypeArguments="x:Int32">0</InArgument>
                               </Assign.Value>
                             </Assign>
-                            <ui:InterruptibleDoWhile CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="This is worthy to note that report may end up 1KB files. Hence, loop for the download processs once the downloaded file is 1kb." Condition="[new System.io.FileInfo(FileName).Length&lt;1000]" DisplayName="Do While" sap:VirtualizedContainerService.HintSize="483.2,485.6" sap2010:WorkflowViewState.IdRef="InterruptibleDoWhile_6">
+                            <ui:InterruptibleDoWhile CurrentIndex="{x:Null}" Condition="[new System.io.FileInfo(FileName).Length&lt;2000]" DisplayName="Do While" sap:VirtualizedContainerService.HintSize="724,1240.8" sap2010:WorkflowViewState.IdRef="InterruptibleDoWhile_7">
                               <ui:InterruptibleDoWhile.Body>
-                                <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="304.8,320" sap2010:WorkflowViewState.IdRef="Sequence_36">
+                                <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="524.8,1075.2" sap2010:WorkflowViewState.IdRef="Sequence_48">
+                                  <Sequence.Variables>
+                                    <Variable x:TypeArguments="x:Int32" Name="Status" />
+                                  </Sequence.Variables>
                                   <sap:WorkflowViewStateService.ViewState>
                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
-                                  <ui:HttpClient Body="{x:Null}" ClientCertificate="{x:Null}" ClientCertificatePassword="{x:Null}" ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" FileAttachments="{x:Null}" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" OAuth2Token="{x:Null}" Password="{x:Null}" ResponseAttachment="{x:Null}" ResponseHeaders="{x:Null}" Result="{x:Null}" SecureClientCertificatePassword="{x:Null}" SecurePassword="{x:Null}" StatusCode="{x:Null}" Username="{x:Null}" AcceptFormat="ANY" sap2010:Annotation.AnnotationText="End point: FileURL &#xA;Filename as Response attachment: FileNAme" AuthenticationType="None" BodyFormat="application/xml" DisplayName="HTTP Request" EnableSSLVerification="True" EndPoint="[CurrentRow(&quot;ReportURL&quot;).ToString]" sap:VirtualizedContainerService.HintSize="263.2,127.2" sap2010:WorkflowViewState.IdRef="HttpClient_12" Method="GET" ResourcePath="[FileName]" TimeoutMS="[6000+500*Lag]">
-                                    <ui:HttpClient.Attachments>
-                                      <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
-                                    </ui:HttpClient.Attachments>
-                                    <ui:HttpClient.Cookies>
-                                      <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
-                                    </ui:HttpClient.Cookies>
-                                    <ui:HttpClient.Headers>
-                                      <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
-                                    </ui:HttpClient.Headers>
-                                    <ui:HttpClient.Parameters>
-                                      <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
-                                    </ui:HttpClient.Parameters>
-                                    <ui:HttpClient.UrlSegments>
-                                      <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
-                                    </ui:HttpClient.UrlSegments>
+                                  <Assign sap:VirtualizedContainerService.HintSize="483.2,60" sap2010:WorkflowViewState.IdRef="Assign_17">
+                                    <Assign.To>
+                                      <OutArgument x:TypeArguments="x:Int32">[Lag]</OutArgument>
+                                    </Assign.To>
+                                    <Assign.Value>
+                                      <InArgument x:TypeArguments="x:Int32">[math.Min(10,Lag)]</InArgument>
+                                    </Assign.Value>
+                                  </Assign>
+                                  <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="483.2,354.4" sap2010:WorkflowViewState.IdRef="TryCatch_3">
                                     <sap:WorkflowViewStateService.ViewState>
                                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                       </scg:Dictionary>
                                     </sap:WorkflowViewStateService.ViewState>
-                                  </ui:HttpClient>
-                                  <Assign sap:VirtualizedContainerService.HintSize="263.2,60" sap2010:WorkflowViewState.IdRef="Assign_11">
+                                    <TryCatch.Try>
+                                      <ui:HttpClient Body="{x:Null}" ClientCertificate="{x:Null}" ClientCertificatePassword="{x:Null}" ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" FileAttachments="{x:Null}" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" OAuth2Token="{x:Null}" Password="{x:Null}" ResponseAttachment="{x:Null}" ResponseHeaders="{x:Null}" Result="{x:Null}" SecureClientCertificatePassword="{x:Null}" SecurePassword="{x:Null}" Username="{x:Null}" AcceptFormat="ANY" sap2010:Annotation.AnnotationText="End point: FileURL &#xA;Filename as Response attachment: FileNAme" AuthenticationType="None" BodyFormat="application/xml" DisplayName="HTTP Request" EnableSSLVerification="True" EndPoint="[CurrentRow(&quot;ReportURL&quot;).ToString]" sap:VirtualizedContainerService.HintSize="204,127.2" sap2010:WorkflowViewState.IdRef="HttpClient_13" Method="GET" ResourcePath="[FileName]" StatusCode="[Status]" TimeoutMS="[6000+200*Lag]">
+                                        <ui:HttpClient.Attachments>
+                                          <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+                                        </ui:HttpClient.Attachments>
+                                        <ui:HttpClient.Cookies>
+                                          <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+                                        </ui:HttpClient.Cookies>
+                                        <ui:HttpClient.Headers>
+                                          <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+                                        </ui:HttpClient.Headers>
+                                        <ui:HttpClient.Parameters>
+                                          <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+                                        </ui:HttpClient.Parameters>
+                                        <ui:HttpClient.UrlSegments>
+                                          <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+                                        </ui:HttpClient.UrlSegments>
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                      </ui:HttpClient>
+                                    </TryCatch.Try>
+                                    <TryCatch.Catches>
+                                      <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="403.2,21.6" sap2010:WorkflowViewState.IdRef="Catch`1_3">
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                        <ActivityAction x:TypeArguments="s:Exception">
+                                          <ActivityAction.Argument>
+                                            <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                                          </ActivityAction.Argument>
+                                          <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="436.8,354.4" sap2010:WorkflowViewState.IdRef="TryCatch_4">
+                                            <sap:WorkflowViewStateService.ViewState>
+                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                              </scg:Dictionary>
+                                            </sap:WorkflowViewStateService.ViewState>
+                                            <TryCatch.Try>
+                                              <ui:HttpClient Body="{x:Null}" ClientCertificate="{x:Null}" ClientCertificatePassword="{x:Null}" ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" FileAttachments="{x:Null}" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" OAuth2Token="{x:Null}" Password="{x:Null}" ResponseAttachment="{x:Null}" ResponseHeaders="{x:Null}" Result="{x:Null}" SecureClientCertificatePassword="{x:Null}" SecurePassword="{x:Null}" Username="{x:Null}" AcceptFormat="ANY" sap2010:Annotation.AnnotationText="End point: FileURL &#xA;Filename as Response attachment: FileNAme" AuthenticationType="None" BodyFormat="application/xml" DisplayName="HTTP Request" EnableSSLVerification="True" EndPoint="[CurrentRow(&quot;ReportURL&quot;).ToString]" sap:VirtualizedContainerService.HintSize="204,127.2" sap2010:WorkflowViewState.IdRef="HttpClient_16" Method="GET" ResourcePath="[FileName]" StatusCode="[Status]" TimeoutMS="[6000+200*Lag]">
+                                                <ui:HttpClient.Attachments>
+                                                  <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+                                                </ui:HttpClient.Attachments>
+                                                <ui:HttpClient.Cookies>
+                                                  <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+                                                </ui:HttpClient.Cookies>
+                                                <ui:HttpClient.Headers>
+                                                  <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+                                                </ui:HttpClient.Headers>
+                                                <ui:HttpClient.Parameters>
+                                                  <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+                                                </ui:HttpClient.Parameters>
+                                                <ui:HttpClient.UrlSegments>
+                                                  <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+                                                </ui:HttpClient.UrlSegments>
+                                                <sap:WorkflowViewStateService.ViewState>
+                                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                                  </scg:Dictionary>
+                                                </sap:WorkflowViewStateService.ViewState>
+                                              </ui:HttpClient>
+                                            </TryCatch.Try>
+                                            <TryCatch.Catches>
+                                              <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="403.2,21.6" sap2010:WorkflowViewState.IdRef="Catch`1_4">
+                                                <sap:WorkflowViewStateService.ViewState>
+                                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                  </scg:Dictionary>
+                                                </sap:WorkflowViewStateService.ViewState>
+                                                <ActivityAction x:TypeArguments="s:Exception">
+                                                  <ActivityAction.Argument>
+                                                    <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                                                  </ActivityAction.Argument>
+                                                  <ui:HttpClient Body="{x:Null}" ClientCertificate="{x:Null}" ClientCertificatePassword="{x:Null}" ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" FileAttachments="{x:Null}" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" OAuth2Token="{x:Null}" Password="{x:Null}" ResponseAttachment="{x:Null}" ResponseHeaders="{x:Null}" Result="{x:Null}" SecureClientCertificatePassword="{x:Null}" SecurePassword="{x:Null}" Username="{x:Null}" AcceptFormat="ANY" sap2010:Annotation.AnnotationText="End point: FileURL &#xA;Filename as Response attachment: FileNAme" AuthenticationType="None" BodyFormat="application/xml" DisplayName="HTTP Request" EnableSSLVerification="True" EndPoint="[CurrentRow(&quot;ReportURL&quot;).ToString]" sap:VirtualizedContainerService.HintSize="204,127.2" sap2010:WorkflowViewState.IdRef="HttpClient_17" Method="GET" ResourcePath="[FileName]" StatusCode="[Status]" TimeoutMS="[6000+200*Lag]">
+                                                    <ui:HttpClient.Attachments>
+                                                      <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+                                                    </ui:HttpClient.Attachments>
+                                                    <ui:HttpClient.Cookies>
+                                                      <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+                                                    </ui:HttpClient.Cookies>
+                                                    <ui:HttpClient.Headers>
+                                                      <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+                                                    </ui:HttpClient.Headers>
+                                                    <ui:HttpClient.Parameters>
+                                                      <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+                                                    </ui:HttpClient.Parameters>
+                                                    <ui:HttpClient.UrlSegments>
+                                                      <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+                                                    </ui:HttpClient.UrlSegments>
+                                                    <sap:WorkflowViewStateService.ViewState>
+                                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                                      </scg:Dictionary>
+                                                    </sap:WorkflowViewStateService.ViewState>
+                                                  </ui:HttpClient>
+                                                </ActivityAction>
+                                              </Catch>
+                                            </TryCatch.Catches>
+                                          </TryCatch>
+                                        </ActivityAction>
+                                      </Catch>
+                                    </TryCatch.Catches>
+                                  </TryCatch>
+                                  <If Condition="[Status&gt;299]" sap:VirtualizedContainerService.HintSize="483.2,388" sap2010:WorkflowViewState.IdRef="If_6">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                    <If.Then>
+                                      <Sequence sap:VirtualizedContainerService.HintSize="375.2,200" sap2010:WorkflowViewState.IdRef="Sequence_55">
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="333.6,107.2" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[Status.ToString]" />
+                                      </Sequence>
+                                    </If.Then>
+                                    <If.Else>
+                                      <Sequence sap2010:WorkflowViewState.IdRef="Sequence_56">
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                      </Sequence>
+                                    </If.Else>
+                                  </If>
+                                  <Assign sap:VirtualizedContainerService.HintSize="483.2,60" sap2010:WorkflowViewState.IdRef="Assign_11">
                                     <Assign.To>
                                       <OutArgument x:TypeArguments="x:Int32">[Lag]</OutArgument>
                                     </Assign.To>
@@ -422,21 +634,56 @@
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                  <x:Boolean x:Key="IsAnnotationDocked">False</x:Boolean>
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
                             </ui:InterruptibleDoWhile>
-                            <ui:ReadPDFText PreserveFormatting="{x:Null}" DisplayName="Read PDF Text" FileName="[FileName]" sap:VirtualizedContainerService.HintSize="483.2,82.4" sap2010:WorkflowViewState.IdRef="ReadPDFText_2" Range="All" Text="[strText]" />
-                            <ui:Matches FirstMatch="{x:Null}" BuilderPattern="RPA" DisplayName="Find Matching Patterns" sap:VirtualizedContainerService.HintSize="483.2,60" sap2010:WorkflowViewState.IdRef="Matches_1" Input="[strText]" IsBuilderTabModified="True" Model="[{&quot;Index&quot;:0,&quot;OperationID&quot;:&quot;LIT&quot;,&quot;OperationName&quot;:&quot;Literal&quot;,&quot;OperationValue&quot;:&quot;RPA&quot;,&quot;QuantifierFirstValue&quot;:&quot;1&quot;,&quot;QuantifierID&quot;:&quot;EXT&quot;,&quot;QuantifierName&quot;:&quot;Exactly&quot;,&quot;QuantifierSecondValue&quot;:null}]" Pattern="RPA" RegexOption="IgnoreCase, Compiled" Result="[RegResult]" />
-                            <Assign sap:VirtualizedContainerService.HintSize="483.2,60" sap2010:WorkflowViewState.IdRef="Assign_8">
-                              <Assign.To>
-                                <OutArgument x:TypeArguments="x:Object">[CurrentRow("RPA_Count")]</OutArgument>
-                              </Assign.To>
-                              <Assign.Value>
-                                <InArgument x:TypeArguments="x:Object">[RegResult.Count.tostring]</InArgument>
-                              </Assign.Value>
-                            </Assign>
-                            <If Condition="[RegResult.Count=0]" sap:VirtualizedContainerService.HintSize="483.2,360.8" sap2010:WorkflowViewState.IdRef="If_1">
+                            <upap:GetPDFPageCount DisplayName="Get PDF Page Count" FileName="[FileName]" sap:VirtualizedContainerService.HintSize="724,82.4" sap2010:WorkflowViewState.IdRef="GetPDFPageCount_1" PageCount="[PageCnt]" />
+                            <ui:ReadPDFText PreserveFormatting="{x:Null}" DisplayName="Read PDF Text" FileName="[FileName]" sap:VirtualizedContainerService.HintSize="724,82.4" sap2010:WorkflowViewState.IdRef="ReadPDFText_3" Range="[IF(PageCnt&gt;10,&quot;5-7&quot;,PageCnt.ToString)]" Text="[strText]" />
+                            <If Condition="[string.IsNullOrEmpty(strText)]" sap:VirtualizedContainerService.HintSize="724,533.6" sap2010:WorkflowViewState.IdRef="If_4">
+                              <If.Then>
+                                <Sequence sap:VirtualizedContainerService.HintSize="304.8,152.8" sap2010:WorkflowViewState.IdRef="Sequence_50">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <Assign sap:VirtualizedContainerService.HintSize="263.2,60" sap2010:WorkflowViewState.IdRef="Assign_15">
+                                    <Assign.To>
+                                      <OutArgument x:TypeArguments="x:Object">[CurrentRow("RPA_Count")]</OutArgument>
+                                    </Assign.To>
+                                    <Assign.Value>
+                                      <InArgument x:TypeArguments="x:Object">["Scanned"]</InArgument>
+                                    </Assign.Value>
+                                  </Assign>
+                                </Sequence>
+                              </If.Then>
+                              <If.Else>
+                                <Sequence sap:VirtualizedContainerService.HintSize="375.2,375.2" sap2010:WorkflowViewState.IdRef="Sequence_51">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <ui:ReadPDFText PreserveFormatting="{x:Null}" DisplayName="Read PDF Text" FileName="[FileName]" sap:VirtualizedContainerService.HintSize="333.6,82.4" sap2010:WorkflowViewState.IdRef="ReadPDFText_2" Range="All" Text="[strText]" />
+                                  <ui:Matches FirstMatch="{x:Null}" BuilderPattern="RPA" DisplayName="Find Matching Patterns" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="Matches_1" Input="[strText]" IsBuilderTabModified="True" Model="[{&quot;Index&quot;:0,&quot;OperationID&quot;:&quot;LIT&quot;,&quot;OperationName&quot;:&quot;Literal&quot;,&quot;OperationValue&quot;:&quot;RPA&quot;,&quot;QuantifierFirstValue&quot;:&quot;1&quot;,&quot;QuantifierID&quot;:&quot;EXT&quot;,&quot;QuantifierName&quot;:&quot;Exactly&quot;,&quot;QuantifierSecondValue&quot;:null}]" Pattern="RPA" RegexOption="Compiled" Result="[RegResult]" />
+                                  <Assign sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="Assign_8">
+                                    <Assign.To>
+                                      <OutArgument x:TypeArguments="x:Object">[CurrentRow("RPA_Count")]</OutArgument>
+                                    </Assign.To>
+                                    <Assign.Value>
+                                      <InArgument x:TypeArguments="x:Object">[RegResult.Count.tostring]</InArgument>
+                                    </Assign.Value>
+                                  </Assign>
+                                </Sequence>
+                              </If.Else>
+                            </If>
+                            <If Condition="[CurrentRow(&quot;RPA_Count&quot;).ToString=&quot;0&quot; or CurrentRow(&quot;RPA_Count&quot;).ToString=&quot;Scanned&quot;]" sap:VirtualizedContainerService.HintSize="724,360.8" sap2010:WorkflowViewState.IdRef="If_1">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
                               <If.Then>
                                 <Sequence sap:VirtualizedContainerService.HintSize="375.2,172.8" sap2010:WorkflowViewState.IdRef="Sequence_42">
                                   <sap:WorkflowViewStateService.ViewState>
@@ -457,6 +704,7 @@
                                 </Sequence>
                               </If.Else>
                             </If>
+                            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="724,107.2" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[(idx+1).ToString+&quot; / &quot;+dt_ESGReport.RowCount.ToString+&quot;  completed&quot;]" />
                           </Sequence>
                         </ActivityAction>
                       </ui:ForEachRow.Body>
@@ -476,7 +724,7 @@
                             <av:Size x:Key="ShapeSize">200,52</av:Size>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <ui:WriteCsvFile AddHeaders="True" DataTable="[dt_ESGReport]" Delimitator="Comma" DisplayName="Write CSV" FilePath="[ReportYear.ToString+&quot;.csv&quot;]" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="WriteCsvFile_1" ShouldQuote="True">
+                        <ui:WriteCsvFile AddHeaders="True" DataTable="[dt_ESGReport]" Delimitator="Comma" DisplayName="Write CSV" FilePath="[ReportYear.ToString+&quot;_&quot;+ReportCategory+&quot;.csv&quot;]" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="WriteCsvFile_1" ShouldQuote="True">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>

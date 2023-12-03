@@ -21687,9 +21687,9 @@
     "restore": {
       "projectUniqueName": "PaperPilot",
       "projectName": "PaperPilot",
-      "projectPath": "C:\\Users\\star8\\Desktop\\Scraping\\Case2\\.local",
+      "projectPath": "C:\\Users\\star8\\Desktop\\PaperPilot\\PaperPilot\\.local",
       "packagesPath": "C:\\Users\\star8\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\star8\\Desktop\\Scraping\\Case2\\.local"
+      "outputPath": "C:\\Users\\star8\\Desktop\\PaperPilot\\PaperPilot\\.local"
     },
     "frameworks": {
       "net6.0-windows7.0": {
