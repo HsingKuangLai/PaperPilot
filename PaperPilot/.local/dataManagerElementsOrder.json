@@ -9,15 +9,45 @@
       "AddedNamespaces": null
     },
     {
-      "Path": "Main.xaml",
+      "Path": "ESG.xaml",
       "SortBy": 0,
       "VariablesSectionElementsOrder": [
-        "FolderID&Flowchart_1",
-        "ResponseStatus&Sequence_31",
-        "FileName&Sequence_31",
-        "ESGFolder&Sequence_31",
-        "dt_ESGReport&Flowchart_1",
-        "ExtractDataTable&Sequence_1"
+        "IRfile&Sequence_1",
+        "ReportCategory&Sequence_1",
+        "StrText&Sequence_1",
+        "ReportYear&Flowchart_1",
+        "Lag&Flowchart_1",
+        "idx&Flowchart_1",
+        "PageCnt&Flowchart_1",
+        "load&Flowchart_1",
+        "InvokePythonResult&Flowchart_1",
+        "PDF&Flowchart_1",
+        "isScanned&Flowchart_1",
+        "ResponseStatus&Sequence_37",
+        "FileName&Sequence_37",
+        "ESGFolder&Sequence_37",
+        "RegResult&Sequence_37",
+        "Status&Sequence_48",
+        "dt_ESGReport&Flowchart_1"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "AR.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "PageCount&Flowchart_1",
+        "FileExtension&Sequence_11",
+        "UploadDate&Sequence_2",
+        "ROwIndex&Sequence_2",
+        "YearCode&Sequence_2",
+        "RegResult&Flowchart_1",
+        "StrText&Flowchart_1",
+        "FileName&Sequence_2",
+        "Dt_All&Sequence_2",
+        "FileURL&Sequence_12"
       ],
       "ArgumentsSectionElementsOrder": [],
       "ConstantsSectionElementsOrder": [],

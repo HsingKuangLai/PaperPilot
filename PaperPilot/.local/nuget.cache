@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "2r00nzOPwOAjD9iib92fqlxPv9xb+HUEwiiwI8g9ave0oUFgXUWh2oWlUQIf7sqyyS1FeSLzq9Pu3zhN+/VLnw==",
+  "dgSpecHash": "jigoiIflRygI9Gr5PNpmN6LDN23SMO/mvANyCIeRdcyN2QqzONRIfCkWraikF7aheqY3zLyqlIopd1WL/VoV8g==",
   "success": true,
   "projectFilePath": "C:\\Users\\star8\\Desktop\\PaperPilot\\PaperPilot\\.local\\",
   "expectedPackageFiles": [
@@ -286,6 +286,7 @@
     "C:\\Users\\star8\\.nuget\\packages\\uipath.ocr.contracts\\2.16.0\\uipath.ocr.contracts.2.16.0.nupkg.sha512",
     "C:\\Users\\star8\\.nuget\\packages\\uipath.pdf.activities\\3.16.0\\uipath.pdf.activities.3.16.0.nupkg.sha512",
     "C:\\Users\\star8\\.nuget\\packages\\uipath.platform\\23.4.1\\uipath.platform.23.4.1.nupkg.sha512",
+    "C:\\Users\\star8\\.nuget\\packages\\uipath.python.activities\\1.7.1\\uipath.python.activities.1.7.1.nupkg.sha512",
     "C:\\Users\\star8\\.nuget\\packages\\uipath.system.activities\\23.4.4\\uipath.system.activities.23.4.4.nupkg.sha512",
     "C:\\Users\\star8\\.nuget\\packages\\uipath.system.runtime.windows\\23.4.4\\uipath.system.runtime.windows.23.4.4.nupkg.sha512",
     "C:\\Users\\star8\\.nuget\\packages\\uipath.telemetry.client\\1.5.3\\uipath.telemetry.client.1.5.3.nupkg.sha512",
