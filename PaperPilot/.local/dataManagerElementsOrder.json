@@ -38,16 +38,19 @@
       "Path": "AR.xaml",
       "SortBy": 0,
       "VariablesSectionElementsOrder": [
+        "DownloadZiporDoc&Sequence_2",
+        "FileExtension&Sequence_2",
+        "DirectoryName&Sequence_2",
+        "FileURL&Sequence_2",
+        "ExtractedFile&Flowchart_1",
         "PageCount&Flowchart_1",
-        "FileExtension&Sequence_11",
         "UploadDate&Sequence_2",
         "ROwIndex&Sequence_2",
         "YearCode&Sequence_2",
         "RegResult&Flowchart_1",
         "StrText&Flowchart_1",
         "FileName&Sequence_2",
-        "Dt_All&Sequence_2",
-        "FileURL&Sequence_12"
+        "Dt_All&Sequence_2"
       ],
       "ArgumentsSectionElementsOrder": [],
       "ConstantsSectionElementsOrder": [],
