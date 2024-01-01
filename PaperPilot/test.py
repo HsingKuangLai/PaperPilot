@@ -1,24 +1,20 @@
-import fitz  # PyMuPDF
+import pandas as pd
+import math
 
-def extract_text_from_identity_h_pdf(file_path):
-    try:
-        pdf_document = fitz.open(file_path)
-        pdf_text = ''
-        
-        for page_num in range(pdf_document.page_count):
-            page = pdf_document.load_page(page_num)
-            text = page.get_text("text")  # Extract text as Unicode
-            print(text.encode('utf-8'))
-            pdf_text += text
-        
-        pdf_document.close()
-        return pdf_text
+# 讀取原始CSV文件
+file_path = 'All_EachPage_Results.csv'  # 更改為你的檔案路徑
+data = pd.read_csv(file_path)
+
+num_chunks = 8
+total_rows = len(data)
+rows_per_chunk = math.ceil(total_rows / num_chunks)
+
+for i in range(num_chunks):
+    start_idx = i * rows_per_chunk
+    end_idx = min((i + 1) * rows_per_chunk, total_rows)
     
-    except Exception as e:
-        print(f"Error: {e}")
-        return None
-
-# Usage
-file_path = "AR\\106\\1460_宏遠.pdf"
-extracted_text = extract_text_from_identity_h_pdf(file_path)
-print(extracted_text)
+    chunk_data = data.iloc[start_idx:end_idx]
+    chunk_file_path = f'chunk_{i + 1}.csv'
+    
+    chunk_data.to_csv(chunk_file_path, index=False)
+    print(f'Chunk {i + 1} saved to {chunk_file_path}')
