@@ -2,11 +2,13 @@
   "name": "PaperPilot",
   "projectId": "fe85620f-88b2-4f03-bbfe-5d960817165f",
   "description": "Blank Process",
-  "main": "AR.xaml",
+  "main": "LDA.xaml",
   "dependencies": {
     "UiPath.Excel.Activities": "[2.22.0-preview]",
     "UiPath.GSuite.Activities": "2.2.5",
+    "UiPath.IntegrationService.Activities": "[1.1.0]",
     "UiPath.Mail.Activities": "[1.20.3]",
+    "UiPath.OpenAI.IntegrationService.Activities": "[5.0.1-preview]",
     "UiPath.PDF.Activities": "[3.16.0]",
     "UiPath.Python.Activities": "[1.7.1]",
     "UiPath.System.Activities": "[23.4.4]",
@@ -63,6 +65,12 @@
     {
       "filePath": "AR.xaml",
       "uniqueId": "02eb4e9b-7851-41fa-8b6d-4be2fd481a20",
+      "input": [],
+      "output": []
+    },
+    {
+      "filePath": "LDA.xaml",
+      "uniqueId": "80d5f71e-10d3-4766-aba1-7b164d1061ea",
       "input": [],
       "output": []
     }

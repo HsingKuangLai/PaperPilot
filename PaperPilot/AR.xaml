@@ -135,7 +135,7 @@
       <AssemblyReference>UiPath.Word</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap:VirtualizedContainerService.HintSize="984.6666666666665,1384" sap2010:WorkflowViewState.IdRef="Sequence_2">
+  <Sequence sap:VirtualizedContainerService.HintSize="984.6666666666666,1385.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_2">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataTable" Name="Dt_All" />
       <Variable x:TypeArguments="x:String" Name="FileName" />
@@ -152,16 +152,16 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Assign sap:VirtualizedContainerService.HintSize="922.6666666666666,83.33333333333333" sap2010:WorkflowViewState.IdRef="Assign_4">
+    <Assign sap:VirtualizedContainerService.HintSize="922.6666666666666,84" sap2010:WorkflowViewState.IdRef="Assign_4">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[YearCode]</OutArgument>
       </Assign.To>
       <Assign.Value>
-        <InArgument x:TypeArguments="x:String">109</InArgument>
+        <InArgument x:TypeArguments="x:String">108</InArgument>
       </Assign.Value>
     </Assign>
     <ui:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[Dt_All]" DisplayName="Read Range Workbook" sap:VirtualizedContainerService.HintSize="922.6666666666666,88" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="Sheet" WorkbookPath="[YearCode+&quot;.xlsx&quot;]" />
-    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="[ROwIndex]" DataTable="[Dt_All]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="922.6666666666666,1022.6666666666665" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="[ROwIndex]" DataTable="[Dt_All]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="922.6666666666666,1022.6666666666666" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
       <ui:ForEachRow.Body>
         <ActivityAction x:TypeArguments="sd:DataRow">
           <ActivityAction.Argument>
@@ -647,10 +647,7 @@
                   </sap:WorkflowViewStateService.ViewState>
                 </uix:NApplicationCard>
                 <FlowStep.Next>
-                  <FlowDecision x:Name="__ReferenceID7" DisplayName="Flow Decision" sap:VirtualizedContainerService.HintSize="84,86.66666666666667" sap2010:WorkflowViewState.IdRef="FlowDecision_3">
-                    <FlowDecision.Condition>
-                      <VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="FileExtension.Contains(&quot;pdf&quot;)" />
-                    </FlowDecision.Condition>
+                  <FlowDecision x:Name="__ReferenceID7" Condition="[FileExtension.Contains(&quot;pdf&quot;)]" DisplayName="Flow Decision" sap:VirtualizedContainerService.HintSize="84,86.66666666666667" sap2010:WorkflowViewState.IdRef="FlowDecision_3">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
