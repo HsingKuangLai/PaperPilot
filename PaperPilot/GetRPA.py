@@ -24,4 +24,4 @@ def full_extract(filepath):
     except Exception as e:
         return str(e)
 
-print(full_extract("AR\\106\\3552_同致.pdf"))
+# print(full_extract("AR\\106\\3552_同致.pdf"))

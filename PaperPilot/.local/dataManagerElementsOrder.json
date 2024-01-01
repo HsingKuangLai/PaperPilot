@@ -60,6 +60,8 @@
       "Path": "LDA.xaml",
       "SortBy": 0,
       "VariablesSectionElementsOrder": [
+        "DT_tmp&Flowchart_1",
+        "TopGeneratedText&Sequence_25",
         "PDFText&Flowchart_1",
         "PythonResult&Sequence_18",
         "PythonOutArgument&Sequence_18",
