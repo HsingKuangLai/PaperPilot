@@ -60,6 +60,8 @@
       "Path": "LDA.xaml",
       "SortBy": 0,
       "VariablesSectionElementsOrder": [
+        "Dict&Flowchart_1",
+        "FileName&Flowchart_1",
         "DT_tmp&Flowchart_1",
         "TopGeneratedText&Sequence_25",
         "PDFText&Flowchart_1",
@@ -68,14 +70,12 @@
         "LoadPython&Sequence_18",
         "PageCnt&Sequence_18",
         "PageAnchor&Sequence_18",
-        "FileName&Sequence_18",
         "PageList&Sequence_18",
         "PDFText&Sequence_18",
         "RegResult&Sequence_18",
         "idx&Flowchart_1",
         "PageCnt&Sequence_6",
         "PageAnchor&Sequence_6",
-        "FileName&Sequence_6",
         "PageList&Sequence_6",
         "RegResult&Sequence_6",
         "dt_all&Flowchart_1"
