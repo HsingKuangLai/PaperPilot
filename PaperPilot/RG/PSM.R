@@ -12,13 +12,13 @@ data$NIS<-as.numeric(data$NIS)
 
 
 # 假設你的資料框架名為 data
-ps_model <- glm(RPA ~ BVE + LNAT + NIS + Year + Finance , data = data)
+ps_model <- glm(RPA ~ BVE + LNAT + NIS + Finance + Year   , data = data)
 
 # 提取傾向分數
 data$propensity_score <- predict(ps_model, type = "response")
 
 # 執行傾向分數匹配
-matched_data <- matchit(RPA ~ BVE + LNAT + NIS  + Year + Finance  , data = data, method = "nearest")
+matched_data <- matchit(RPA ~ BVE + LNAT + NIS + Finance + Year , data = data, method = "nearest")
 
 # 從匹配物件中提取匹配後的資料框架
 data_PSM <- match.data(matched_data)
@@ -47,5 +47,5 @@ data_PSM$RPA_Count_sqrt<-data_PSM$RPA_Count^0.5
 
 
 #!!!跟finance有交互作用RRRR
-matched_regression <- lm(LN_Price ~ BVE + LNAT + NIS + Year + Finance + RPA  , data = data_PSM)
+matched_regression <- lm(Price ~ BVE + LNAT + NIS + Year + Finance * RPA , data = data_PSM)
 summary(matched_regression)

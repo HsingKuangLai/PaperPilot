@@ -1,5 +1,5 @@
 # 讀取 CSV 檔案，將 "#N/A" 轉換為真正的 NA（缺失值）
-data <- read.csv("data_6m.csv", na.strings = "#N/A")
+data <- read.csv("data.csv", na.strings = "#N/A")
 
 # 移除含有缺失值的觀測值
 data <- na.omit(data)
@@ -12,27 +12,11 @@ data$NIS<-as.numeric(data$NIS)
 data$LNPrice<-log(data$Price)
 data$KY <- factor(data$KY)
 data$RPA_Count_sq<-data$RPA_Count*data$RPA_Count
-#data$Finance <- factor(data$Finance)
+data$Finance <- factor(data$Finance)
 #^M28|^M30000|
-data <- subset(data, !(grepl("^M28|^M3000", Industry)))
+data <- subset(data, (grepl("^M28|^M3000", Industry)))
+data <- na.omit(data)
 
-
-# Now, perform the Huber regression or any regression analysis using winsorized variables
-model <- lm(Price ~ BVE + LNAT + NIS + RPA + Year + Industry , data = data)
-summary(model)
-
-
-
-# 進行迴歸分析
-model <- lm(Price ~ BVE + LNAT + NIS + RPA + KY + Year + Industry, data = data)
-
-summary(model)
-
-# 將結果儲存到文字檔案
-summary_text <- capture.output(summary(model))
-sink("regression_summary.txt")
-cat(summary_text, sep = "\n")
-sink()
 
 ############################### winsorizing 1% greater (But equal to dummy)
 
@@ -52,14 +36,20 @@ data$NIS <- winsorize(data$NIS)
 data$LN_RPA_Count <- winsorize(data$LN_RPA_Count)
 data$RPA_Count <- winsorize(data$RPA_Count)
 data$RPA_Count_sq<-data$RPA_Count*data$RPA_Count
+data$Price<-winsorize(data$Price)
 
 
 # Now, perform the Huber regression or any regression analysis using winsorized variables
-model <- lm(Price ~ BVE + LNAT + NIS + RPA_Count + Year + Industry, data = data)
+model <- lm(Price ~ BVE + LNAT + NIS + RPA + Year , data = data)
 summary(model)
 
 # Now, perform the Huber regression or any regression analysis using winsorized variables
-model <- lm(Price ~ BVE + LNAT + NIS + RPA_Count + RPA_Count_sq + Year, data = data)
-summary(model)
+modelsq <- lm(Price ~ BVE + LNAT + NIS + RPA_Count + RPA_Count_sq + Year, data = data)
+summary(modelsq)
 
+# 將結果儲存到文字檔案
+summary_text <- capture.output(summary(model),summary(modelsq))
+sink("regression_summary.txt")
+cat(summary_text, sep = "\n")
+sink()
 

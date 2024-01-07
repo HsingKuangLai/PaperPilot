@@ -1,0 +1,56 @@
+
+Call:
+lm(formula = Price ~ BVE + LNAT + NIS + RPA + Year, data = data)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-16.093  -3.905  -1.009   3.569  21.347 
+
+Coefficients:
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept)  8.72275    3.58950   2.430   0.0158 *  
+BVE          0.51969    0.07021   7.402 2.25e-12 ***
+LNAT        -0.49430    0.18140  -2.725   0.0069 ** 
+NIS          2.67525    0.50730   5.274 2.98e-07 ***
+RPA1         1.95568    1.06391   1.838   0.0673 .  
+Year2018     1.74796    1.33103   1.313   0.1904    
+Year2019     0.06679    1.35234   0.049   0.9606    
+Year2020     3.19894    1.37386   2.328   0.0207 *  
+Year2021     1.92180    1.38966   1.383   0.1680    
+Year2022     8.54747    1.46314   5.842 1.67e-08 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 5.992 on 240 degrees of freedom
+Multiple R-squared:  0.7433,	Adjusted R-squared:  0.7337 
+F-statistic: 77.23 on 9 and 240 DF,  p-value: < 2.2e-16
+
+
+Call:
+lm(formula = Price ~ BVE + LNAT + NIS + RPA_Count + RPA_Count_sq + 
+    Year, data = data)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-15.5584  -3.8287  -0.9004   3.5373  21.5415 
+
+Coefficients:
+             Estimate Std. Error t value Pr(>|t|)    
+(Intercept)   8.16319    3.42910   2.381  0.01807 *  
+BVE           0.51159    0.06925   7.387 2.49e-12 ***
+LNAT         -0.45777    0.17215  -2.659  0.00836 ** 
+NIS           2.68862    0.49990   5.378 1.79e-07 ***
+RPA_Count     1.56968    0.52172   3.009  0.00290 ** 
+RPA_Count_sq -0.16728    0.05194  -3.221  0.00146 ** 
+Year2018      1.77877    1.31381   1.354  0.17704    
+Year2019      0.21685    1.32450   0.164  0.87009    
+Year2020      3.04421    1.36302   2.233  0.02645 *  
+Year2021      1.92103    1.36438   1.408  0.16043    
+Year2022      8.54024    1.42995   5.972 8.41e-09 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 5.92 on 239 degrees of freedom
+Multiple R-squared:  0.7506,	Adjusted R-squared:  0.7401 
+F-statistic: 71.92 on 10 and 239 DF,  p-value: < 2.2e-16
+
