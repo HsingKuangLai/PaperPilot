@@ -9,10 +9,11 @@ data$Finance <- factor(data$Finance)
 data$Industry <- factor(data$Industry)
 data$BVE<-as.numeric(data$BVE)
 data$NIS<-as.numeric(data$NIS)
+data$PBRatio <- data$Price/data$BVE
 
 
 # 假設你的資料框架名為 data
-ps_model <- glm(RPA ~ LNAT + NIS + Year + Industry, data = data)
+ps_model <- glm(RPA ~  LNAT + NIS + Year + Industry, data = data)
 
 # 提取傾向分數
 data$propensity_score <- predict(ps_model, type = "response")
@@ -49,10 +50,10 @@ data_PSM$PBRatio <- data_PSM$Price/data_PSM$BVE
 
 
 #!!!跟finance有交互作用RRRR
-matched_regression1 <- lm( PBRatio ~ LNAT + NIS + Year + Industry * RPA   , data = data_PSM)
+matched_regression1 <- lm( PBRatio ~ LNAT + NIS + Year + Industry + RPA   , data = data)
 summary(matched_regression1)
 
-matched_regression2 <- lm( PBRatio ~  LNAT + NIS + Year + Industry + RPA    , data = data_PSM)
+matched_regression2 <- lm( PBRatio ~ LNAT + NIS + Year + Industry + RPA   , data = data_PSM)
 summary(matched_regression2)
 
 

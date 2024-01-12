@@ -12,6 +12,8 @@ data$ADV<-as.numeric(data$ADV)
 data$RD<-as.numeric(data$RD)
 data$BM<-as.numeric(data$BM)
 data <- na.omit(data)
+#data$MVE<-log(data$MVE)
+#data$BVE<-log(data$BVE)
 
 
 ############################### winsorizing 1% greater (But equal to dummy)
@@ -37,13 +39,42 @@ data$SG<-winsorize(data$SG)
 data$BM<-winsorize(data$BM)
 
 
-# Now, perform the Huber regression or any regression analysis using winsorized variables
-model <- lm(MVE ~ RPA + BVE + Earnings + NetDiv + ADV + RD + ROA + S + SG + BM + Year + Industry , data = data)
+#1 Remove BVE and LN(MVE)
+#2 Remain
+#Now, perform the Huber regression or any regression analysis using winsorized variables
+model <- lm(log(MVE) ~ RPA + Earnings + NetDiv + ADV + RD + ROA + S + SG + BM + Year + Industry , data = data)
 summary(model)
+
+
+library(sandwich)
+coeftest(model, vcov = vcovHC(model, type="HC3"))
 
 
 # 將結果儲存到文字檔案
 summary_text <- capture.output(summary(model))
-sink("regression_summary.txt")
+sink("regression_summary_0112.txt")
 cat(summary_text, sep = "\n")
+coeftest(model, vcov = vcovHC(model, type="HC3"))
 sink()
+
+############################Assumptions
+library("lmtest")
+##Normality of Residuals
+residuals <- residuals(model)
+ks_test_result <- ks.test(residuals, "pnorm")
+print(ks_test_result)
+
+#Homoscedasticity (Constant Variance of Residuals)
+bptest(model)
+
+#No Autocorrelation of Residuals
+bgtest(model)
+
+#Corr
+data$RPA<-as.numeric(data$RPA)
+cor_matrix <- cor(data[, c("RPA","MVE","BVE", "Earnings", "NetDiv", "RD", "S", "SG", "BM")])
+print(cor_matrix)
+
+
+
+

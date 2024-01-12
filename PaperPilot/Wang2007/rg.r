@@ -14,7 +14,6 @@ data$RD<-as.numeric(data$RD)
 data$BM<-as.numeric(data$BM)
 data$TA<-as.numeric(data$TA)
 data <- na.omit(data)
-
 ############################### winsorizing 1% greater (But equal to dummy)
 
 # Define a function for winsorizing
@@ -37,7 +36,7 @@ data$BM<-winsorize(data$BM)
 data$TA<-winsorize(data$TA)
 
 # Now, perform the Huber regression or any regression analysis using winsorized variables
-model <- lm(Price ~ RPA + BV + E + CAP + RD + delSales + ROA + BM + TA + Year + Industry, data = data)
+model <- lm(Price ~ BV + E + CAP + RD + delSales + ROA + BM + TA + Year + RPA * Finance, data = data)
 summary(model)
 
 

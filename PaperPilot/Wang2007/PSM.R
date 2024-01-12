@@ -13,8 +13,7 @@ data$RD<-as.numeric(data$RD)
 data$BM<-as.numeric(data$BM)
 data$TA<-as.numeric(data$TA)
 data <- na.omit(data)
-
-
+data <- subset(data, !(grepl("^M28|^M3000", Industry)))
 # 假設你的資料框架名為 data
 ps_model <- glm(RPA ~ BV + E + CAP + RD + delSales + ROA + BM + TA + Year + Industry , data = data)
 
@@ -50,5 +49,5 @@ data_PSM$BM<-winsorize(data_PSM$BM)
 data_PSM$TA<-winsorize(data_PSM$TA)
 
 # Now, perform the Huber regression or any regression analysis using winsorized variables
-model <- lm(Price ~ RPA + BV + E + CAP + RD + delSales + ROA + BM + TA + Year + Industry, data = data)
+model <- lm(Price ~ RPA + Industry + BV + E + CAP + RD + delSales + ROA + BM + TA + Year , data = data_PSM)
 summary(model)
