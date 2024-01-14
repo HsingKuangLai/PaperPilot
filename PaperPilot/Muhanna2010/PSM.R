@@ -13,13 +13,13 @@ data$BM<-as.numeric(data$BM)
 data <- na.omit(data)
 
 # 假設你的資料框架名為 data
-ps_model <- glm(RPA ~ BVE + Earnings + NetDiv + ADV + RD + ROA + S + SG + BM + Year + Industry, data = data)
+ps_model <- glm(RPA ~ Earnings + NetDiv + ADV + RD + ROA + S + SG + BM + Year + Industry, data = data)
 
 # 提取傾向分數
 data$propensity_score <- predict(ps_model, type = "response")
 
 # 執行傾向分數匹配
-matched_data <- matchit(RPA ~ BVE + Earnings + NetDiv + ADV + RD + ROA + S + SG + BM + Year + Industry  , data = data, method = "nearest")
+matched_data <- matchit(RPA ~ Earnings + NetDiv + ADV + RD + ROA + S + SG + BM + Year + Industry  , data = data, method = "nearest")
 
 # 從匹配物件中提取匹配後的資料框架
 data_PSM <- match.data(matched_data)
@@ -50,5 +50,5 @@ data_PSM$RPA <- factor(data_PSM$RPA)
 
 
 # Now, perform the Huber regression or any regression analysis using winsorized variables
-model <- lm(MVE ~ RPA_Count  + BVE + Earnings + NetDiv + ADV + RD + ROA + S + SG + BM + Year + Industry, data = data)
+model <- lm(log(MVE) ~ RPA + Earnings + NetDiv + ADV + RD + ROA + S + SG + BM + Year + Industry, data = data_PSM)
 summary(model)

@@ -1,0 +1,72 @@
+
+Call:
+lm(formula = DA ~ RPA + LGTA + LEV + OCF + MTB + Year, data = group1)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-0.40301 -0.02773 -0.00788  0.01922  0.27613 
+
+Coefficients:
+              Estimate Std. Error t value Pr(>|t|)    
+(Intercept) -4.110e+00  7.527e-01  -5.460 4.98e-08 ***
+RPA1        -1.258e-02  4.709e-03  -2.671  0.00759 ** 
+LGTA        -6.762e-04  4.790e-04  -1.412  0.15805    
+LEV         -2.325e-02  3.938e-03  -5.905 3.76e-09 ***
+OCF         -4.023e-01  7.233e-03 -55.628  < 2e-16 ***
+MTB         -4.121e-04  6.467e-05  -6.372 2.03e-10 ***
+Year         2.076e-03  3.728e-04   5.567 2.72e-08 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.0462 on 5072 degrees of freedom
+Multiple R-squared:  0.4037,	Adjusted R-squared:  0.403 
+F-statistic: 572.3 on 6 and 5072 DF,  p-value: < 2.2e-16
+
+
+Call:
+lmrob(formula = DA ~ RPA + LGTA + LEV + OCF + MTB + Year, data = group1)
+ \--> method = "MM"
+Residuals:
+      Min        1Q    Median        3Q       Max 
+-3.100143 -0.020888 -0.001744  0.023749  0.288809 
+
+Coefficients:
+              Estimate Std. Error t value Pr(>|t|)    
+(Intercept) -2.382e+00  5.960e-01  -3.997 6.51e-05 ***
+RPA1        -1.130e-02  2.948e-03  -3.834 0.000128 ***
+LGTA         8.013e-05  3.734e-04   0.215 0.830091    
+LEV         -2.395e-02  3.926e-03  -6.100 1.14e-09 ***
+OCF         -4.135e-01  1.962e-02 -21.079  < 2e-16 ***
+MTB          4.365e-03  7.435e-04   5.870 4.62e-09 ***
+Year         1.207e-03  2.955e-04   4.086 4.45e-05 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Robust residual standard error: 0.0303 
+Multiple R-squared:  0.5074,	Adjusted R-squared:  0.5068 
+Convergence in 37 IRWLS iterations
+
+Robustness weights: 
+ 103 observations c(56,161,252,262,297,342,557,667,695,842,919,943,980,981,983,1080,1149,1175,1179,1208,1275,1341,1378,1396,1478,1554,1615,1758,1759,1886,1891,1893,1919,1943,1960,1964,2094,2272,2274,2334,2397,2628,2661,2677,2678,2714,2724,2725,2739,2740,2742,2756,2776,2779,2955,3053,3062,3101,3211,3338,3339,3416,3432,3439,3440,3555,3560,3562,3654,3857,3926,3927,3928,4017,4019,4058,4059,4093,4112,4162,4163,4199,4207,4224,4255,4298,4300,4320,4354,4361,4401,4404,4475,4555,4619,4660,4768,4837,4850,4911,4917,4933,5006)
+	 are outliers with |weight| <= 1.5e-05 ( < 2e-05); 
+ 389 weights are ~= 1. The remaining 4587 ones are summarized as
+    Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
+0.001407 0.851300 0.947500 0.869100 0.983600 0.999000 
+Algorithmic parameters: 
+       tuning.chi                bb        tuning.psi        refine.tol 
+        1.548e+00         5.000e-01         4.685e+00         1.000e-07 
+          rel.tol         scale.tol         solve.tol          zero.tol 
+        1.000e-07         1.000e-10         1.000e-07         1.000e-10 
+      eps.outlier             eps.x warn.limit.reject warn.limit.meanrw 
+        1.969e-05         3.678e-09         5.000e-01         5.000e-01 
+     nResample         max.it         groups        n.group       best.r.s 
+           500             50              5            400              2 
+      k.fast.s          k.max    maxit.scale      trace.lev            mts 
+             1            200            200              0           1000 
+    compute.rd fast.s.large.n 
+             0           2000 
+                  psi           subsampling                   cov 
+           "bisquare"         "nonsingular"         ".vcov.avar1" 
+compute.outlier.stats 
+                 "SM" 
+seed : int(0) 

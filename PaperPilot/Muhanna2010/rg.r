@@ -11,10 +11,10 @@ data$NetDiv<-as.numeric(data$NetDiv)
 data$ADV<-as.numeric(data$ADV)
 data$RD<-as.numeric(data$RD)
 data$BM<-as.numeric(data$BM)
+#data$MVE<-data$MVE/data$OS
+#data$Earnings<-data$Earnings/data$OS
+#data$NetDiv<-data$NetDiv/data$OS
 data <- na.omit(data)
-#data$MVE<-log(data$MVE)
-#data$BVE<-log(data$BVE)
-
 
 ############################### winsorizing 1% greater (But equal to dummy)
 
@@ -37,12 +37,12 @@ data$ROA<-winsorize(data$ROA)
 data$S<-winsorize(data$S)
 data$SG<-winsorize(data$SG)
 data$BM<-winsorize(data$BM)
-
+data$RPA_Count<-winsorize(data$RPA_Count)
 
 #1 Remove BVE and LN(MVE)
-#2 Remain
+#2 Remain, 
 #Now, perform the Huber regression or any regression analysis using winsorized variables
-model <- lm(log(MVE) ~ RPA + Earnings + NetDiv + ADV + RD + ROA + S + SG + BM + Year + Industry , data = data)
+model <- step(lm(log(MVE) ~ RPA + (Earnings + NetDiv + ADV + RD ) + ROA + S + SG + BM + Year + Industry , data = data))
 summary(model)
 
 
