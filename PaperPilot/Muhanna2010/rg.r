@@ -42,12 +42,8 @@ data$RPA_Count<-winsorize(data$RPA_Count)
 #1 Remove BVE and LN(MVE)
 #2 Remain, 
 #Now, perform the Huber regression or any regression analysis using winsorized variables
-model <- step(lm(log(MVE) ~ RPA + (Earnings + NetDiv + ADV + RD ) + ROA + S + SG + BM + Year + Industry , data = data))
+model <- (lm(log(MVE) ~ RPA + (Earnings + NetDiv + ADV + RD ) + ROA + S + SG + BM + Year + Industry , data = data))
 summary(model)
-
-
-library(sandwich)
-coeftest(model, vcov = vcovHC(model, type="HC3"))
 
 
 # 將結果儲存到文字檔案
@@ -60,20 +56,30 @@ sink()
 ############################Assumptions
 library("lmtest")
 ##Normality of Residuals
+# Generate a QQ plot for residuals
+qqnorm(residuals(model))
+qqline(residuals(model), col = 2)  # Add a reference line
 residuals <- residuals(model)
 ks_test_result <- ks.test(residuals, "pnorm")
 print(ks_test_result)
 
 #Homoscedasticity (Constant Variance of Residuals)
+# Plot square root of absolute residuals vs. fitted values
+
+sqrt_abs_resid <- sqrt(abs(residuals(model)))
+plot(model$fitted.values, sqrt_abs_resid,
+     xlab = "Fitted Values", ylab = "Square Root of Absolute Residuals",
+     main = "Scale-Location Plot")
+abline(h = mean(sqrt_abs_resid), col = "red", lty = 2)  # Add a horizontal line at mean
 bptest(model)
+
+## Use White 
+library(sandwich)
+coeftest(model, vcov = vcovHC(model, type="HC3"))
 
 #No Autocorrelation of Residuals
 bgtest(model)
 
-#Corr
-data$RPA<-as.numeric(data$RPA)
-cor_matrix <- cor(data[, c("RPA","MVE","BVE", "Earnings", "NetDiv", "RD", "S", "SG", "BM")])
-print(cor_matrix)
 
 
 
