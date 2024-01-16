@@ -12,10 +12,6 @@ data$ABSDA<-as.numeric(data$ABSDA)
 data$OCF<-as.numeric(data$OCF)
 data <- na.omit(data)
 
-# Split the data table based on the condition (Price > 0)
-group1 <- subset(data, data$DA > 0)
-group2 <- subset(data, data$DA <= 0)
-
 ############################### winsorizing 1% greater (But equal to dummy)
 
 # Define a function for winsorizing
@@ -35,23 +31,18 @@ data$OCF<-winsorize(data$OCF)
 data$MTB<-winsorize(data$MTB)
 data$RPA_Count<-winsorize(data$RPA_Count)
 
+
 #1 Remove BVE and LN(MVE)
 #2 Remain, 
 #Now, perform the Huber regression or any regression analysis using winsorized variables+ Year + Industry
-model <- (lm( DA ~ RPA + LGTA + LEV + OCF + MTB + Year  , data = group2))
+model <- (lm( (ABSDA) ~ RPA + ( LGTA + LEV + OCF + MTB ) + Year  , data = data))
 summary(model)
 
 
+##
 library(sandwich)
 coeftest(model, vcov = vcovHC(model, type="HC3"))
 
-
-# 將結果儲存到文字檔案
-summary_text <- capture.output(summary(model))
-sink("NDA.txt")
-cat(summary_text, sep = "\n")
-coeftest(model, vcov = vcovHC(model, type="HC3"))
-sink()
 
 ############################Assumptions
 library("lmtest")
@@ -66,11 +57,10 @@ bptest(model)
 #No Autocorrelation of Residuals
 bgtest(model)
 
-#Corr
-data$RPA<-as.numeric(data$RPA)
-cor_matrix <- cor(data[, c("RPA","MVE","BVE", "Earnings", "NetDiv", "RD", "S", "SG", "BM")])
-print(cor_matrix)
 
+# Generate a QQ plot for residuals
+qqnorm(residuals(model))
+qqline(residuals(model), col = 2)  # Add a reference line
 
 
 
