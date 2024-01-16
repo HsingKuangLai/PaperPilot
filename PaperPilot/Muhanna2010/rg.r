@@ -80,6 +80,12 @@ coeftest(model, vcov = vcovHC(model, type="HC3"))
 #No Autocorrelation of Residuals
 bgtest(model)
 
+#Corr
+# Calculate the correlation matrix
+data$RPA<-as.numeric(data$RPA)
+cor_matrix <- cor(data[, c("MVE", "RPA", "Earnings", "NetDiv", "ADV", "RD", "ROA", "S", "SG", "BM")])
+# Print the correlation matrix
+print(cor_matrix)
 
 
 
