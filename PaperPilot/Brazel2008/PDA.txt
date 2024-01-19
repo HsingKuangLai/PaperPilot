@@ -1,4 +1,3 @@
-
 Call:
 lm(formula = DA ~ RPA + LGTA + LEV + OCF + MTB + Year, data = group1)
 

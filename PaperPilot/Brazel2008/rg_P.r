@@ -25,7 +25,7 @@ winsorize <- function(x) {
 
 
 # Split the data table based on the condition (Price > 0)
-group1 <- subset(data, data$DA > 0)
+group1 <- data
 
 group1$DA<-winsorize(group1$DA)
 group1$ABSDA<-winsorize(group1$ABSDA)

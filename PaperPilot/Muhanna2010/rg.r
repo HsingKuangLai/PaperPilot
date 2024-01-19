@@ -8,12 +8,12 @@ data$Year <- factor(data$Year)
 data$Industry <- factor(data$Industry)
 data$Finance <- factor(data$Finance)
 data$NetDiv<-as.numeric(data$NetDiv)
+data$MVE<-data$MVE
+data$BVE<-data$BVE
+data$Earnings<-data$Earnings
 data$ADV<-as.numeric(data$ADV)
 data$RD<-as.numeric(data$RD)
 data$BM<-as.numeric(data$BM)
-#data$MVE<-data$MVE/data$OS
-#data$Earnings<-data$Earnings/data$OS
-#data$NetDiv<-data$NetDiv/data$OS
 data <- na.omit(data)
 
 ############################### winsorizing 1% greater (But equal to dummy)
@@ -41,15 +41,15 @@ data$RPA_Count<-winsorize(data$RPA_Count)
 
 #1 Remove BVE and LN(MVE)
 #2 Remain, 
-#Now, perform the Huber regression or any regression analysis using winsorized variables
-model <- (lm(log(MVE) ~ RPA + (Earnings + NetDiv + ADV + RD ) + ROA + S + SG + BM + Year + Industry , data = data))
+#Now, perform the Huber regression or any regression analysis using winsorized variables 
+model <- (lm(log(MVE) ~ RPA  + (Earnings + NetDiv + ADV + RD ) + ROA + SG  + S + BM + Year + Industry , data = data))
 summary(model)
 
 
-# 將結果儲存到文字檔案
+# 將結果儲存到文字檔案cat(summary_text, sep = "\n")
 summary_text <- capture.output(summary(model))
-sink("regression_summary_0112.txt")
-cat(summary_text, sep = "\n")
+sink("Muhanna_summary_0112_FixHetero.txt")
+summary(model)
 coeftest(model, vcov = vcovHC(model, type="HC3"))
 sink()
 
