@@ -1,9 +1,9 @@
 # 讀取 CSV 檔案，將 "#N/A" 轉換為真正的 NA（缺失值）
 data <- read.csv("data.csv", na.strings = "#N/A")
 
-# 移除含有缺失值的觀測值
+# 移除含有缺失值的觀測值data$RPA <- factor(data$RPA)
 data <- na.omit(data)
-data$RPA <- factor(data$RPA)
+data$RPA <- (data$RPA)
 data$Year <- factor(data$Year)
 data$Industry <- factor(data$Industry)
 data$Finance <- factor(data$Finance)
@@ -14,6 +14,7 @@ data$Earnings<-data$Earnings
 data$ADV<-as.numeric(data$ADV)
 data$RD<-as.numeric(data$RD)
 data$BM<-as.numeric(data$BM)
+data$DB<-(data$Asset-data$Equity)/data$Asset
 data <- na.omit(data)
 
 ############################### winsorizing 1% greater (But equal to dummy)
@@ -34,15 +35,17 @@ data$NetDiv<-winsorize(data$NetDiv)
 data$ADV<-winsorize(data$ADV)
 data$RD<-winsorize(data$RD)
 data$ROA<-winsorize(data$ROA)
+data$LGTA<-log(winsorize(data$Asset))
 data$S<-winsorize(data$S)
 data$SG<-winsorize(data$SG)
+data$DB<-winsorize(data$DB)
 data$BM<-winsorize(data$BM)
 data$RPA_Count<-winsorize(data$RPA_Count)
 
 #1 Remove BVE and LN(MVE)
-#2 Remain, 
-#Now, perform the Huber regression or any regression analysis using winsorized variables 
-model <- (lm(log(MVE) ~ RPA  + (Earnings + NetDiv + ADV + RD ) + ROA + SG  + S + BM + Year + Industry , data = data))
+#2 Remain, BVE +
+#Now, perform the Huber regression or any regression analysis using winsorized variables + ADV + RD  + ROA + S + SG + BM
+model <- (lm((MVE) ~ RPA  + ( (Earnings + NetDiv) + DB + ROA + BM + RD ) + LGTA + Year + Industry , data = data))
 summary(model)
 
 

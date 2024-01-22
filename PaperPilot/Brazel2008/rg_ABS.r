@@ -5,12 +5,17 @@ data <- read.csv("data.csv", na.strings = "#N/A")
 data <- na.omit(data)
 data$RPA_Ctd <- factor(data$RPA_Ctd)
 data$RPA <- factor(data$RPA)
+data$Code <- factor(data$代號)
+data$GC <- factor(data$GC)
+data$Big4 <- factor(data$Big4)
 data$Industry <- factor(data$Industry)
 #data$Year <- factor(data$Year)
 data$Finance <- factor(data$Finance)
 data$ABSDA<-as.numeric(data$ABSDA)
 data$OCF<-as.numeric(data$OCF)
 data <- na.omit(data)
+
+#data<-subset(data,data$DA>=0)
 
 ############################### winsorizing 1% greater (But equal to dummy)
 
@@ -29,13 +34,14 @@ data$LGTA<-winsorize(data$LGTA)
 data$LEV<-winsorize(data$LEV)
 data$OCF<-winsorize(data$OCF)
 data$MTB<-winsorize(data$MTB)
+data$ESG<-winsorize(data$ESG)
 data$RPA_Count<-winsorize(data$RPA_Count)
 
 
 #1 Remove BVE and LN(MVE)
-#2 Remain, 
+#2 Remain, + Big4 + GCRPA +
 #Now, perform the Huber regression or any regression analysis using winsorized variables+ Year + Industry
-model <- (lm( (ABSDA) ~ RPA + ( LGTA + LEV + OCF + MTB ) + Year  , data = data))
+model <- (rlm((ABSDA) ~ RPA  + ( LEV + OCF + MTB + Big4 + GC + LGTA + ESG ) + Year  , data = data))
 summary(model)
 
 

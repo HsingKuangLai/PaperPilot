@@ -25,7 +25,7 @@ winsorize <- function(x) {
 
 
 # Split the data table based on the condition (Price > 0)
-group1 <- data
+group1 <-subset(data, data$DA >= 0)
 
 group1$DA<-winsorize(group1$DA)
 group1$ABSDA<-winsorize(group1$ABSDA)
@@ -36,7 +36,7 @@ group1$MTB<-winsorize(group1$MTB)
 group1$RPA_Count<-winsorize(group1$RPA_Count)
 
 ###
-model <- (lm( DA ~ RPA + LGTA + LEV + OCF + MTB + Year  , data = group1))
+model <- (glm( DA ~ RPA + LGTA + LEV + OCF + MTB + Year  , data = group1))
 summary(model)
 
 ##
