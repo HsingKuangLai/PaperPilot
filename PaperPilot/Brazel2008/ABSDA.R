@@ -1,7 +1,7 @@
 # 讀取 CSV 檔案，將 "#N/A" 轉換為真正的 NA（缺失值）
-data <- read.csv("ABSDA.csv")
+data <- read.csv("ABCFO.csv")
 
-data$TAC<-as.numeric(data$TAC)
+data$CFO<-as.numeric(data$CFO)
 data$A1<-as.numeric(data$A1)
 data$A2<-as.numeric(data$A2)
 data$A3<-as.numeric(data$A3)
@@ -16,14 +16,15 @@ winsorize <- function(x) {
   return(x)
 }
 
-data$TAC<-winsorize(data$TAC)
+data$CFO<-winsorize(data$CFO)
 data$A1<-winsorize(data$A1)
 data$A2<-winsorize(data$A2)
 data$A3<-winsorize(data$A3)
 
 
-model<-lm(TAC~ A1+A2+A3,data=data)
+model<-lm(CFO~ A1+A2+A3,data=data)
 summary(model)
 
-data$DA<-residuals(model)
-data$ABSDA<-sqrt(data$DA*data$DA)
+data$ABCFO<-residuals(model)
+
+write.csv(data,"ABCFO.csv")
