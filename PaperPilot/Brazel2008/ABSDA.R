@@ -1,10 +1,11 @@
 # 讀取 CSV 檔案，將 "#N/A" 轉換為真正的 NA（缺失值）
-data <- read.csv("ABCFO.csv")
+data <- read.csv("ABEXP.csv")
 
-data$CFO<-as.numeric(data$CFO)
+data$EXP<-as.numeric(data$EXP)
 data$A1<-as.numeric(data$A1)
 data$A2<-as.numeric(data$A2)
-data$A3<-as.numeric(data$A3)
+#data$A3<-as.numeric(data$A3)
+#data$A4<-as.numeric(data$A4)
 data<-na.omit(data)
 
 # Define a function for winsorizing
@@ -16,15 +17,16 @@ winsorize <- function(x) {
   return(x)
 }
 
-data$CFO<-winsorize(data$CFO)
+data$EXP<-winsorize(data$EXP)
 data$A1<-winsorize(data$A1)
 data$A2<-winsorize(data$A2)
-data$A3<-winsorize(data$A3)
+#data$A3<-winsorize(data$A3)
+#data$A4<-winsorize(data$A4)
 
 
-model<-lm(CFO~ A1+A2+A3,data=data)
+model<-lm(EXP~ A1+A2,data=data)
 summary(model)
 
-data$ABCFO<-residuals(model)
+data$ABEXP<-residuals(model)
 
-write.csv(data,"ABCFO.csv")
+write.csv(data,"ABEXP.csv")
