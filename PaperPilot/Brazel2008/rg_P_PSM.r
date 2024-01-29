@@ -1,13 +1,21 @@
+library(sandwich)
+library(lmtest)
+library(MASS)
 # 讀取 CSV 檔案，將 "#N/A" 轉換為真正的 NA（缺失值）
 data <- read.csv("data.csv", na.strings = "#N/A")
 
 # 移除含有缺失值的觀測值
 data <- na.omit(data)
+data$RPA_Ctd <- factor(data$RPA_Ctd)
 #data$RPA <- factor(data$RPA)
+data$GC <- factor(data$GC)
+data$Big4 <- factor(data$Big4)
 data$Industry <- factor(data$Industry)
 #data$Year <- factor(data$Year)
 data$Finance <- factor(data$Finance)
 data$ABSDA<-as.numeric(data$ABSDA)
+data$ABSDA_ROA<-abs(as.numeric(data$DA_ROA))
+data$RAM<-data$ABCFO+data$ABEXP
 data$OCF<-as.numeric(data$OCF)
 data <- na.omit(data)
 
@@ -24,47 +32,47 @@ winsorize <- function(x) {
 
 library(MatchIt)
 # Split the data table based on the condition (Price > 0)
-group1 <- subset(data, data$DA > 0)
+#group1 <- subset(data, data$DA > 0)
 
 # 假設你的資料框架名為 data
-ps_model <- glm(RPA ~   LGTA + LEV + OCF + MTB + Year + Industry, data = group1)
+ps_model <- glm(RPA ~ (ABSDA_ROA + LEV + OCF + MTB  + ADJROA + LGTA + Age + RD + ESG + GC + Big4) + Year, data = data)
 
 summary(ps_model)
 
 # 提取傾向分數
-group1$propensity_score <- predict(ps_model)
+data$propensity_score <- predict(ps_model)
 
 # 執行傾向分數匹配
-matched_data <- matchit( RPA ~ LGTA + LEV + OCF + MTB + Year + Industry , data = group1, method = "nearest",distance = "glm")
+matched_data<- matchit( RPA ~ (ABSDA_ROA + LEV + OCF + MTB  + ADJROA + LGTA + Age + RD + ESG + GC + Big4) + Year , data = data, method = "nearest",distance = "glm")
+data <- match.data(matched_data)
 
-# 從匹配物件中提取匹配後的資料框架
-group1 <- match.data(matched_data)
-
-
-
-group1$DA<-winsorize(group1$DA)
-group1$ABSDA<-winsorize(group1$ABSDA)
-group1$LGTA<-winsorize(group1$LGTA)
-group1$LEV<-winsorize(group1$LEV)
-group1$OCF<-winsorize(group1$OCF)
-group1$MTB<-winsorize(group1$MTB)
-group1$RPA_Count<-winsorize(group1$RPA_Count)
+#Winsorize
+data$DA<-winsorize(data$DA)
+data$DA_ROA<-winsorize(data$DA_ROA)
+data$ABSDA_ROA<-winsorize(data$ABSDA_ROA)
+data$ABSDA<-winsorize(data$ABSDA)
+data$ABCFO<-winsorize(data$ABCFO)
+data$ABPROD<-winsorize(data$ABPROD)
+data$ABEXP<-winsorize(data$ABEXP)
+data$RAM<-winsorize(data$RAM)
+data$LGTA<-winsorize(data$LGTA)
+data$LEV<-winsorize(data$LEV)
+data$OCF<-winsorize(data$OCF)
+data$MTB<-winsorize(data$MTB)
+data$ESG<-winsorize(data$ESG)
+data$Age<-winsorize(data$Age)
+data$ROA<-winsorize(data$ROA)
+data$ADJROA<-winsorize(data$ADJROA)
+data$Age<-log(1+winsorize(data$Age))
+data$Age_Trade<-log(1+winsorize(data$Age_Trade))
+data$RPA_Count<-winsorize(data$RPA_Count)
 
 ###
-model <- (rlm( ABSDA ~ factor(RPA) + LGTA + LEV + OCF + MTB + Year  , data = group1, method="MM"))
+sink("PSM_RM.txt")
+model <- (lm((ABSDA_ROA) ~ RPA  + (RAM + LEV + OCF + MTB  + ADJROA + LGTA + Age + RD + ESG) + Year   , data = data))
 summary(model)
-
-##
-library(MASS)
-library(lmtest)
-library(sandwich)
-coeftest(model, vcov = vcovHC(model, type="HC3"))
-
-
-# 將結果儲存到文字檔案
-summary_text <- capture.output(summary(model))
-sink("PDA.txt")
-cat(summary_text, sep = "\n")
+coeftest(model, vcov = vcovHC(model))
+coeftest(model, vcov = vcovCL(model,cluster = ~Key))
 sink()
 
 ############################Assumptions
