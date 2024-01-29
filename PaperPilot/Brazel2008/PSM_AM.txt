@@ -1,5 +1,36 @@
 
 Call:
+glm(formula = RPA ~ (RAM + LEV + OCF + MTB + ADJROA + LGTA + 
+    Age + RD + ESG + GC + Big4) + Year, data = data)
+
+Coefficients:
+              Estimate Std. Error t value Pr(>|t|)    
+(Intercept) -1.189e+01  1.660e+00  -7.163 8.43e-13 ***
+RAM          2.816e-02  1.338e-02   2.105   0.0353 *  
+LEV          4.537e-02  8.250e-03   5.500 3.90e-08 ***
+OCF         -4.512e-02  1.902e-02  -2.372   0.0177 *  
+MTB          1.261e-05  1.298e-04   0.097   0.9226    
+ADJROA      -1.280e-02  1.700e-02  -0.753   0.4515    
+LGTA         1.671e-02  1.112e-03  15.035  < 2e-16 ***
+Age         -4.453e-04  1.045e-04  -4.263 2.04e-05 ***
+RD          -1.020e-05  2.078e-05  -0.491   0.6234    
+ESG          2.275e-04  2.019e-04   1.127   0.2598    
+GC1         -3.413e-04  2.032e-02  -0.017   0.9866    
+Big41       -4.829e-03  4.675e-03  -1.033   0.3016    
+Year         5.764e-03  8.219e-04   7.012 2.49e-12 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+(Dispersion parameter for gaussian family taken to be 0.01970993)
+
+    Null deviance: 210.43  on 10109  degrees of freedom
+Residual deviance: 199.01  on 10097  degrees of freedom
+AIC: -10992
+
+Number of Fisher Scoring iterations: 2
+
+
+Call:
 lm(formula = (ABSDA_ROA) ~ RPA + (RAM + LEV + OCF + MTB + ADJROA + 
     LGTA + Age + RD + ESG + Big4) + Year, data = data)
 

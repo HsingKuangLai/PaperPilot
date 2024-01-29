@@ -69,6 +69,7 @@ data$RPA_Count<-winsorize(data$RPA_Count)
 
 ###
 sink("PSM_AM.txt")
+summary(ps_model)
 model <- (lm((ABSDA_ROA) ~ RPA  + (RAM + LEV + OCF + MTB  + ADJROA + LGTA + Age + RD + ESG + Big4) + Year   , data = data))
 summary(model)
 coeftest(model, vcov = vcovHC(model))
