@@ -57,13 +57,15 @@ data$RPA_Count<-winsorize(data$RPA_Count)
 
 # Kim: ESG,RD,Big4, GC....(+ Big4 + GC + ESG + RD)
 #Now, perform the Huber regression or any regression analysis using winsorized variables+ Year + Industry
-sink("Brazel.txt")
-AM <- (lm((ABSDA_ROA) ~ RPA  + (RAM + LEV + OCF + MTB  + ADJROA + LGTA + Age + Big4 + RD + ESG + GC ) + Year   , data = data))
-summary(AM)
+sink("Brazel_noabs.txt")
+model <- (lm((DA_ROA) ~ RPA  + (RAM + LEV + OCF + MTB  + ADJROA + LGTA + Age + Big4 + RD + ESG + GC ) + Year   , data = data))
+summary(model)
+coeftest(model, vcov = vcovHC(model))
+coeftest(model, vcov = vcovCL(model,cluster = ~Key))
 
-RM <- (lm((RAM) ~ RPA  + (ABDA_ROA + LEV + OCF + MTB  + ADJROA + LGTA + Age + Big4 + RD + ESG + GC ) + Year   , data = data))
-summary(RM)
 
+model <- (lm((RAM) ~ RPA  + (DA_ROA + LEV + OCF + MTB  + ADJROA + LGTA + Age + Big4 + RD + ESG + GC ) + Year   , data = data))
+summary(model)
 ##, type="HC3"
 coeftest(model, vcov = vcovHC(model))
 coeftest(model, vcov = vcovCL(model,cluster = ~Key))
