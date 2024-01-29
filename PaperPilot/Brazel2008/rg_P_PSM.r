@@ -35,7 +35,7 @@ library(MatchIt)
 #group1 <- subset(data, data$DA > 0)
 
 # 假設你的資料框架名為 data
-ps_model <- glm(RPA ~ (RAM + LEV + OCF + MTB  + ADJROA + LGTA + Age + RD + ESG + GC + Big4) + Year, data = data)
+ps_model <- glm(RPA ~ (ABSDA_ROA + LEV + OCF + MTB  + ADJROA + LGTA + Age + RD + ESG + GC + Big4) + Year, data = data)
 
 summary(ps_model)
 
@@ -43,7 +43,7 @@ summary(ps_model)
 data$propensity_score <- predict(ps_model)
 
 # 執行傾向分數匹配
-matched_data<- matchit( RPA ~ (RAM + LEV + OCF + MTB  + ADJROA + LGTA + Age + RD + ESG + GC + Big4) + Year , data = data, method = "nearest",distance = "glm")
+matched_data<- matchit( RPA ~ (ABSDA_ROA + LEV + OCF + MTB  + ADJROA + LGTA + Age + RD + ESG + GC + Big4) + Year , data = data, method = "nearest",distance = "glm")
 data <- match.data(matched_data)
 
 #Winsorize
@@ -68,9 +68,9 @@ data$Age_Trade<-log(1+winsorize(data$Age_Trade))
 data$RPA_Count<-winsorize(data$RPA_Count)
 
 ###
-sink("PSM_AM.txt")
+sink("PSM_RM.txt")
 summary(ps_model)
-model <- (lm((ABSDA_ROA) ~ RPA  + (RAM + LEV + OCF + MTB  + ADJROA + LGTA + Age + RD + ESG + Big4) + Year   , data = data))
+model <- (lm((RAM) ~ RPA  + (ABSDA_ROA + LEV + OCF + MTB  + ADJROA + LGTA + Age + RD + ESG + Big4) + Year   , data = data))
 summary(model)
 coeftest(model, vcov = vcovHC(model))
 coeftest(model, vcov = vcovCL(model,cluster = ~Key))
