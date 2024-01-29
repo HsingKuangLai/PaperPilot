@@ -34,7 +34,7 @@ library(MatchIt)
 # Split the data table based on the condition (Price > 0)
 #group1 <- subset(data, data$DA > 0)
 
-# 假設你的資料框架名為 data
+# 假設你的資料框架名為 data, family=binomial("logit")
 ps_model <- glm(RPA ~ (ABSDA_ROA + LEV + OCF + MTB  + ADJROA + LGTA + Age + RD + ESG + GC + Big4) + Year, data = data)
 
 summary(ps_model)
@@ -43,7 +43,7 @@ summary(ps_model)
 data$propensity_score <- predict(ps_model)
 
 # 執行傾向分數匹配
-matched_data<- matchit( RPA ~ (ABSDA_ROA + LEV + OCF + MTB  + ADJROA + LGTA + Age + RD + ESG + GC + Big4) + Year , data = data, method = "nearest",distance = "glm")
+matched_data<- matchit( RPA ~ (ABSDA_ROA + LEV + OCF + MTB  + ADJROA + LGTA + Age + RD + ESG + GC + Big4) + Year , data = data, method = "nearest",distance = "glm", link = "linear.probit")
 data <- match.data(matched_data)
 
 #Winsorize
