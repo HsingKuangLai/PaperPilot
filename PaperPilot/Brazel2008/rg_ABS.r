@@ -15,7 +15,7 @@ data$Industry <- factor(data$Industry)
 data$Finance <- factor(data$Finance)
 data$ABSDA<-as.numeric(data$ABSDA)
 data$ABSDA_ROA<-abs(as.numeric(data$DA_ROA))
-data$RAM<-data$ABCFO+data$ABEXP-data$ABPROD
+data$RAM<-data$ABCFO+data$ABEXP
 data$OCF<-as.numeric(data$OCF)
 data <- na.omit(data)
 
@@ -37,7 +37,7 @@ data$DA<-winsorize(data$DA)
 data$DA_ROA<-winsorize(data$DA_ROA)
 data$ABSDA_ROA<-winsorize(data$ABSDA_ROA)
 data$ABSDA<-winsorize(data$ABSDA)
-#data$ABCFO<-winsorize(data$ABCFO)
+data$ABCFO<-winsorize(data$ABCFO)
 data$ABPROD<-winsorize(data$ABPROD)
 data$ABEXP<-winsorize(data$ABEXP)
 data$RAM<-winsorize(data$RAM)
@@ -47,6 +47,8 @@ data$OCF<-winsorize(data$OCF)
 data$MTB<-winsorize(data$MTB)
 data$ESG<-winsorize(data$ESG)
 data$Age<-winsorize(data$Age)
+data$ROA<-winsorize(data$ROA)
+data$ADJROA<-winsorize(data$ADJROA)
 data$Age<-log(1+winsorize(data$Age))
 data$Age_Trade<-log(1+winsorize(data$Age_Trade))
 data$RPA_Count<-winsorize(data$RPA_Count)
@@ -55,16 +57,17 @@ data$RPA_Count<-winsorize(data$RPA_Count)
 
 # Kim: ESG,RD,Big4, GC....(+ Big4 + GC + ESG + RD)
 #Now, perform the Huber regression or any regression analysis using winsorized variables+ Year + Industry
-model <- (lm((ABCFO) ~ RPA  + (ABSDA + LEV + OCF + MTB + LGTA + Age_Trade + Big4 + GC + ESG + RD) + Year   , data = data))
-summary(model)
+sink("Brazel.txt")
+AM <- (lm((ABSDA_ROA) ~ RPA  + (RAM + LEV + OCF + MTB  + ADJROA + LGTA + Age + Big4 + RD + ESG + GC ) + Year   , data = data))
+summary(AM)
 
+RM <- (lm((RAM) ~ RPA  + (ABDA_ROA + LEV + OCF + MTB  + ADJROA + LGTA + Age + Big4 + RD + ESG + GC ) + Year   , data = data))
+summary(RM)
 
 ##, type="HC3"
-library(sandwich)
-library(lmtest)
 coeftest(model, vcov = vcovHC(model))
-#coeftest(model, vcov = vcovCL(model,cluster = ~Key))
-
+coeftest(model, vcov = vcovCL(model,cluster = ~Key))
+sink()
 
 ############################Assumptions
 library("lmtest")
