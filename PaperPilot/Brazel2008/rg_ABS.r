@@ -19,7 +19,7 @@ data$RAM<-data$ABCFO+data$ABEXP
 data$OCF<-as.numeric(data$OCF)
 data <- na.omit(data)
 
-#data<-subset(data,data$DA>=0)
+#data<-subset(data,data$DA<=0)
 #data<-subset(data,data$Finance==0)
 
 ############################### winsorizing 1% greater (But equal to dummy)
@@ -57,14 +57,14 @@ data$RPA_Count<-winsorize(data$RPA_Count)
 
 # Kim: ESG,RD,Big4, GC....(+ Big4 + GC + ESG + RD)
 #Now, perform the Huber regression or any regression analysis using winsorized variables+ Year + Industry
-sink("Brazel_noabs.txt")
-model <- (lm((DA_ROA) ~ RPA  + (RAM + LEV + OCF + MTB  + ADJROA + LGTA + Age + Big4 + RD + ESG + GC ) + Year   , data = data))
+sink("Kim_ABEXP.txt")
+model <- (lm((ABSDA_ROA) ~ RPA  + (ABEXP + LEV + OCF + MTB  + ADJROA + LGTA + Age + Big4 + RD + ESG + GC ) + Year  , data = data))
 summary(model)
 coeftest(model, vcov = vcovHC(model))
 coeftest(model, vcov = vcovCL(model,cluster = ~Key))
 
 
-model <- (lm((RAM) ~ RPA  + (DA_ROA + LEV + OCF + MTB  + ADJROA + LGTA + Age + Big4 + RD + ESG + GC ) + Year   , data = data))
+model <- (lm((ABEXP) ~ RPA  + (ABSDA_ROA + LEV + OCF + MTB  + ADJROA + LGTA + Age + Big4 + RD + ESG + GC ) + Year   , data = data))
 summary(model)
 ##, type="HC3"
 coeftest(model, vcov = vcovHC(model))

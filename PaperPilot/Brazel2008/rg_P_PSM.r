@@ -73,6 +73,16 @@ model <- (lm((RAM) ~ RPA  + (ABSDA_ROA + LEV + OCF + MTB  + ADJROA + LGTA + Age 
 summary(model)
 coeftest(model, vcov = vcovHC(model))
 coeftest(model, vcov = vcovCL(model,cluster = ~Key))
+
+model <- (lm((ABCFO) ~ RPA  + (ABSDA_ROA + LEV + OCF + MTB  + ADJROA + LGTA + Age + RD + ESG + Big4) + Year   , data = data))
+summary(model)
+coeftest(model, vcov = vcovHC(model))
+coeftest(model, vcov = vcovCL(model,cluster = ~Key))
+
+model <- (lm((ABEXP) ~ RPA  + (ABSDA_ROA + LEV + OCF + MTB  + ADJROA + LGTA + Age + RD + ESG + Big4) + Year   , data = data))
+summary(model)
+coeftest(model, vcov = vcovHC(model))
+coeftest(model, vcov = vcovCL(model,cluster = ~Key))
 sink()
 
 ############################Assumptions
