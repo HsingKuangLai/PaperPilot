@@ -52,19 +52,19 @@ data$ADJROA<-winsorize(data$ADJROA)
 data$Age<-log(1+winsorize(data$Age))
 data$Age_Trade<-log(1+winsorize(data$Age_Trade))
 data$RPA_Count<-winsorize(data$RPA_Count)
-
+data$ADJROA_sq<-data$ADJROA*data$ADJROA
 
 
 # Kim: ESG,RD,Big4, GC....(+ Big4 + GC + ESG + RD)
 #Now, perform the Huber regression or any regression analysis using winsorized variables+ Year + Industry
-sink("Kim_ABEXP.txt")
-model <- (lm((ABSDA_ROA) ~ RPA  + (ABEXP + LEV + OCF + MTB  + ADJROA + LGTA + Age + Big4 + RD + ESG + GC ) + Year  , data = data))
+sink("Kim_ABS(sq).txt")
+model <- (lm((ABSDA_ROA) ~ RPA  + (RAM + LEV + OCF + MTB  + ADJROA + ADJROA_sq + LGTA + Age + Big4 + RD + ESG + GC ) + Year  , data = data))
 summary(model)
 coeftest(model, vcov = vcovHC(model))
 coeftest(model, vcov = vcovCL(model,cluster = ~Key))
 
 
-model <- (lm((ABEXP) ~ RPA  + (ABSDA_ROA + LEV + OCF + MTB  + ADJROA + LGTA + Age + Big4 + RD + ESG + GC ) + Year   , data = data))
+model <- (lm((RAM) ~ RPA  + (ABSDA_ROA + LEV + OCF + MTB  + ADJROA + ADJROA_sq + LGTA + Age + Big4 + RD + ESG + GC ) + Year   , data = data))
 summary(model)
 ##, type="HC3"
 coeftest(model, vcov = vcovHC(model))
