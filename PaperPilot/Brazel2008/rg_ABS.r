@@ -14,6 +14,7 @@ data$Industry <- factor(data$Industry)
 #data$Year <- factor(data$Year)
 data$Finance <- factor(data$Finance)
 data$ABSDA<-as.numeric(data$ABSDA)
+data$ADV<-as.numeric(data$ADV)
 data$ABSDA_ROA<-abs(as.numeric(data$DA_ROA))
 data$RAM<-data$ABCFO+data$ABEXP
 data$OCF<-as.numeric(data$OCF)
@@ -45,6 +46,8 @@ data$LGTA<-winsorize(data$LGTA)
 data$LEV<-winsorize(data$LEV)
 data$OCF<-winsorize(data$OCF)
 data$MTB<-winsorize(data$MTB)
+data$RD<-winsorize(data$RD)
+data$ADV<-winsorize(data$ADV)
 data$ESG<-winsorize(data$ESG)
 data$Age<-winsorize(data$Age)
 data$ROA<-winsorize(data$ROA)
@@ -57,19 +60,19 @@ data$ADJROA_sq<-data$ADJROA*data$ADJROA
 
 # Kim: ESG,RD,Big4, GC....(+ Big4 + GC + ESG + RD)
 #Now, perform the Huber regression or any regression analysis using winsorized variables+ Year + Industry
-sink("Kim_ABS(sq).txt")
-model <- (lm((ABSDA_ROA) ~ RPA  + (RAM + LEV + OCF + MTB  + ADJROA + ADJROA_sq + LGTA + Age + Big4 + RD + ESG + GC ) + Year  , data = data))
+#sink("Kim_ABS(sq).txt")
+model <- (lm((ABSDA_ROA) ~ RPA  + (RAM + LEV + OCF + MTB  + ADJROA + ADJROA_sq + LGTA + Age + Big4 + RD + ADV + ESG + GC ) + Year  , data = data))
 summary(model)
 coeftest(model, vcov = vcovHC(model))
 coeftest(model, vcov = vcovCL(model,cluster = ~Key))
 
 
-model <- (lm((RAM) ~ RPA  + (ABSDA_ROA + LEV + OCF + MTB  + ADJROA + ADJROA_sq + LGTA + Age + Big4 + RD + ESG + GC ) + Year   , data = data))
+model <- (lm((RAM) ~ RPA  + (ABSDA_ROA + LEV + OCF + MTB  + ADJROA + ADJROA_sq + LGTA + Age + Big4 + RD + ADV + ESG + GC ) + Year   , data = data))
 summary(model)
 ##, type="HC3"
 coeftest(model, vcov = vcovHC(model))
 coeftest(model, vcov = vcovCL(model,cluster = ~Key))
-sink()
+#sink()
 
 ############################Assumptions
 library("lmtest")
