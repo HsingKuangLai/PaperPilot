@@ -69,17 +69,17 @@ ps_model <- glm(RPA ~ (RAM + LEV + OCF + MTB  + ADJROA + LGTA + Age + RD + ADV +
 data$propensity_score <- predict(ps_model)
 
 # matching parameter method=nn, distance=glm, link=probit, caliper=NULL
-matched_data<- matchit( RPA ~ (RAM + LEV + OCF + MTB  + ADJROA + LGTA + Age + RD + ADV + ESG + Big4 + GC  ) + Year , data = data, method = "nearest",distance = "glm", link = "probit")
+matched_data<- matchit( RPA ~ (RAM + LEV + OCF + MTB  + ADJROA + LGTA + Age + RD + ADV + ESG + Big4 + GC  ) + Year , data = data, method = "nearest",distance = "glm")
 data <- match.data(matched_data)
 
 ###
-#sink("PSM_RM.txt")
+sink("PSM_AM.txt")
 summary(ps_model)
 model <- (lm((ABSDA_ROA) ~ RPA  + (RAM + LEV + OCF + MTB  + ADJROA  + LGTA + Age + RD + ADV + ESG + Big4) + Year   , data = data))
 summary(model)
 coeftest(model, vcov = vcovHC(model))
 coeftest(model, vcov = vcovCL(model,cluster = ~Key))
-#sink()
+sink()
 
 
 
