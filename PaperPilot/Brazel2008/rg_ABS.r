@@ -9,14 +9,17 @@ data <- na.omit(data)
 data$RPA_Ctd <- factor(data$RPA_Ctd)
 data$RPA <- factor(data$RPA)
 data$GC <- factor(data$GC)
+data$Key <- factor(data$Key)
 data$Big4 <- factor(data$Big4)
 data$Industry <- factor(data$Industry)
-#data$Year <- factor(data$Year)
+data$Year <- factor(data$Year)
 data$Finance <- factor(data$Finance)
 data$ABSDA<-as.numeric(data$ABSDA)
 data$ADV<-as.numeric(data$ADV)
 data$ABSDA_ROA<-abs(as.numeric(data$DA_ROA))
 data$RAM<-data$ABCFO+data$ABEXP
+data$Age<-log(1+(data$Age))
+data$Age_Trade<-log(1+(data$Age_Trade))
 data$OCF<-as.numeric(data$OCF)
 data <- na.omit(data)
 
@@ -34,40 +37,24 @@ winsorize <- function(x) {
   return(x)
 }
 
-data$DA<-winsorize(data$DA)
-data$DA_ROA<-winsorize(data$DA_ROA)
-data$ABSDA_ROA<-winsorize(data$ABSDA_ROA)
-data$ABSDA<-winsorize(data$ABSDA)
-data$ABCFO<-winsorize(data$ABCFO)
-data$ABPROD<-winsorize(data$ABPROD)
-data$ABEXP<-winsorize(data$ABEXP)
-data$RAM<-winsorize(data$RAM)
-data$LGTA<-winsorize(data$LGTA)
-data$LEV<-winsorize(data$LEV)
-data$OCF<-winsorize(data$OCF)
-data$MTB<-winsorize(data$MTB)
-data$RD<-winsorize(data$RD)
-data$ADV<-winsorize(data$ADV)
-data$ESG<-winsorize(data$ESG)
-data$Age<-winsorize(data$Age)
-data$ROA<-winsorize(data$ROA)
-data$ADJROA<-winsorize(data$ADJROA)
-data$Age<-log(1+winsorize(data$Age))
-data$Age_Trade<-log(1+winsorize(data$Age_Trade))
-data$RPA_Count<-winsorize(data$RPA_Count)
+# Identify columns that are numeric and not factor
+numeric_cols <- sapply(data, is.numeric) & !sapply(data, is.factor)
+
+# Apply the winsorize function to the selected numeric columns
+data[numeric_cols] <- lapply(data[numeric_cols], winsorize)
 data$ADJROA_sq<-data$ADJROA*data$ADJROA
 
 
 # Kim: ESG,RD,Big4, GC....(+ Big4 + GC + ESG + RD)
 #Now, perform the Huber regression or any regression analysis using winsorized variables+ Year + Industry
 #sink("Kim_ABS(sq).txt")
-model <- (lm((ABSDA_ROA) ~ RPA  + (RAM + LEV + OCF + MTB  + ADJROA + ADJROA_sq + LGTA + Age + Big4 + RD + ADV + ESG + GC ) + Year  , data = data))
+model <- (lm((ABSDA_ROA) ~ RPA  + (RAM + LEV + OCF + MTB  + ADJROA  + LGTA + Age + Big4 + RD + ADV + ESG + GC ) + Year  , data = data))
 summary(model)
 coeftest(model, vcov = vcovHC(model))
 coeftest(model, vcov = vcovCL(model,cluster = ~Key))
 
 
-model <- (lm((RAM) ~ RPA  + (ABSDA_ROA + LEV + OCF + MTB  + ADJROA + ADJROA_sq + LGTA + Age + Big4 + RD + ADV + ESG + GC ) + Year   , data = data))
+model <- (lm((RAM) ~ RPA  + (ABSDA_ROA + LEV + OCF + MTB  + ADJROA + LGTA + Age + Big4 + RD + ADV + ESG + GC ) + Year   , data = data))
 summary(model)
 ##, type="HC3"
 coeftest(model, vcov = vcovHC(model))
