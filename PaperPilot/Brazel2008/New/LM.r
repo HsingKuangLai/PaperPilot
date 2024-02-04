@@ -14,6 +14,7 @@ data$RM<-data$ABCFO+data$ABEXP-data$ABPROD
 data$RM1<-data$ABCFO+data$ABEXP
 data$RM2<-data$ABPROD-data$ABEXP
 
+
 ########### winsorizing 1% 
 # Define a function for winsorizing
 winsorize <- function(x) {
@@ -35,7 +36,7 @@ data <- data %>%
 #Now, perform the Huber regression or any regression analysis using winsorized variables+ Year + Industry
 
 #AM
-sink("AM_Trade.txt")
+sink("AM_N.txt")
 # Define the different values for Y and X
 Y_vars <- c("ABSDA", "ABSDA1", "ABSDA2")
 X_vars <- c("RM", "RM1","RM2")
@@ -46,7 +47,7 @@ for (Y_var in Y_vars) {
     
     # Define the model formula
     formula <- as.formula(paste0(Y_var, " ~ RPA + ", X_var, 
-                                 " + LEV + OCF + MTB + ADJROA + LGTA + Age_Trade + Big4 + RD + ADV + ESG + GC + Year"))
+                                 " + LEV + OCF + MTB + ADJROA + LGTA + Age + Big4 + RD + ADV + ESG + GC + Year"))
     
     # Fit the model
     model <- lm(formula, data = data)
@@ -68,7 +69,7 @@ sink()
 
 
 # RM
-sink("RM_Trade.txt")
+sink("RM.txt")
 # Define the different values for Y and X
 X_vars <- c("ABSDA", "ABSDA1", "ABSDA2")
 Y_vars <- c("RM", "RM1","RM2","ABCFO","ABEXP","ABPROD")
@@ -79,7 +80,7 @@ for (Y_var in Y_vars) {
     
     # Define the model formula
     formula <- as.formula(paste0(Y_var, " ~ RPA + ", X_var, 
-                                 " + LEV + OCF + MTB + ADJROA + LGTA + Age_Trade + Big4 + RD + ADV + ESG + GC + Year"))
+                                 " + LEV + OCF + MTB + ADJROA + LGTA + Age + Big4 + RD + ADV + ESG + GC + Year"))
     
     # Fit the model
     model <- lm(formula, data = data)
