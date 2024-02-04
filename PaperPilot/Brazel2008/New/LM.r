@@ -12,6 +12,7 @@ data$ABSDA2<-abs(data$DA2)
 data$ABSDA3<-abs(data$DA3)
 data$RM<-data$ABCFO+data$ABEXP-data$ABPROD
 data$RM1<-data$ABCFO+data$ABEXP
+data$RM2<-data$ABPROD-data$ABEXP
 
 ########### winsorizing 1% 
 # Define a function for winsorizing
@@ -37,7 +38,7 @@ data <- data %>%
 sink("AM_Trade.txt")
 # Define the different values for Y and X
 Y_vars <- c("ABSDA", "ABSDA1", "ABSDA2")
-X_vars <- c("RM", "RM1")
+X_vars <- c("RM", "RM1","RM2")
 
 # Loop over each combination of Y and X
 for (Y_var in Y_vars) {
@@ -70,7 +71,7 @@ sink()
 sink("RM_Trade.txt")
 # Define the different values for Y and X
 X_vars <- c("ABSDA", "ABSDA1", "ABSDA2")
-Y_vars <- c("RM", "RM1","ABCFO","ABEXP","ABPROD")
+Y_vars <- c("RM", "RM1","RM2","ABCFO","ABEXP","ABPROD")
 
 # Loop over each combination of Y and X
 for (Y_var in Y_vars) {
