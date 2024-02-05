@@ -36,9 +36,9 @@ data <- data %>%
 data$RPA<-as.double(data$RPA)-1
 ###second step mataching
 
-sink("PSM_AM.txt")
-# Define your Y and X variables
-Y_vars <- c("ABSDA", "ABSDA1", "ABSDA2")
+sink("PSM_AM_signed.txt")
+# Define your Y and X variables"ABSDA", "ABSDA1",
+Y_vars <- c( "DA","DA1","DA2")
 X_vars <- c("RM", "RM1", "RM2")
 
 # Loop through each Y and X combination
