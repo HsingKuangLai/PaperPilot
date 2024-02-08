@@ -2,6 +2,7 @@ library(sandwich)
 library(lmtest)
 library(MASS)
 library(dplyr)
+library(stargazer)
 # 讀取 CSV 檔案，將 "#N/A" 轉換為真正的 NA（缺失值）
 data <- read.csv("Total.csv")
 
@@ -14,7 +15,7 @@ data$RM<-data$ABCFO+data$ABEXP-data$ABPROD
 data$RM1<-data$ABCFO+data$ABEXP
 data$RM2<-data$ABPROD-data$ABEXP
 
-data<-subset(data,data$DA2<0)
+#data<-subset(data,data$DA2<0)
 
 ########### winsorizing 1% 
 # Define a function for winsorizing
@@ -37,67 +38,79 @@ data <- data %>%
 #Now, perform the Huber regression or any regression analysis using winsorized variables+ Year + Industry
 
 #AM
-sink("AM_N.txt")
+#sink("AM_N.txt")
 # Define the different values for Y and X
-Y_vars <- c("DA", "DA1", "DA2")
-X_vars <- c("RM", "RM1","RM2")
 
-# Loop over each combination of Y and X
+models <- list() # To store lm models
+se_list <- list() # To store robust SEs for each model
+Y_vars <- c("ABSDA2", "DA2_pos", "DA2_neg") # Updated Y_vars to distinguish between positive and negative DA2
+X_vars <- c("RM")
+
+models <- list() # To store lm models
+se_list <- list() # To store robust SEs for each model
+
 for (Y_var in Y_vars) {
   for (X_var in X_vars) {
-    
     # Define the model formula
-    formula <- as.formula(paste0(Y_var, " ~ RPA + ", X_var, 
-                                 " + LEV + OCF + MTB + ADJROA + LGTA + Age + Big4 + RD + ADV + ESG + GC + Year"))
+    formula <- as.formula(paste0(gsub("_pos|_neg", "", Y_var), " ~ RPA + ", X_var, " + LEV + OCF + MTB + ADJROA + LGTA + Age + Big4 + RD + ADV + ESG + GC + Year"))
     
-    # Fit the model
-    model <- lm(formula, data = data)
+    # Filter data based on the condition (if applicable)
+    if (Y_var == "DA2_pos") {
+      temp_data <- data[data$DA2 > 0, ]
+    } else if (Y_var == "DA2_neg") {
+      temp_data <- data[data$DA2 < 0, ]
+    } else {
+      temp_data <- data
+    }
     
-    # Print summary
-    print(paste0("Model: ", Y_var, " ~ ", X_var))
-    print(summary(model))
+    # Fit the model with the filtered data
+    model <- lm(formula, data = temp_data)
     
-    # Perform coeftest with vcovHC
-    print(coeftest(model, vcov = vcovHC(model,type="HC0")))
+    # Calculate clustered standard errors
+    robust_se <- sqrt(diag(vcovCL(model, type = "HC0", cluster = ~Key)))
     
-    # Perform coeftest with vcovCL
-    print(coeftest(model, vcov = vcovCL(model,type="HC0", cluster = ~Key)))
-    
-    # Optionally, you can save the model results or coefficients into a list or data frame if needed
+    # Store the model and its robust SE
+    models[[paste0(Y_var, "_", X_var)]] <- model
+    se_list[[paste0(Y_var, "_", X_var)]] <- robust_se
   }
 }
-sink()
+
+# Output all models in a single table
+stargazer(models, type = "html", 
+          se = se_list, 
+          title = "AM-Regression Results with Clustered Standard Errors", out = "AM.html")
+
 
 
 # RM
-sink("RM.txt")
+#sink("RM.txt")
 # Define the different values for Y and X
-X_vars <- c("ABSDA", "ABSDA1", "ABSDA2")
-Y_vars <- c("RM", "RM1","RM2","ABCFO","ABEXP","ABPROD")
+# Assuming 'data' is your dataframe and 'Key' is your clustering variable
+models <- list() # To store lm models
+se_list <- list() # To store robust SEs for each model
 
-# Loop over each combination of Y and X
+X_vars <- c("ABSDA2")
+Y_vars <- c("ABCFO","ABPROD","ABEXP","RM")
+
 for (Y_var in Y_vars) {
   for (X_var in X_vars) {
-    
     # Define the model formula
-    formula <- as.formula(paste0(Y_var, " ~ RPA + ", X_var, 
-                                 " + LEV + OCF + MTB + ADJROA + LGTA + Age + Big4 + RD + ADV + ESG + GC + Year"))
+    formula <- as.formula(paste0(Y_var, " ~ RPA + ", X_var, " + LEV + OCF + MTB + ADJROA + LGTA + Age + Big4 + RD + ADV + ESG + GC + Year"))
     
     # Fit the model
     model <- lm(formula, data = data)
     
-    # Print summary
-    print(paste0("Model: ", Y_var, " ~ ", X_var))
-    print(summary(model))
+    # Calculate clustered standard errors
+    robust_se <- sqrt(diag(vcovCL(model, type = "HC0", cluster = ~Key)))
     
-    # Perform coeftest with vcovHC
-    print(coeftest(model, vcov = vcovHC(model,type="HC0")))
-    
-    # Perform coeftest with vcovCL
-    print(coeftest(model, vcov = vcovCL(model,type="HC0", cluster = ~Key)))
-    
-    # Optionally, you can save the model results or coefficients into a list or data frame if needed
+    # Store the model and its robust SE
+    models[[paste0(Y_var, "_", X_var)]] <- model
+    se_list[[paste0(Y_var, "_", X_var)]] <- robust_se
   }
 }
-sink()
+
+# Assuming you want to output all models in a single table
+stargazer(models, type = "html", 
+          se = se_list, 
+          title = "RM-Regression Results with Clustered Standard Errors", out = "RM.html")
 

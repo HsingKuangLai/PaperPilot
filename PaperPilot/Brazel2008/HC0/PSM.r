@@ -11,7 +11,7 @@ data$ABSDA<-abs(data$DA)
 data$ABSDA1<-abs(data$DA1)
 data$ABSDA2<-abs(data$DA2)
 data$ABSDA3<-abs(data$DA3)
-data$RM<-data$ABCFO+data$ABEXP-data$ABPROD
+data$RM<-data$ABCFO-data$ABPROD+data$ABEXP
 data$RM1<-data$ABCFO+data$ABEXP
 data$RM2<-data$ABPROD-data$ABEXP
 
@@ -36,66 +36,39 @@ data <- data %>%
 data$RPA<-as.double(data$RPA)-1
 ###second step mataching
 
-sink("PSM_AM_signed.txt")
-# Define your Y and X variables"ABSDA", "ABSDA1",
-Y_vars <- c( "DA","DA1","DA2")
-X_vars <- c("RM", "RM1", "RM2")
 
-# Loop through each Y and X combination
+# Define your Y and X 
+Y_vars <- c("ABSDA2","RM")
+X_vars <- c("RM","ABSDA2")
+
+models <- list() # To store lm models
+se_list <- list() # To store robust SEs for each model
+
 for (Y_var in Y_vars) {
   for (X_var in X_vars) {
-    print(paste0("Model: ", Y_var, " ~ ", X_var))
-    # 1. Generate propensity scores
-    ps_model <- glm(RPA ~ get(X_var) + LEV + OCF + MTB  + ADJROA + LGTA + Age + RD + ADV + ESG + Big4 + GC + Year, data = data)
-    data$propensity_score <- predict(ps_model, type = "response")
-    
-    # 2. Perform nearest neighbor matching
-    matched_data <- matchit(RPA ~ get(X_var) + LEV + OCF + MTB  + ADJROA + LGTA + Age + RD + ADV + ESG + Big4 + GC + Year, data = data, link = "probit", method = "nearest", distance = "glm")
-    matched_data <- match.data(matched_data)
-    
-    # 3. Fit a linear model on the matched data
-    model_formula <- as.formula(paste0(Y_var, " ~ RPA + ", X_var, " + LEV + OCF + MTB + ADJROA + LGTA + Age + Big4 + RD + ADV + ESG + Year"))
-    model <- lm(model_formula, data = matched_data)
-    
-    # 4. Print summary and perform coeftest
-    print(summary(ps_model))
-    print(summary(model))
-    print(coeftest(model, vcov = vcovHC(model,type="HC0")))
-    print(coeftest(model, vcov = vcovCL(model,type="HC0", cluster = ~Key)))
+    if (Y_var != X_var) {
+      # 1. Generate propensity scores
+      ps_model <- glm(as.formula(paste0("RPA ~ ", X_var, " + LEV + OCF + MTB + ADJROA + LGTA + Age + RD + ADV + ESG + Big4 + GC + Year")), family = binomial(link = "probit"), data = data)
+      data$propensity_score <- predict(ps_model, type = "response")
+      
+      # 2. Perform nearest neighbor matching
+      matched_data <- matchit(as.formula(paste0("RPA ~ ", X_var, " + LEV + OCF + MTB + ADJROA + LGTA + Age + RD + ADV + ESG + Big4 + GC + Year")), data = data, method = "nearest", distance = "glm", link = "probit")
+      matched_data <- match.data(matched_data)
+      
+      # 3. Fit a linear model on the matched data
+      model_formula <- as.formula(paste0(Y_var, " ~ RPA + ", X_var, " + LEV + OCF + MTB + ADJROA + LGTA + Age + Big4 + RD + ADV + ESG + Year"))
+      model <- lm(model_formula, data = matched_data)
+      
+      # Calculate clustered standard errors
+      robust_se <- sqrt(diag(vcovCL(model, type = "HC0", cluster = ~Key)))
+      
+      # Store the model, its robust SE
+      models[[paste0(Y_var, "_", X_var)]] <- model
+      se_list[[paste0(Y_var, "_", X_var)]] <- robust_se
+    }
   }
 }
-sink()
 
-sink("PSM_RM.txt")
-# Define your Y and X variables
-X_vars <- c("ABSDA", "ABSDA1", "ABSDA2")
-Y_vars <- c("RM", "RM1", "RM2","ABCFO","ABEXP","ABPROD")
-
-# Loop through each Y and X combination
-for (Y_var in Y_vars) {
-  for (X_var in X_vars) {
-    print(paste0("Model: ", Y_var, " ~ ", X_var))
-    # 1. Generate propensity scores
-    ps_model <- glm(RPA ~ get(X_var) + LEV + OCF + MTB  + ADJROA + LGTA + Age + RD + ADV + ESG + Big4 + GC + Year, data = data)
-    data$propensity_score <- predict(ps_model, type = "response")
-    
-    
-    # 2. Perform nearest neighbor matching
-    matched_data <- matchit(RPA ~ get(X_var) + LEV + OCF + MTB  + ADJROA + LGTA + Age + RD + ADV + ESG + Big4 + GC + Year, data = data, link = "probit", method = "nearest", distance = "glm")
-    matched_data <- match.data(matched_data)
-    
-    # 3. Fit a linear model on the matched data
-    model_formula <- as.formula(paste0(Y_var, " ~ RPA + ", X_var, " + LEV + OCF + MTB + ADJROA + LGTA + Age + Big4 + RD + ADV + ESG + Year"))
-    model <- lm(model_formula, data = matched_data)
-    
-    # 4. Print summary and perform coeftest
-    print(summary(ps_model))
-    print(summary(model))
-    print(coeftest(model, vcov = vcovHC(model,type="HC0")))
-    print(coeftest(model, vcov = vcovCL(model,type="HC0", cluster = ~Key)))
-  }
-}
-sink()
-
-
-
+# Output all models in a single table using stargazer
+stargazer::stargazer(models, type = "html", out = "PSM.html", 
+                     se = se_list, title = "PSM-Regression Results with Clustered Standard Errors")
