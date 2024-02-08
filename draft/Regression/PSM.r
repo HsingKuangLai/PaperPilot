@@ -5,6 +5,8 @@ library(Matching)
 library(rgenoud)
 library(MatchIt)
 library(dplyr)
+library(knitr)
+library(kableExtra)
 # read CSV
 data <- read.csv("Total.csv", na.strings = "#N/A")
 data$ABSDA<-abs(data$DA)
@@ -41,6 +43,7 @@ data$RPA<-as.double(data$RPA)-1
 Y_vars <- c("ABSDA2","RM")
 X_vars <- c("RM","ABSDA2")
 
+ps_models<-list()
 models <- list() # To store lm models
 se_list <- list() # To store robust SEs for each model
 
@@ -49,8 +52,6 @@ for (Y_var in Y_vars) {
     if (Y_var != X_var) {
       # 1. Generate propensity scores
       ps_model <- glm(as.formula(paste0("RPA ~ ", X_var, " + LEV + OCF + MTB + ADJROA + LGTA + Age + RD + ADV + ESG + Big4 + GC + Year")), family = binomial(link = "probit"), data = data)
-      data$propensity_score <- predict(ps_model, type = "response")
-      
       # 2. Perform nearest neighbor matching
       matched_data <- matchit(as.formula(paste0("RPA ~ ", X_var, " + LEV + OCF + MTB + ADJROA + LGTA + Age + RD + ADV + ESG + Big4 + GC + Year")), data = data, method = "nearest", distance = "glm", link = "probit")
       matched_data <- match.data(matched_data)
@@ -65,10 +66,30 @@ for (Y_var in Y_vars) {
       # Store the model, its robust SE
       models[[paste0(Y_var, "_", X_var)]] <- model
       se_list[[paste0(Y_var, "_", X_var)]] <- robust_se
+      ps_models[[paste0(Y_var, "_", X_var)]]<-ps_model
     }
   }
 }
 
+# Calculate McFadden's pseudo R^2 for each propensity score model
+pseudo_r_squared <- sapply(ps_models, function(model) {
+  logLik_model <- logLik(model)
+  # Create and fit the null model
+  null_model <- update(model, . ~ 1)
+  logLik_null <- logLik(null_model)
+  
+  # Calculate McFadden's pseudo R^2
+  r_squared <- 1 - (logLik_model / logLik_null)
+  return(as.numeric(r_squared))
+})
+
+print(pseudo_r_squared)
+
 # Output all models in a single table using stargazer
 stargazer::stargazer(models, type = "html", out = "PSM.html", 
                      se = se_list, title = "PSM-Regression Results with Clustered Standard Errors")
+
+
+# Output all models in a single table using stargazer
+stargazer::stargazer(ps_models, type = "html", out = "PSM_GLM.html", title = "PSM-GLM", model.names = FALSE, out.header = TRUE, header = FALSE)
+
