@@ -1,0 +1,14 @@
+﻿Aguirre, S. and A. Rodriguez (2017). Automation of a Business Process Using Robotic Process Automation (RPA): A Case Study. Applied Computer Sciences in Engineering: 65-71.
+	
+Cooper, L. A., et al. (2019). "Robotic Process Automation in Public Accounting." Accounting Horizons 33(4): 15-35.
+	
+Fernandez, D. and A. Aman (2018). "Impacts of Robotic Process Automation on Global Accounting Services." Asian Journal of Accounting and Governance 9: 123-132.
+	
+Hofmann, P., et al. (2019). "Robotic process automation." Electronic Markets 30(1): 99-106.
+	
+Jędrzejka, D. (2019). "Robotic process automation and its impact on accounting." Zeszyty Teoretyczne Rachunkowości 2019(105 (161)): 137-166.
+	
+Moffitt, K. C., et al. (2018). "Robotic Process Automation for Auditing." Journal of Emerging Technologies in Accounting 15(1): 1-10.
+	
+Syed, R., et al. (2020). "Robotic Process Automation: Contemporary themes and challenges." Computers in Industry 115.
+	
