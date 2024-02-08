@@ -15,7 +15,7 @@ data$ABSDA2<-abs(data$DA2)
 data$ABSDA3<-abs(data$DA3)
 data$RM<-data$ABCFO-data$ABPROD+data$ABEXP
 data$RM1<-data$ABCFO+data$ABEXP
-data$RM2<-data$ABPROD-data$ABEXP
+data$RM2<--data$ABPROD+data$ABEXP
 
 ######fisrt step######################### winsorizing
 
@@ -40,7 +40,7 @@ data$RPA<-as.double(data$RPA)-1
 
 
 # Define your Y and X 
-Y_vars <- c("ABSDA2","RM")
+Y_vars <- c("ABSDA2","RM","RM1","RM2")
 X_vars <- c("RM","ABSDA2")
 
 ps_models<-list()
@@ -49,7 +49,7 @@ se_list <- list() # To store robust SEs for each model
 
 for (Y_var in Y_vars) {
   for (X_var in X_vars) {
-    if (Y_var != X_var) {
+    if (substr(Y_var,1,1) != substr(X_var,1,1)) {
       # 1. Generate propensity scores
       ps_model <- glm(as.formula(paste0("RPA ~ ", X_var, " + LEV + OCF + MTB + ADJROA + LGTA + Age + RD + ADV + ESG + Big4 + GC + Year")), family = binomial(link = "probit"), data = data)
       # 2. Perform nearest neighbor matching
