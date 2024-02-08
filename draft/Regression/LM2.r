@@ -13,7 +13,7 @@ data$ABSDA2<-abs(data$DA2)
 data$ABSDA3<-abs(data$DA3)
 data$RM<-data$ABCFO+data$ABEXP-data$ABPROD
 data$RM1<-data$ABCFO+data$ABEXP
-data$RM2<-data$ABPROD-data$ABEXP
+data$RM2<--data$ABPROD+data$ABEXP
 
 #data<-subset(data,data$DA2<0)
 
@@ -55,10 +55,10 @@ for (Y_var in Y_vars) {
     formula <- as.formula(paste0(gsub("_pos|_neg", "", Y_var), " ~ RPA + ", X_var, " + LEV + OCF + MTB + ADJROA + LGTA + Age + Big4 + RD + ADV + ESG + GC + Year"))
     
     # Filter data based on the condition (if applicable)
-    if (Y_var == "DA2_pos") {
-      temp_data <- data[data$DA2 > 0, ]
-    } else if (Y_var == "DA2_neg") {
-      temp_data <- data[data$DA2 < 0, ]
+    if (Y_var == "DA_pos") {
+      temp_data <- data[data$DA > 0, ]
+    } else if (Y_var == "DA_neg") {
+      temp_data <- data[data$DA < 0, ]
     } else {
       temp_data <- data
     }
@@ -112,5 +112,5 @@ for (Y_var in Y_vars) {
 # Assuming you want to output all models in a single table
 stargazer(models, type = "html", 
           se = se_list, 
-          title = "RM-Regression Results with Clustered Standard Errors", out = "RM2.html")
+          title = "RM-Regression Results with Clustered Standard Errors", out = "RM_A.html")
 

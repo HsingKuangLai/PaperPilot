@@ -12,8 +12,6 @@ data$ABSDA1<-abs(data$DA1)
 data$ABSDA2<-abs(data$DA2)
 data$ABSDA3<-abs(data$DA3)
 data$RM<-data$ABCFO+data$ABEXP-data$ABPROD
-data$RM1<-data$ABCFO+data$ABEXP
-data$RM2<-data$ABPROD-data$ABEXP
 
 #data<-subset(data,data$DA2<0)
 

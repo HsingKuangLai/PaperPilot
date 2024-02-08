@@ -1,4 +1,5 @@
 library(dplyr)
+library(stargazer)
 # 讀取 CSV 檔案，將 "#N/A" 轉換為真正的 NA（缺失值）
 data <- read.csv("clean.csv")
 
@@ -46,6 +47,12 @@ TAC$DA1<-residuals(model1)
 TAC$DA2<-residuals(model2)
 TAC$DA3<-residuals(model3)
 
+# Output all models in a single table
+stargazer(model2, type = "html", 
+          title = "DA", out = "AMproxy.html")
+
+
+models=list()
 
 RM<-data[,c(1,2,3)]
 RM$CFO<-data$OCF/data$Asset_1
@@ -66,6 +73,11 @@ summary(model3)
 RM$ABCFO<-residuals(model1)
 RM$ABPROD<-residuals(model2)
 RM$ABEXP<-residuals(model3)
+
+
+# Output all models in a single table
+stargazer(model1,model2,model3, type = "html", 
+          title = "RM", out = "RMproxy.html")
 
 write.csv(TAC,"TAC_NoWinsorize.csv")
 write.csv(RM,"RM_Nowinsorize.csv")
