@@ -44,7 +44,7 @@ data$ADJROA_sq<-data$ADJROA*data$ADJROA
 
 models <- list() # To store lm models
 se_list <- list() # To store robust SEs for each model
-Y_vars <- c("ABSDA", "ABSDA1", "ABSDA2","ABSDA3") # Updated Y_vars to distinguish between positive and negative DA2
+Y_vars <- c("ABSDA","ABSDA1","ABSDA2") # Updated Y_vars to distinguish between positive and negative DA2
 X_vars <- c("RM")
 
 models <- list() # To store lm models
@@ -56,7 +56,7 @@ for (Y_var in Y_vars) {
     formula <- as.formula(paste0(gsub("_pos|_neg", "", Y_var), " ~ RPA_Ctd  * ", X_var, " + LEV + OCF + MTB + ADJROA + ADJROA_sq + LGTA + Age_Trade + RD + ADV + ESG + Big4 + Year + Industry"))
     
     # Filter data based on the condition (if applicable)
-    if (Y_var == "DA2_pos") {
+    if (Y_var == "_pos") {
       temp_data <- data[data$DA2 > 0, ]
     } else if (Y_var == "DA2_neg") {
       temp_data <- data[data$DA2 < 0, ]
@@ -90,7 +90,7 @@ stargazer(models, type = "html",
 models <- list() # To store lm models
 se_list <- list() # To store robust SEs for each model
 
-X_vars <- c("ABSDA","ABSDA1","ABSDA2")
+X_vars <- c("ABSDA","ABSDA1")
 Y_vars <- c("ABCFO","ABPROD","ABEXP","RM","RM1","RM2")
 
 for (Y_var in Y_vars) {

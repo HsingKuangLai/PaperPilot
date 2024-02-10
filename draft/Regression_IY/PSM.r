@@ -40,8 +40,8 @@ data$RPA_Ctd<-as.double(data$RPA_Ctd)-1
 data$ADJROA_sq<-data$ADJROA*data$ADJROA
 
 # Define your Y and X 
-Y_vars <- c("ABSDA1","RM","RM1","RM2")
-X_vars <- c("RM","ABSDA1")
+Y_vars <- c("ABCFO","ABPROD","ABEXP")
+X_vars <- c("ABSDA","ABSDA1")
 
 ps_models<-list()
 models <- list() # To store lm models
@@ -49,11 +49,11 @@ se_list <- list() # To store robust SEs for each model
 
 for (Y_var in Y_vars) {
   for (X_var in X_vars) {
-    if (substr(Y_var,1,1) != substr(X_var,1,1)) {
+    if (substr(Y_var,1,3)!=substr(X_var,1,3)) {
       # 1. Generate propensity scores
       ps_model <- glm(as.formula(paste0("RPA_Ctd ~ ", X_var, " + LEV + OCF + MTB + ADJROA + ADJROA_sq + LGTA + Age + RD + ADV + ESG + Big4 + Year + Industry")), data = data)
       # 2. Perform nearest neighbor matching
-      matched_data <- matchit(as.formula(paste0("RPA_Ctd ~ ", X_var, " + LEV + OCF + MTB + ADJROA + ADJROA_sq + LGTA + Age + RD + ADV + ESG + Big4  + Year + Industry")), data = data,link="probit", method = "nearest",caliper=0.02, distance = "glm")
+      matched_data <- matchit(as.formula(paste0("RPA_Ctd ~ ", X_var, " + LEV + OCF + MTB + ADJROA + ADJROA_sq + LGTA + Age + RD + ADV + ESG + Big4  + Year + Industry")), data = data,link="probit", method = "nearest",caliper=0.01, distance = "glm")
       matched_data <- match.data(matched_data)
       
       # 3. Fit a linear model on the matched data
@@ -72,7 +72,7 @@ for (Y_var in Y_vars) {
 }
 
 # Output all models in a single table using stargazer
-stargazer::stargazer(models, type = "html", out = "PSM.html", 
+stargazer::stargazer(models, type = "html", out = "PSM_ind.html", 
                      se = se_list, title = "PSM-Regression Results with Clustered Standard Errors")
 
 
