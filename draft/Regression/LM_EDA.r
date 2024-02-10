@@ -43,6 +43,12 @@ stargazer(mydata, type = "html", title="Descriptive statistics", digits=5, out="
 correlation.matrix <- correlation_matrix(mydata,type="spearman",use = "lower",show_significance = TRUE,digits = 3)
 stargazer(correlation.matrix,type="html", title="Correlation Matrix",out="des2.html")
 
+
+#Des2.1
+mydata<-data[,c("ABSDA2","DA2","ABCFO","ABPROD","ABEXP","RM")]
+correlation.matrix <- correlation_matrix(mydata,type="spearman",use = "lower",show_significance = TRUE,digits = 3)
+stargazer(correlation.matrix,type="html", title="Correlation Matrix",out="des2_1.html")
+
 #Des3
 mydata<-data[,c("RPA","ABSDA2","DA2","ABCFO","ABPROD","ABEXP","RM","ADJROA","Age","RD","ADV","ESG","MTB","OCF","LEV","LGTA")]
 # Initialize a list to store results
