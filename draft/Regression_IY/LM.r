@@ -53,7 +53,7 @@ se_list <- list() # To store robust SEs for each model
 for (Y_var in Y_vars) {
   for (X_var in X_vars) {
     # Define the model formula
-    formula <- as.formula(paste0(gsub("_pos|_neg", "", Y_var), " ~ RPA_Ctd  * ", X_var, " + LEV + OCF + MTB + ADJROA + ADJROA_sq + LGTA + Age_Trade + RD + ADV + ESG + Big4 + Year + Industry"))
+    formula <- as.formula(paste0(gsub("_pos|_neg", "", Y_var), " ~ RPA_Ctd  * ", X_var, " + LEV + OCF + MTB + ADJROA + ADJROA_sq + LGTA + Age + RD + ADV + ESG + Big4 + Year + Industry"))
     
     # Filter data based on the condition (if applicable)
     if (Y_var == "_pos") {
@@ -79,7 +79,7 @@ for (Y_var in Y_vars) {
 # Output all models in a single table
 stargazer(models, type = "html", 
           se = se_list, 
-          title = "AM-Regression Results with Clustered Standard Errors", out = "AM.html")
+          title = "AM-Regression Results with Clustered Standard Errors", out = "AM2.html")
 
 
 
@@ -96,7 +96,7 @@ Y_vars <- c("ABCFO","ABPROD","ABEXP","RM","RM1","RM2")
 for (Y_var in Y_vars) {
   for (X_var in X_vars) {
     # Define the model formula+ ", X_var, "
-    formula <- as.formula(paste0(Y_var, " ~ RPA_Ctd  * ", X_var, " + LEV + OCF + MTB + ADJROA + ADJROA_sq + LGTA + Age_Trade + RD + ADV + ESG + Big4 + Year + Industry"))
+    formula <- as.formula(paste0(Y_var, " ~ RPA_Ctd  * ", X_var, " + LEV + OCF + MTB + ADJROA + ADJROA_sq + LGTA + Age + RD + ADV + ESG + Big4 + Year + Industry"))
     
     # Fit the model
     model <- lm(formula, data = data)
@@ -113,5 +113,5 @@ for (Y_var in Y_vars) {
 # Assuming you want to output all models in a single table
 stargazer(models, type = "html", 
           se = se_list, 
-          title = "RM-Regression Results with Clustered Standard Errors", out = "RM.html")
+          title = "RM-Regression Results with Clustered Standard Errors", out = "RM2.html")
 

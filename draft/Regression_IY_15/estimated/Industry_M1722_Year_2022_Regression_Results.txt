@@ -1,0 +1,118 @@
+Jones Model for Year  2022 :
+
+Call:
+lm(formula = AC ~ A1 + A21 + A3, data = year_data)
+
+Residuals:
+      Min        1Q    Median        3Q       Max 
+-0.297901 -0.035711  0.006124  0.032667  0.149445 
+
+Coefficients:
+              Estimate Std. Error t value Pr(>|t|)  
+(Intercept) -1.631e-02  1.162e-02  -1.403    0.163  
+A1          -9.094e+03  8.730e+03  -1.042    0.300  
+A21          6.968e-02  2.955e-02   2.358    0.020 *
+A3          -4.826e-02  2.979e-02  -1.620    0.108  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.06214 on 122 degrees of freedom
+Multiple R-squared:  0.05573,	Adjusted R-squared:  0.03251 
+F-statistic:   2.4 on 3 and 122 DF,  p-value: 0.07114
+
+
+Jones Model 1 for Year  2022 :
+
+Call:
+lm(formula = AC ~ A1 + A2 + A3, data = year_data)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-0.29755 -0.03480  0.00591  0.03147  0.15116 
+
+Coefficients:
+              Estimate Std. Error t value Pr(>|t|)  
+(Intercept) -1.749e-02  1.166e-02  -1.501   0.1360  
+A1          -9.141e+03  8.794e+03  -1.039   0.3006  
+A2           7.138e-02  3.536e-02   2.019   0.0457 *
+A3          -4.058e-02  2.940e-02  -1.380   0.1701  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.06251 on 122 degrees of freedom
+Multiple R-squared:  0.04459,	Adjusted R-squared:  0.0211 
+F-statistic: 1.898 on 3 and 122 DF,  p-value: 0.1335
+
+
+Jones Model 2 for Year  2022 :
+
+Call:
+lm(formula = AC ~ A1 + A2 + A3 + A4, data = year_data)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-0.28277 -0.03255  0.00695  0.03299  0.14177 
+
+Coefficients:
+              Estimate Std. Error t value Pr(>|t|)  
+(Intercept) -1.685e-02  1.157e-02  -1.456   0.1479  
+A1          -6.629e+03  8.843e+03  -0.750   0.4549  
+A2           5.015e-02  3.716e-02   1.350   0.1797  
+A3          -5.172e-02  2.987e-02  -1.732   0.0859 .
+A4           8.315e-02  4.806e-02   1.730   0.0862 .
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.062 on 121 degrees of freedom
+Multiple R-squared:  0.06765,	Adjusted R-squared:  0.03683 
+F-statistic: 2.195 on 4 and 121 DF,  p-value: 0.07352
+
+
+CFO Model for Year  2022 :
+
+Call:
+lm(formula = CFO ~ R1 + R2 + R3, data = year_data)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-0.31709 -0.04982  0.01122  0.06067  0.30008 
+
+Coefficients:
+              Estimate Std. Error t value Pr(>|t|)    
+(Intercept) -3.704e-02  1.949e-02  -1.900   0.0598 .  
+R1          -3.259e+04  1.518e+04  -2.146   0.0338 *  
+R2           2.187e-01  3.149e-02   6.947 1.96e-10 ***
+R3          -5.332e-02  5.983e-02  -0.891   0.3746    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.1088 on 122 degrees of freedom
+Multiple R-squared:  0.3405,	Adjusted R-squared:  0.3243 
+F-statistic: 20.99 on 3 and 122 DF,  p-value: 4.933e-11
+
+
+PROD Model for Year  2022 :
+
+Call:
+lm(formula = PROD ~ R1 + R2 + R3 + R4, data = year_data)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-0.42803 -0.05235  0.01955  0.05045  0.26699 
+
+Coefficients:
+              Estimate Std. Error t value Pr(>|t|)    
+(Intercept) -3.340e-02  2.064e-02  -1.618    0.108    
+R1           5.965e+03  1.614e+04   0.370    0.712    
+R2           6.407e-01  3.531e-02  18.145   <2e-16 ***
+R3          -4.190e-02  6.723e-02  -0.623    0.534    
+R4           2.402e-02  7.940e-02   0.303    0.763    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.1151 on 121 degrees of freedom
+Multiple R-squared:  0.8109,	Adjusted R-squared:  0.8046 
+F-statistic: 129.7 on 4 and 121 DF,  p-value: < 2.2e-16
+
+
+EXP Model for Year  2022 :

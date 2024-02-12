@@ -1,0 +1,116 @@
+Jones Model for Year  2020 :
+
+Call:
+lm(formula = AC ~ A1 + A21 + A3, data = year_data)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-0.14940 -0.02696 -0.00300  0.02987  0.16051 
+
+Coefficients:
+              Estimate Std. Error t value Pr(>|t|)  
+(Intercept)  6.248e-03  2.740e-02   0.228   0.8210  
+A1           1.252e+04  2.688e+04   0.466   0.6444  
+A21          1.669e-01  9.158e-02   1.823   0.0771 .
+A3          -1.072e-01  6.477e-02  -1.656   0.1070  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.06094 on 34 degrees of freedom
+Multiple R-squared:  0.1338,	Adjusted R-squared:  0.05735 
+F-statistic:  1.75 on 3 and 34 DF,  p-value: 0.1753
+
+
+Jones Model 1 for Year  2020 :
+
+Call:
+lm(formula = AC ~ A1 + A2 + A3, data = year_data)
+
+Residuals:
+      Min        1Q    Median        3Q       Max 
+-0.148123 -0.028265 -0.004281  0.032157  0.165177 
+
+Coefficients:
+              Estimate Std. Error t value Pr(>|t|)
+(Intercept) -3.487e-03  2.901e-02  -0.120    0.905
+A1           1.157e+04  2.782e+04   0.416    0.680
+A2           9.495e-02  1.034e-01   0.918    0.365
+A3          -9.807e-02  6.744e-02  -1.454    0.155
+
+Residual standard error: 0.06307 on 34 degrees of freedom
+Multiple R-squared:  0.07212,	Adjusted R-squared:  -0.009748 
+F-statistic: 0.8809 on 3 and 34 DF,  p-value: 0.4607
+
+
+Jones Model 2 for Year  2020 :
+
+Call:
+lm(formula = AC ~ A1 + A2 + A3 + A4, data = year_data)
+
+Residuals:
+      Min        1Q    Median        3Q       Max 
+-0.157350 -0.029463  0.008761  0.041528  0.111610 
+
+Coefficients:
+              Estimate Std. Error t value Pr(>|t|)  
+(Intercept) -3.637e-02  2.923e-02  -1.244   0.2222  
+A1           9.462e+03  2.553e+04   0.371   0.7133  
+A2           5.282e-02  9.612e-02   0.549   0.5864  
+A3          -9.512e-02  6.188e-02  -1.537   0.1338  
+A4           5.479e-01  2.015e-01   2.719   0.0103 *
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.05786 on 33 degrees of freedom
+Multiple R-squared:  0.242,	Adjusted R-squared:  0.1501 
+F-statistic: 2.634 on 4 and 33 DF,  p-value: 0.05163
+
+
+CFO Model for Year  2020 :
+
+Call:
+lm(formula = CFO ~ R1 + R2 + R3, data = year_data)
+
+Residuals:
+      Min        1Q    Median        3Q       Max 
+-0.122087 -0.030162  0.005438  0.017575  0.131381 
+
+Coefficients:
+              Estimate Std. Error t value Pr(>|t|)   
+(Intercept)  3.866e-02  2.369e-02   1.632  0.11195   
+R1          -1.462e+04  2.494e+04  -0.586  0.56165   
+R2           8.302e-02  2.859e-02   2.904  0.00643 **
+R3           4.263e-03  8.370e-02   0.051  0.95968   
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.05633 on 34 degrees of freedom
+Multiple R-squared:  0.2025,	Adjusted R-squared:  0.1321 
+F-statistic: 2.877 on 3 and 34 DF,  p-value: 0.05031
+
+
+PROD Model for Year  2020 :
+
+Call:
+lm(formula = PROD ~ R1 + R2 + R3 + R4, data = year_data)
+
+Residuals:
+      Min        1Q    Median        3Q       Max 
+-0.187212 -0.025531 -0.002623  0.025458  0.165611 
+
+Coefficients:
+              Estimate Std. Error t value Pr(>|t|)    
+(Intercept)  3.620e-02  2.589e-02   1.398   0.1714    
+R1          -7.262e+04  2.805e+04  -2.589   0.0142 *  
+R2           7.110e-01  3.140e-02  22.645   <2e-16 ***
+R3          -2.017e-01  1.314e-01  -1.535   0.1344    
+R4          -2.677e-01  1.099e-01  -2.436   0.0204 *  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.0602 on 33 degrees of freedom
+Multiple R-squared:  0.9508,	Adjusted R-squared:  0.9449 
+F-statistic: 159.6 on 4 and 33 DF,  p-value: < 2.2e-16
+
+
+EXP Model for Year  2020 :
