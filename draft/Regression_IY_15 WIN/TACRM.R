@@ -118,6 +118,7 @@ for(industry in unique_industries) {
     cat("\nPROD Model for Year ", year, ":\n")
     print(summary(model_prod))
     cat("\nEXP Model for Year ", year, ":\n")
+    print(summary(model_exp))
     sink()
   }
 }

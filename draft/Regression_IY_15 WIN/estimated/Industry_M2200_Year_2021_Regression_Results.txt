@@ -114,3 +114,23 @@ F-statistic: 428.1 on 4 and 29 DF,  p-value: < 2.2e-16
 
 
 EXP Model for Year  2021 :
+
+Call:
+lm(formula = EXP ~ R1 + R5, data = year_data)
+
+Residuals:
+      Min        1Q    Median        3Q       Max 
+-0.047827 -0.026618  0.001953  0.022118  0.065968 
+
+Coefficients:
+             Estimate Std. Error t value Pr(>|t|)    
+(Intercept) 3.648e-02  1.328e-02   2.747  0.00994 ** 
+R1          6.555e+04  3.207e+04   2.044  0.04955 *  
+R5          7.957e-02  1.523e-02   5.226 1.12e-05 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.03161 on 31 degrees of freedom
+Multiple R-squared:  0.4905,	Adjusted R-squared:  0.4577 
+F-statistic: 14.92 on 2 and 31 DF,  p-value: 2.885e-05
+

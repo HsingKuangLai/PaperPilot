@@ -114,3 +114,23 @@ F-statistic:    86 on 4 and 16 DF,  p-value: 1.316e-10
 
 
 EXP Model for Year  2022 :
+
+Call:
+lm(formula = EXP ~ R1 + R5, data = year_data)
+
+Residuals:
+      Min        1Q    Median        3Q       Max 
+-0.105913 -0.028975 -0.009902  0.024523  0.140863 
+
+Coefficients:
+             Estimate Std. Error t value Pr(>|t|)    
+(Intercept) 2.341e-02  2.594e-02   0.903    0.379    
+R1          8.039e+04  1.391e+04   5.779 1.78e-05 ***
+R5          2.575e-02  3.413e-02   0.755    0.460    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.05696 on 18 degrees of freedom
+Multiple R-squared:  0.6509,	Adjusted R-squared:  0.6121 
+F-statistic: 16.78 on 2 and 18 DF,  p-value: 7.701e-05
+

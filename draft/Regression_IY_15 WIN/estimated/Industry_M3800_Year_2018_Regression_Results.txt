@@ -114,3 +114,23 @@ F-statistic: 55.66 on 4 and 16 DF,  p-value: 3.455e-09
 
 
 EXP Model for Year  2018 :
+
+Call:
+lm(formula = EXP ~ R1 + R5, data = year_data)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-0.17136 -0.11472 -0.01338  0.11012  0.27096 
+
+Coefficients:
+              Estimate Std. Error t value Pr(>|t|)   
+(Intercept)  1.027e-01  7.453e-02   1.378  0.18509   
+R1          -1.504e+04  5.289e+04  -0.284  0.77935   
+R5           1.584e-01  4.774e-02   3.318  0.00383 **
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.1397 on 18 degrees of freedom
+Multiple R-squared:  0.3812,	Adjusted R-squared:  0.3124 
+F-statistic: 5.543 on 2 and 18 DF,  p-value: 0.01331
+

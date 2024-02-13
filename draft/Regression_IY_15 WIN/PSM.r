@@ -12,9 +12,11 @@ data <- read.csv("Total.csv", na.strings = "#N/A")
 data$ABSDA<-abs(data$DA)
 data$ABSDA1<-abs(data$DA1)
 data$ABSDA2<-abs(data$DA2)
-data$RM<-data$ABCFO-data$ABPROD+data$ABEXP
+data$ABCFO<-data$ABCFO*(-1)
+data$ABEXP<-data$ABEXP*(-1)
+data$RM<-data$ABCFO+data$ABPROD+data$ABEXP
 data$RM1<-data$ABCFO+data$ABEXP
-data$RM2<--data$ABPROD+data$ABEXP
+data$RM2<-data$ABPROD+data$ABEXP
 
 ######fisrt step######################### winsorizing
 
@@ -72,7 +74,7 @@ for (Y_var in Y_vars) {
 }
 
 # Output all models in a single table using stargazer
-stargazer::stargazer(models, type = "html", out = "PSM.html", 
+stargazer::stargazer(models, type = "html", out = "PSM_.html", 
                      se = se_list, title = "PSM-Regression Results with Clustered Standard Errors")
 
 

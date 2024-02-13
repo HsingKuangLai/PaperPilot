@@ -116,3 +116,23 @@ F-statistic: 904.3 on 4 and 41 DF,  p-value: < 2.2e-16
 
 
 EXP Model for Year  2020 :
+
+Call:
+lm(formula = EXP ~ R1 + R5, data = year_data)
+
+Residuals:
+      Min        1Q    Median        3Q       Max 
+-0.040020 -0.016321 -0.001169  0.014445  0.069631 
+
+Coefficients:
+             Estimate Std. Error t value Pr(>|t|)   
+(Intercept) 2.504e-02  7.735e-03   3.237  0.00233 **
+R1          2.851e+04  1.540e+04   1.852  0.07096 . 
+R5          1.968e-02  7.449e-03   2.642  0.01146 * 
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.02361 on 43 degrees of freedom
+Multiple R-squared:  0.2384,	Adjusted R-squared:  0.2029 
+F-statistic: 6.729 on 2 and 43 DF,  p-value: 0.002868
+
