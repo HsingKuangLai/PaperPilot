@@ -65,6 +65,10 @@ for (Y_var in Y_vars) {
       # Calculate clustered standard errors
       robust_se <- sqrt(diag(vcovCL(model, type = "HC0", cluster = ~Key)))
       
+      # Output matched_data to CSV
+      csv_filename <- paste0("matched_data_", Y_var, "_", X_var, ".csv")
+      write.csv(matched_data, file = csv_filename, row.names = FALSE)
+      
       # Store the model, its robust SE
       models[[paste0(Y_var, "_", X_var)]] <- model
       se_list[[paste0(Y_var, "_", X_var)]] <- robust_se
