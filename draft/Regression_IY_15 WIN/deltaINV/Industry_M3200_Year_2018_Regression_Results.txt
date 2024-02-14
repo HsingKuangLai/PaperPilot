@@ -1,0 +1,132 @@
+Jones Model for Year  2018 :
+
+Call:
+lm(formula = AC ~ A1 + A21 + A3, data = year_data)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-0.21200 -0.05875 -0.00113  0.03983  0.32121 
+
+Coefficients:
+              Estimate Std. Error t value Pr(>|t|)
+(Intercept) -2.181e-02  5.244e-02  -0.416    0.682
+A1          -1.518e+04  3.033e+04  -0.500    0.622
+A21         -3.706e-02  1.050e-01  -0.353    0.728
+A3          -6.565e-02  1.880e-01  -0.349    0.731
+
+Residual standard error: 0.1208 on 20 degrees of freedom
+Multiple R-squared:  0.02429,	Adjusted R-squared:  -0.1221 
+F-statistic: 0.166 on 3 and 20 DF,  p-value: 0.918
+
+
+Jones Model 1 for Year  2018 :
+
+Call:
+lm(formula = AC ~ A1 + A2 + A3, data = year_data)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-0.20651 -0.05541 -0.00263  0.03832  0.32284 
+
+Coefficients:
+              Estimate Std. Error t value Pr(>|t|)
+(Intercept) -2.060e-02  5.232e-02  -0.394    0.698
+A1          -1.714e+04  3.062e+04  -0.560    0.582
+A2          -5.839e-02  1.119e-01  -0.522    0.608
+A3          -5.610e-02  1.877e-01  -0.299    0.768
+
+Residual standard error: 0.1204 on 20 degrees of freedom
+Multiple R-squared:  0.0314,	Adjusted R-squared:  -0.1139 
+F-statistic: 0.2161 on 3 and 20 DF,  p-value: 0.884
+
+
+Jones Model 2 for Year  2018 :
+
+Call:
+lm(formula = AC ~ A1 + A2 + A3 + A4, data = year_data)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-0.20038 -0.05665 -0.00100  0.04232  0.32564 
+
+Coefficients:
+              Estimate Std. Error t value Pr(>|t|)
+(Intercept) -8.637e-03  7.162e-02  -0.121    0.905
+A1          -2.445e+04  4.276e+04  -0.572    0.574
+A2          -4.902e-02  1.205e-01  -0.407    0.689
+A3          -7.531e-02  2.068e-01  -0.364    0.720
+A4          -6.920e-02  2.748e-01  -0.252    0.804
+
+Residual standard error: 0.1233 on 19 degrees of freedom
+Multiple R-squared:  0.03462,	Adjusted R-squared:  -0.1686 
+F-statistic: 0.1704 on 4 and 19 DF,  p-value: 0.9509
+
+
+CFO Model for Year  2018 :
+
+Call:
+lm(formula = CFO ~ R1 + R2 + R3, data = year_data)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-0.31174 -0.03675  0.01973  0.06783  0.18504 
+
+Coefficients:
+              Estimate Std. Error t value Pr(>|t|)   
+(Intercept) -2.069e-02  6.481e-02  -0.319  0.75282   
+R1          -7.859e+04  3.145e+04  -2.499  0.02128 * 
+R2           2.620e-01  6.844e-02   3.828  0.00105 **
+R3          -1.731e-01  1.323e-01  -1.309  0.20554   
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.1262 on 20 degrees of freedom
+Multiple R-squared:  0.5549,	Adjusted R-squared:  0.4881 
+F-statistic:  8.31 on 3 and 20 DF,  p-value: 0.0008717
+
+
+PROD Model for Year  2018 :
+
+Call:
+lm(formula = PROD ~ R1 + R2 + R3 + R4, data = year_data)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-0.45507 -0.05313  0.03463  0.09677  0.20985 
+
+Coefficients:
+              Estimate Std. Error t value Pr(>|t|)    
+(Intercept) -1.453e-01  9.728e-02  -1.494    0.152    
+R1           5.577e+04  4.937e+04   1.130    0.273    
+R2           6.169e-01  1.024e-01   6.021 8.58e-06 ***
+R3           2.794e-01  2.086e-01   1.339    0.196    
+R4           1.476e-01  2.196e-01   0.672    0.510    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.189 on 19 degrees of freedom
+Multiple R-squared:  0.8093,	Adjusted R-squared:  0.7692 
+F-statistic: 20.16 on 4 and 19 DF,  p-value: 1.263e-06
+
+
+EXP Model for Year  2018 :
+
+Call:
+lm(formula = EXP ~ R1 + R5, data = year_data)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-0.1682 -0.1094 -0.0564  0.1047  0.2904 
+
+Coefficients:
+             Estimate Std. Error t value Pr(>|t|)  
+(Intercept) 9.912e-02  7.810e-02   1.269   0.2182  
+R1          6.798e+04  3.771e+04   1.803   0.0858 .
+R5          2.032e-01  7.846e-02   2.590   0.0171 *
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.1522 on 21 degrees of freedom
+Multiple R-squared:  0.3003,	Adjusted R-squared:  0.2337 
+F-statistic: 4.507 on 2 and 21 DF,  p-value: 0.02351
+
