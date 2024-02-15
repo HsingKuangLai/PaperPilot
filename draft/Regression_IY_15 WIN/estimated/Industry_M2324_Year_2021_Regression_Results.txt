@@ -98,21 +98,21 @@ lm(formula = PROD ~ R1 + R2 + R3 + R4, data = year_data)
 
 Residuals:
      Min       1Q   Median       3Q      Max 
--0.56160 -0.07832  0.01195  0.08222  0.49228 
+-0.60983 -0.08470  0.01084  0.08479  0.40054 
 
 Coefficients:
               Estimate Std. Error t value Pr(>|t|)    
-(Intercept) -8.392e-02  2.738e-02  -3.065  0.00255 ** 
-R1          -2.013e+04  1.545e+04  -1.303  0.19452    
-R2           8.731e-01  3.727e-02  23.428  < 2e-16 ***
-R3          -6.158e-01  7.982e-02  -7.715 1.14e-12 ***
-R4          -2.258e-01  7.519e-02  -3.003  0.00310 ** 
+(Intercept) -9.846e-02  2.949e-02  -3.339  0.00104 ** 
+R1           2.811e+03  1.664e+04   0.169  0.86604    
+R2           9.214e-01  4.014e-02  22.958  < 2e-16 ***
+R3          -6.154e-01  8.597e-02  -7.158 2.65e-11 ***
+R4          -1.767e-01  8.098e-02  -2.182  0.03056 *  
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
-Residual standard error: 0.1446 on 163 degrees of freedom
-Multiple R-squared:  0.8494,	Adjusted R-squared:  0.8457 
-F-statistic: 229.8 on 4 and 163 DF,  p-value: < 2.2e-16
+Residual standard error: 0.1557 on 163 degrees of freedom
+Multiple R-squared:  0.8496,	Adjusted R-squared:  0.8459 
+F-statistic: 230.2 on 4 and 163 DF,  p-value: < 2.2e-16
 
 
 EXP Model for Year  2021 :

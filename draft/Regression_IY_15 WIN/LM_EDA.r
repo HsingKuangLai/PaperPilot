@@ -38,18 +38,18 @@ data <- data %>%
 
 # Des1
 mydata<-data[,c("ABSDA1","ABCFO","ABPROD","ABEXP","RM","ADJROA","Age","RD","ESG","MTB","OCF","LEV","LGTA")]
-stargazer(mydata, type = "html", title="Descriptive statistics", digits=5, out="des1_M.html",summary.stat = c("mean","median","sd","min","max","p25","p75","n"))
+stargazer(mydata, type = "html", title="Descriptive statistics", digits=5, out="des1_RM.html",summary.stat = c("mean","median","sd","min","max","p25","p75","n"))
 
 
 #Des2
 correlation.matrix <- correlation_matrix(mydata,type="spearman",use = "lower",show_significance = TRUE,digits = 3)
-stargazer(correlation.matrix,type="html", title="Correlation Matrix",out="des2_M.html")
+stargazer(correlation.matrix,type="html", title="Correlation Matrix",out="des2_RM.html")
 
 
 #Des2.1
 mydata<-data[,c("ABSDA1","ABCFO","ABPROD","ABEXP","RM")]
 correlation.matrix <- correlation_matrix(mydata,type="spearman",use = "lower",show_significance = TRUE,digits = 3)
-stargazer(correlation.matrix,type="html", title="Correlation Matrix",out="des2_1_M.html")
+stargazer(correlation.matrix,type="html", title="Correlation Matrix",out="des2_1_RM.html")
 
 #Des3
 mydata<-data[,c("RPA_Ctd","ABSDA1","ABCFO","ABPROD","ABEXP","RM","ADJROA","Age","RD","ESG","MTB","OCF","LEV","LGTA")]
@@ -90,4 +90,4 @@ rownames(results_df) <- variables
 results_matrix <- as.matrix(results_df)
 
 # Use stargazer to create a table
-stargazer(results_matrix, type = "html",out="des3_M.html",digits = 4, title = "Comparative Statistics: RPA vs. Non-RPA Firms", summary = FALSE)
+stargazer(results_matrix, type = "html",out="des3_RM.html",digits = 4, title = "Comparative Statistics: RPA vs. Non-RPA Firms", summary = FALSE)

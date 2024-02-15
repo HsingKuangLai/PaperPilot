@@ -98,21 +98,21 @@ lm(formula = PROD ~ R1 + R2 + R3 + R4, data = year_data)
 
 Residuals:
      Min       1Q   Median       3Q      Max 
--0.31580 -0.05604  0.01098  0.08647  0.21874 
+-0.38103 -0.04983  0.01398  0.08520  0.24126 
 
 Coefficients:
               Estimate Std. Error t value Pr(>|t|)    
-(Intercept) -1.502e-01  2.579e-02  -5.822 7.05e-08 ***
-R1          -5.155e+04  2.279e+04  -2.262  0.02585 *  
-R2           9.628e-01  2.034e-02  47.333  < 2e-16 ***
-R3          -1.605e-01  5.430e-02  -2.957  0.00388 ** 
-R4          -7.328e-02  6.094e-02  -1.202  0.23205    
+(Intercept) -1.643e-01  2.756e-02  -5.961 3.78e-08 ***
+R1          -6.668e+04  2.435e+04  -2.738  0.00731 ** 
+R2           9.688e-01  2.174e-02  44.568  < 2e-16 ***
+R3          -8.155e-02  5.803e-02  -1.405  0.16303    
+R4          -1.320e-01  6.513e-02  -2.027  0.04529 *  
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
-Residual standard error: 0.1142 on 100 degrees of freedom
-Multiple R-squared:  0.9648,	Adjusted R-squared:  0.9634 
-F-statistic: 685.4 on 4 and 100 DF,  p-value: < 2.2e-16
+Residual standard error: 0.1221 on 100 degrees of freedom
+Multiple R-squared:  0.9603,	Adjusted R-squared:  0.9588 
+F-statistic: 605.4 on 4 and 100 DF,  p-value: < 2.2e-16
 
 
 EXP Model for Year  2019 :

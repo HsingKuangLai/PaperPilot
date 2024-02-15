@@ -1,0 +1,136 @@
+Jones Model for Year  2017 :
+
+Call:
+lm(formula = AC ~ A1 + A21 + A3, data = year_data)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-0.23927 -0.05469 -0.01280  0.02981  0.35683 
+
+Coefficients:
+              Estimate Std. Error t value Pr(>|t|)  
+(Intercept)  3.022e-02  2.615e-02   1.156   0.2511  
+A1          -3.523e+04  1.929e+04  -1.826   0.0715 .
+A21          1.596e-01  7.369e-02   2.166   0.0332 *
+A3          -5.661e-02  5.764e-02  -0.982   0.3289  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.1118 on 82 degrees of freedom
+Multiple R-squared:  0.08641,	Adjusted R-squared:  0.05298 
+F-statistic: 2.585 on 3 and 82 DF,  p-value: 0.05873
+
+
+Jones Model 1 for Year  2017 :
+
+Call:
+lm(formula = AC ~ A1 + A2 + A3, data = year_data)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-0.26895 -0.05626 -0.01760  0.03512  0.35221 
+
+Coefficients:
+              Estimate Std. Error t value Pr(>|t|)  
+(Intercept)  3.216e-02  2.669e-02   1.205   0.2316  
+A1          -3.321e+04  1.973e+04  -1.683   0.0962 .
+A2           8.914e-02  8.255e-02   1.080   0.2834  
+A3          -5.659e-02  5.888e-02  -0.961   0.3393  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.1141 on 82 degrees of freedom
+Multiple R-squared:  0.04766,	Adjusted R-squared:  0.01282 
+F-statistic: 1.368 on 3 and 82 DF,  p-value: 0.2584
+
+
+Jones Model 2 for Year  2017 :
+
+Call:
+lm(formula = AC ~ A1 + A2 + A3 + A4, data = year_data)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-0.26732 -0.06685  0.00054  0.03290  0.38072 
+
+Coefficients:
+              Estimate Std. Error t value Pr(>|t|)   
+(Intercept) -1.462e-03  2.801e-02  -0.052  0.95849   
+A1          -1.388e+04  2.000e+04  -0.694  0.48963   
+A2          -2.149e-02  8.758e-02  -0.245  0.80678   
+A3          -2.790e-02  5.719e-02  -0.488  0.62702   
+A4           4.311e-01  1.474e-01   2.925  0.00446 **
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.1092 on 81 degrees of freedom
+Multiple R-squared:  0.1387,	Adjusted R-squared:  0.09613 
+F-statistic:  3.26 on 4 and 81 DF,  p-value: 0.01567
+
+
+CFO Model for Year  2017 :
+
+Call:
+lm(formula = CFO ~ R1 + R2 + R3, data = year_data)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-0.41747 -0.04670 -0.00371  0.07381  0.29954 
+
+Coefficients:
+              Estimate Std. Error t value Pr(>|t|)
+(Intercept)  1.596e-02  2.545e-02   0.627    0.532
+R1          -9.720e+03  2.123e+04  -0.458    0.648
+R2           4.491e-02  3.247e-02   1.383    0.170
+R3           6.724e-03  8.827e-02   0.076    0.939
+
+Residual standard error: 0.1232 on 82 degrees of freedom
+Multiple R-squared:  0.02821,	Adjusted R-squared:  -0.00734 
+F-statistic: 0.7935 on 3 and 82 DF,  p-value: 0.5009
+
+
+PROD Model for Year  2017 :
+
+Call:
+lm(formula = PROD ~ R1 + R2 + R3 + R4, data = year_data)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-1.05077 -0.06416  0.00320  0.06953  0.66929 
+
+Coefficients:
+              Estimate Std. Error t value Pr(>|t|)    
+(Intercept)  4.762e-02  3.757e-02   1.268 0.208563    
+R1          -1.166e+05  3.056e+04  -3.814 0.000266 ***
+R2           8.021e-01  4.861e-02  16.501  < 2e-16 ***
+R3          -1.042e-01  1.268e-01  -0.822 0.413638    
+R4           8.978e-03  1.453e-01   0.062 0.950886    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.1755 on 81 degrees of freedom
+Multiple R-squared:  0.8091,	Adjusted R-squared:  0.7997 
+F-statistic: 85.82 on 4 and 81 DF,  p-value: < 2.2e-16
+
+
+EXP Model for Year  2017 :
+
+Call:
+lm(formula = EXP ~ R1 + R5, data = year_data)
+
+Residuals:
+      Min        1Q    Median        3Q       Max 
+-0.278773 -0.046406 -0.002455  0.029284  0.304274 
+
+Coefficients:
+             Estimate Std. Error t value Pr(>|t|)    
+(Intercept) 4.032e-03  1.665e-02   0.242 0.809298    
+R1          9.122e+04  1.382e+04   6.599 3.64e-09 ***
+R5          8.303e-02  2.126e-02   3.905 0.000191 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.08071 on 83 degrees of freedom
+Multiple R-squared:  0.461,	Adjusted R-squared:  0.448 
+F-statistic:  35.5 on 2 and 83 DF,  p-value: 7.244e-12
+

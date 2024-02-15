@@ -16,8 +16,6 @@ data$RM<-data$ABCFO+data$ABPROD+data$ABEXP
 data$RM1<-data$ABCFO+data$ABEXP
 data$RM2<-data$ABPROD+data$ABEXP
 
-#data<-subset(data,data$DA2<0)
-
 ########### winsorizing 1% 
 # Define a function for winsorizing
 winsorize <- function(x) {
@@ -51,6 +49,7 @@ X_vars <- c("RM")
 models <- list() # To store lm models
 se_list <- list() # To store robust SEs for each model
 
+
 for (Y_var in Y_vars) {
   for (X_var in X_vars) {
     # Define the model formula
@@ -80,7 +79,7 @@ for (Y_var in Y_vars) {
 # Output all models in a single table
 stargazer(models, type = "html", 
           se = se_list, 
-          title = "AM-Regression Results with Clustered Standard Errors", out = "AM_.html")
+          title = "AM-Regression Results with Clustered Standard Errors", out = "AM_NF.html")
 
 
 
@@ -114,5 +113,5 @@ for (Y_var in Y_vars) {
 # Assuming you want to output all models in a single table
 stargazer(models, type = "html", 
           se = se_list, 
-          title = "RM-Regression Results with Clustered Standard Errors", out = "RM_.html")
+          title = "RM-Regression Results with Clustered Standard Errors", out = "RM_NF.html")
 

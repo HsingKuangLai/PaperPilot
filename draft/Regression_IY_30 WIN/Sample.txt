@@ -1,0 +1,4 @@
+Samples from TEJ database from 2017 to 2022 given still alive before 2023 year end: 10,780
+Less: Missing  data of finance or audit related variables: 10,105
+Less: Sales at year t or t-1 since the denominator of RA variable: 10,100
+Less: Calculation for AM/RM proxies given at least 15 observations for each industy-year regression: 9,780   

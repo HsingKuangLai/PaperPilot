@@ -1,0 +1,138 @@
+Jones Model for Year  2021 :
+
+Call:
+lm(formula = AC ~ A1 + A21 + A3, data = year_data)
+
+Residuals:
+      Min        1Q    Median        3Q       Max 
+-0.247079 -0.035864  0.003282  0.036061  0.198473 
+
+Coefficients:
+              Estimate Std. Error t value Pr(>|t|)  
+(Intercept) -3.855e-03  1.824e-02  -0.211   0.8330  
+A1           1.312e+04  1.241e+04   1.058   0.2926  
+A21          1.154e-01  4.669e-02   2.473   0.0150 *
+A3          -8.611e-02  4.900e-02  -1.757   0.0817 .
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.07805 on 106 degrees of freedom
+Multiple R-squared:  0.1151,	Adjusted R-squared:  0.09004 
+F-statistic: 4.595 on 3 and 106 DF,  p-value: 0.004593
+
+
+Jones Model 1 for Year  2021 :
+
+Call:
+lm(formula = AC ~ A1 + A2 + A3, data = year_data)
+
+Residuals:
+      Min        1Q    Median        3Q       Max 
+-0.247355 -0.040913  0.000829  0.039183  0.220139 
+
+Coefficients:
+              Estimate Std. Error t value Pr(>|t|)  
+(Intercept)  1.036e-02  1.911e-02   0.542   0.5889  
+A1           1.618e+04  1.271e+04   1.273   0.2057  
+A2          -7.770e-03  6.081e-02  -0.128   0.8986  
+A3          -9.578e-02  5.050e-02  -1.897   0.0606 .
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.08026 on 106 degrees of freedom
+Multiple R-squared:  0.06419,	Adjusted R-squared:  0.0377 
+F-statistic: 2.424 on 3 and 106 DF,  p-value: 0.06985
+
+
+Jones Model 2 for Year  2021 :
+
+Call:
+lm(formula = AC ~ A1 + A2 + A3 + A4, data = year_data)
+
+Residuals:
+      Min        1Q    Median        3Q       Max 
+-0.254113 -0.037467  0.004881  0.037184  0.168155 
+
+Coefficients:
+              Estimate Std. Error t value Pr(>|t|)   
+(Intercept) -7.413e-03  1.938e-02  -0.382  0.70290   
+A1           2.460e+04  1.258e+04   1.955  0.05324 . 
+A2          -8.791e-02  6.456e-02  -1.362  0.17616   
+A3          -7.041e-02  4.947e-02  -1.423  0.15760   
+A4           3.126e-01  1.050e-01   2.976  0.00362 **
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.07744 on 105 degrees of freedom
+Multiple R-squared:  0.137,	Adjusted R-squared:  0.1041 
+F-statistic: 4.167 on 4 and 105 DF,  p-value: 0.003582
+
+
+CFO Model for Year  2021 :
+
+Call:
+lm(formula = CFO ~ R1 + R2 + R3, data = year_data)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-0.28127 -0.05069 -0.01495  0.04636  0.26761 
+
+Coefficients:
+              Estimate Std. Error t value Pr(>|t|)   
+(Intercept)  3.776e-02  2.193e-02   1.722   0.0880 . 
+R1          -4.306e+04  1.459e+04  -2.951   0.0039 **
+R2           4.796e-02  3.131e-02   1.532   0.1285   
+R3           2.052e-02  7.017e-02   0.292   0.7706   
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.09559 on 106 degrees of freedom
+Multiple R-squared:  0.09965,	Adjusted R-squared:  0.07417 
+F-statistic: 3.911 on 3 and 106 DF,  p-value: 0.0108
+
+
+PROD Model for Year  2021 :
+
+Call:
+lm(formula = PROD ~ R1 + R2 + R3 + R4, data = year_data)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-0.33262 -0.04090  0.00315  0.04642  0.17188 
+
+Coefficients:
+              Estimate Std. Error t value Pr(>|t|)    
+(Intercept) -2.604e-02  2.076e-02  -1.254    0.213    
+R1          -2.195e+04  1.347e+04  -1.629    0.106    
+R2           8.898e-01  2.931e-02  30.362   <2e-16 ***
+R3          -2.661e-02  6.470e-02  -0.411    0.682    
+R4          -4.347e-02  5.218e-02  -0.833    0.407    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.08809 on 105 degrees of freedom
+Multiple R-squared:  0.931,	Adjusted R-squared:  0.9283 
+F-statistic: 354.1 on 4 and 105 DF,  p-value: < 2.2e-16
+
+
+EXP Model for Year  2021 :
+
+Call:
+lm(formula = EXP ~ R1 + R5, data = year_data)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-0.15801 -0.03064 -0.01120  0.03204  0.18077 
+
+Coefficients:
+             Estimate Std. Error t value Pr(>|t|)    
+(Intercept) 3.617e-02  1.158e-02   3.125  0.00229 ** 
+R1          5.103e+04  7.713e+03   6.616 1.51e-09 ***
+R5          7.937e-02  1.638e-02   4.846 4.29e-06 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.05083 on 107 degrees of freedom
+Multiple R-squared:  0.4079,	Adjusted R-squared:  0.3968 
+F-statistic: 36.85 on 2 and 107 DF,  p-value: 6.684e-13
+
