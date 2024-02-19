@@ -60,7 +60,7 @@ for (Y_var in Y_vars) {
       matched_data <- match.data(matched_data)
       
       # 3. Fit a linear model on the matched data
-      model_formula <- as.formula(paste0(Y_var, " ~ RPA_Ctd * ", X_var, " + LEV + OCF + MTB + ADJROA + ADJROA_sq  + LGTA + Age  + RD  + ESG  + Big4 + Year "))
+      model_formula <- as.formula(paste0(Y_var, " ~ RPA_Ctd + ", X_var, " + LEV + OCF + MTB + ADJROA + ADJROA_sq  + LGTA + Age  + RD  + ESG  + Big4 + Year "))
       model <- lm(model_formula, data = matched_data)
       
       # Calculate clustered standard errors
@@ -79,7 +79,7 @@ for (Y_var in Y_vars) {
 }
 
 # Output all models in a single table using stargazer
-stargazer::stargazer(models, type = "html", out = "PSM.html", 
+stargazer::stargazer(models, type = "html", out = "PSM_no.html", 
                      se = se_list, title = "PSM-Regression Results with Clustered Standard Errors")
 
 

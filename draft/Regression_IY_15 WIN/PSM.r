@@ -54,9 +54,9 @@ for (Y_var in Y_vars) {
   for (X_var in X_vars) {
     if (substr(Y_var,1,3)!=substr(X_var,1,3)) {
       # 1. Generate propensity scores
-      ps_model <- glm(as.formula(paste0("RPA_Ctd ~ ", X_var, " + LEV + OCF + MTB + ADJROA + ADJROA_sq + LGTA + Age + RD + ESG  + Big4 + Year")), data = data)
+      ps_model <- glm(as.formula(paste0("RPA_Ctd ~ ", X_var, "  + LEV + OCF + MTB + ADJROA + ADJROA_sq + LGTA + Age + RD + ESG  + Big4 + Year")), data = data)
       # 2. Perform nearest neighbor matching
-      matched_data <- matchit(as.formula(paste0("RPA_Ctd ~ ", X_var, " + LEV + OCF + MTB + ADJROA+ ADJROA_sq  + LGTA + Age  + RD   + ESG  + Big4 + Year")), data = data,link="logit",method = "nearest",distance = "glm")
+      matched_data <- matchit(as.formula(paste0("RPA_Ctd ~ ", X_var, "  + LEV + OCF + MTB + ADJROA+ ADJROA_sq  + LGTA + Age  + RD   + ESG  + Big4 + Year")), data = data,link="logit",method = "nearest",distance = "glm")
       matched_data <- match.data(matched_data)
       
       # 3. Fit a linear model on the matched data
@@ -79,7 +79,7 @@ for (Y_var in Y_vars) {
 }
 
 # Output all models in a single table using stargazer
-stargazer::stargazer(models, type = "html", out = "PSM.html", 
+stargazer::stargazer(models, type = "html", out = "PSM.html", report=("vc*sp"), single.row = TRUE,
                      se = se_list, title = "PSM-Regression Results with Clustered Standard Errors")
 
 

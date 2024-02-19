@@ -79,7 +79,7 @@ for (Y_var in Y_vars) {
 # Output all models in a single table
 stargazer(models, type = "html", 
           se = se_list, 
-          title = "AM-Regression Results with Clustered Standard Errors", out = "AM_NF.html")
+          title = "AM-Regression Results with Clustered Standard Errors", out = "AM.html")
 
 
 
@@ -113,5 +113,5 @@ for (Y_var in Y_vars) {
 # Assuming you want to output all models in a single table
 stargazer(models, type = "html", 
           se = se_list, 
-          title = "RM-Regression Results with Clustered Standard Errors", out = "RM_NF.html")
+          title = "RM-Regression Results with Clustered Standard Errors", out = "RM.html")
 
