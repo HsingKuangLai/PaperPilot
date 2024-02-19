@@ -6,7 +6,7 @@ library(stargazer)
 library(corrtable)
 library(coin)
 # 讀取 CSV 檔案，將 "#N/A" 轉換為真正的 NA（缺失值）
-data <- read.csv("matched_data_RM_ABSDA1.csv")
+data <- read.csv("matched_data_ABSDA1_RM.csv")
 
 # 移除含有缺失值的觀測值
 data$ABSDA<-abs(data$DA)
@@ -37,25 +37,25 @@ data <- data %>%
   mutate(across(.cols = 9:ncol(data), .fns = ~winsorize(.)))
 
 # Des1
-mydata<-data[,c("ABSDA1","ABCFO","ABPROD","ABEXP","RM","ADJROA","Age","RD","ESG","MTB","OCF","LEV","LGTA")]
-stargazer(mydata, type = "html", title="Descriptive statistics", digits=5, out="des1_RM.html",summary.stat = c("mean","median","sd","min","max","p25","p75","n"))
+mydata<-data[,c("ABSDA1","ABCFO","ABPROD","ABEXP","RM","ADJROA","MS","Age","RD","ESG","MTB","OCF","LEV","LGTA")]
+stargazer(mydata, type = "html", title="Descriptive statistics", digits=5, out="des1_AM.html",summary.stat = c("mean","median","sd","min","max","p25","p75","n"))
 
 
 #Des2
 correlation.matrix <- correlation_matrix(mydata,type="spearman",use = "lower",show_significance = TRUE,digits = 3)
-stargazer(correlation.matrix,type="html", title="Correlation Matrix",out="des2_RM.html")
+stargazer(correlation.matrix,type="html", title="Correlation Matrix",out="des2_AM.html")
 
 
 #Des2.1
 mydata<-data[,c("ABSDA1","ABCFO","ABPROD","ABEXP","RM")]
 correlation.matrix <- correlation_matrix(mydata,type="spearman",use = "lower",show_significance = TRUE,digits = 3)
-stargazer(correlation.matrix,type="html", title="Correlation Matrix",out="des2_1_RM.html")
+stargazer(correlation.matrix,type="html", title="Correlation Matrix",out="des2_1_AM.html")
 
 #Des3
-mydata<-data[,c("RPA_Ctd","ABSDA1","ABCFO","ABPROD","ABEXP","RM","ADJROA","Age","RD","ESG","MTB","OCF","LEV","LGTA")]
+mydata<-data[,c("RPA_Ctd","ABSDA1","ABCFO","ABPROD","ABEXP","RM","ADJROA","MS","Age","RD","ESG","MTB","OCF","LEV","LGTA")]
 # Initialize a list to store results
 
-variables<-c("ABSDA1","ABCFO","ABPROD","ABEXP","RM","ADJROA","Age","RD","ESG","MTB","OCF","LEV","LGTA")
+variables<-c("ABSDA1","ABCFO","ABPROD","ABEXP","RM","ADJROA","MS","Age","RD","ESG","MTB","OCF","LEV","LGTA")
 
 results <- list()
 
@@ -90,4 +90,4 @@ rownames(results_df) <- variables
 results_matrix <- as.matrix(results_df)
 
 # Use stargazer to create a table
-stargazer(results_matrix, type = "html",out="des3_RM.html",digits = 4, title = "Comparative Statistics: RPA vs. Non-RPA Firms", summary = FALSE)
+stargazer(results_matrix, type = "html",out="des3_AM.html",digits = 4, title = "Comparative Statistics: RPA vs. Non-RPA Firms", summary = FALSE)

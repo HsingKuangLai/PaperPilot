@@ -18,7 +18,6 @@ data$RM<-data$ABCFO+data$ABPROD+data$ABEXP
 data$RM1<-data$ABCFO+data$ABEXP
 data$RM2<-data$ABPROD+data$ABEXP
 
-
 ######fisrt step######################### winsorizing
 
 # Define a function for winsorizing
@@ -43,8 +42,8 @@ data$RPA_Ctd<-as.double(data$RPA_Ctd)-1
 data$ADJROA_sq<-data$ADJROA*data$ADJROA
 
 # Define your Y and X 
-Y_vars <- c("ABSDA1","RM")
-X_vars <- c("ABSDA1","RM")
+Y_vars <- c("ABSDA1","ABSDA","ABSDA","RM","RM1","RM2")
+X_vars <- c("ABSDA1","ABSDA","RM")
 
 ps_models<-list()
 models <- list() # To store lm models
@@ -54,13 +53,13 @@ for (Y_var in Y_vars) {
   for (X_var in X_vars) {
     if (substr(Y_var,1,3)!=substr(X_var,1,3)) {
       # 1. Generate propensity scores
-      ps_model <- glm(as.formula(paste0("RPA_Ctd ~ ", X_var, "  + LEV + OCF + MTB + ADJROA + ADJROA_sq + LGTA + Age + RD + ESG  + Big4 + Year")), data = data)
+      ps_model <- glm(as.formula(paste0("RPA_Ctd ~ ", X_var, "  + MS　+ LEV + OCF + MTB + ADJROA + LGTA + Age + RD + ESG  + Big4 + Year")), data = data)
       # 2. Perform nearest neighbor matching
-      matched_data <- matchit(as.formula(paste0("RPA_Ctd ~ ", X_var, "  + LEV + OCF + MTB + ADJROA+ ADJROA_sq  + LGTA + Age  + RD   + ESG  + Big4 + Year")), data = data,link="logit",method = "nearest",distance = "glm")
+      matched_data <- matchit(as.formula(paste0("RPA_Ctd ~ ", X_var, " + MS + LEV + OCF + MTB + ADJROA  + LGTA + Age  + RD  + ESG  + Big4 + Year")), data = data,link="logit",method = "nearest",distance = "glm")
       matched_data <- match.data(matched_data)
       
       # 3. Fit a linear model on the matched data
-      model_formula <- as.formula(paste0(Y_var, " ~ RPA_Ctd * ", X_var, " + LEV + OCF + MTB + ADJROA + ADJROA_sq+ LGTA + Age  + RD   + ESG  + Big4 + Year "))
+      model_formula <- as.formula(paste0(Y_var, " ~ RPA_Ctd * ", X_var, " + MS + LEV + OCF + MTB + ADJROA + LGTA + Age  + RD   + ESG  + Big4 + Year "))
       model <- lm(model_formula, data = matched_data)
       
       # Calculate clustered standard errors
@@ -79,7 +78,7 @@ for (Y_var in Y_vars) {
 }
 
 # Output all models in a single table using stargazer
-stargazer::stargazer(models, type = "html", out = "PSM.html", report=("vc*sp"), single.row = TRUE,
+stargazer::stargazer(models, type = "html", out = "PSM.html",
                      se = se_list, title = "PSM-Regression Results with Clustered Standard Errors")
 
 
