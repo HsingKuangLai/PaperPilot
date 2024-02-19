@@ -53,13 +53,13 @@ for (Y_var in Y_vars) {
   for (X_var in X_vars) {
     if (substr(Y_var,1,3)!=substr(X_var,1,3)) {
       # 1. Generate propensity scores
-      ps_model <- glm(as.formula(paste0("RPA_Ctd ~ ", X_var, "  + MS　+ LEV + OCF + MTB + ADJROA + LGTA + Age + RD + ESG  + Big4 + Year")), data = data)
+      ps_model <- glm(as.formula(paste0("RPA_Ctd ~ ", X_var, "  + INST+ MS　+ LEV + OCF + MTB + ADJROA  + LGTA + Age + RD + ESG + ADV + Big4 + Year")), data = data)
       # 2. Perform nearest neighbor matching
-      matched_data <- matchit(as.formula(paste0("RPA_Ctd ~ ", X_var, " + MS + LEV + OCF + MTB + ADJROA  + LGTA + Age  + RD  + ESG  + Big4 + Year")), data = data,link="logit",method = "nearest",distance = "glm")
+      matched_data <- matchit(as.formula(paste0("RPA_Ctd ~ ", X_var, " + INST+ MS + LEV + OCF + MTB + ADJROA  + LGTA + Age  + RD + ADV + ESG  + Big4 + Year")), data = data,link="logit",method = "nearest",distance = "glm")
       matched_data <- match.data(matched_data)
       
       # 3. Fit a linear model on the matched data
-      model_formula <- as.formula(paste0(Y_var, " ~ RPA_Ctd * ", X_var, " + MS + LEV + OCF + MTB + ADJROA + LGTA + Age  + RD   + ESG  + Big4 + Year "))
+      model_formula <- as.formula(paste0(Y_var, " ~ RPA_Ctd * ", X_var, " + INST + MS + LEV + OCF + MTB + ADJROA  + LGTA + Age  + RD  + ADV + ESG  + Big4 + Year "))
       model <- lm(model_formula, data = matched_data)
       
       # Calculate clustered standard errors
@@ -67,7 +67,7 @@ for (Y_var in Y_vars) {
       
       # Output matched_data to CSV
       csv_filename <- paste0("matched_data_", Y_var, "_", X_var, ".csv")
-      #write.csv(matched_data, file = csv_filename, row.names = FALSE)
+      write.csv(matched_data, file = csv_filename, row.names = FALSE)
       
       # Store the model, its robust SE
       models[[paste0(Y_var, "_", X_var)]] <- model
