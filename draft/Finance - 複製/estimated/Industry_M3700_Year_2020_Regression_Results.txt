@@ -1,0 +1,130 @@
+Jones Model for Year  2020 :
+
+Call:
+lm(formula = AC ~ A1 + A21 + A3, data = year_data)
+
+Residuals:
+      Min        1Q    Median        3Q       Max 
+-0.084853 -0.038810 -0.001903  0.024267  0.122909 
+
+Coefficients:
+              Estimate Std. Error t value Pr(>|t|)
+(Intercept) -4.509e-02  3.090e-02  -1.459    0.164
+A1           9.012e+03  4.321e+04   0.209    0.837
+A21          5.029e-02  6.578e-02   0.765    0.456
+A3          -2.556e-02  9.162e-02  -0.279    0.784
+
+Residual standard error: 0.06042 on 16 degrees of freedom
+Multiple R-squared:  0.04402,	Adjusted R-squared:  -0.1352 
+F-statistic: 0.2456 on 3 and 16 DF,  p-value: 0.8632
+
+
+Jones Model 1 for Year  2020 :
+
+Call:
+lm(formula = AC ~ A1 + A2 + A3, data = year_data)
+
+Residuals:
+      Min        1Q    Median        3Q       Max 
+-0.085566 -0.038564 -0.003875  0.024092  0.119639 
+
+Coefficients:
+              Estimate Std. Error t value Pr(>|t|)
+(Intercept) -4.370e-02  3.174e-02  -1.377    0.188
+A1           8.780e+03  4.397e+04   0.200    0.844
+A2           2.028e-02  8.415e-02   0.241    0.813
+A3          -2.556e-02  9.448e-02  -0.271    0.790
+
+Residual standard error: 0.06141 on 16 degrees of freedom
+Multiple R-squared:  0.01269,	Adjusted R-squared:  -0.1724 
+F-statistic: 0.06853 on 3 and 16 DF,  p-value: 0.9759
+
+
+Jones Model 2 for Year  2020 :
+
+Call:
+lm(formula = AC ~ A1 + A2 + A3 + A4, data = year_data)
+
+Residuals:
+      Min        1Q    Median        3Q       Max 
+-0.069777 -0.036248 -0.006096  0.027110  0.129656 
+
+Coefficients:
+              Estimate Std. Error t value Pr(>|t|)  
+(Intercept) -7.397e-02  3.162e-02  -2.339   0.0336 *
+A1           9.269e+03  3.946e+04   0.235   0.8175  
+A2          -5.690e-02  8.324e-02  -0.684   0.5046  
+A3          -6.097e-02  8.630e-02  -0.707   0.4907  
+A4           5.228e-01  2.370e-01   2.206   0.0434 *
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.05511 on 15 degrees of freedom
+Multiple R-squared:  0.2545,	Adjusted R-squared:  0.0557 
+F-statistic:  1.28 on 4 and 15 DF,  p-value: 0.3214
+
+
+CFO Model for Year  2020 :
+
+Call:
+lm(formula = CFO ~ R1 + R2 + R3, data = year_data)
+
+Residuals:
+      Min        1Q    Median        3Q       Max 
+-0.133112 -0.026783 -0.001578  0.032076  0.098068 
+
+Coefficients:
+             Estimate Std. Error t value Pr(>|t|)
+(Intercept) 7.046e-02  4.099e-02   1.719    0.105
+R1          7.095e+02  4.205e+04   0.017    0.987
+R2          5.953e-02  3.874e-02   1.537    0.144
+R3          2.418e-02  6.957e-02   0.348    0.733
+
+Residual standard error: 0.057 on 16 degrees of freedom
+Multiple R-squared:  0.1969,	Adjusted R-squared:  0.04626 
+F-statistic: 1.307 on 3 and 16 DF,  p-value: 0.3065
+
+
+PROD Model for Year  2020 :
+
+Call:
+lm(formula = PROD ~ R1 + R2 + R3 + R4, data = year_data)
+
+Residuals:
+      Min        1Q    Median        3Q       Max 
+-0.190172 -0.022726  0.006667  0.040908  0.116999 
+
+Coefficients:
+              Estimate Std. Error t value Pr(>|t|)    
+(Intercept) -1.267e-01  6.157e-02  -2.058   0.0574 .  
+R1           4.058e+04  6.337e+04   0.640   0.5316    
+R2           8.898e-01  7.256e-02  12.264 3.21e-09 ***
+R3          -2.357e-01  1.247e-01  -1.889   0.0783 .  
+R4           9.098e-02  3.101e-01   0.293   0.7733    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.08302 on 15 degrees of freedom
+Multiple R-squared:  0.9523,	Adjusted R-squared:  0.9395 
+F-statistic: 74.83 on 4 and 15 DF,  p-value: 1.003e-09
+
+
+EXP Model for Year  2020 :
+
+Call:
+lm(formula = EXP ~ R1 + R5, data = year_data)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-0.08716 -0.06668 -0.03855 -0.00210  0.33506 
+
+Coefficients:
+              Estimate Std. Error t value Pr(>|t|)
+(Intercept)  1.428e-01  8.729e-02   1.636    0.120
+R1          -6.111e+04  8.943e+04  -0.683    0.504
+R5           2.879e-02  8.440e-02   0.341    0.737
+
+Residual standard error: 0.1216 on 17 degrees of freedom
+Multiple R-squared:  0.04195,	Adjusted R-squared:  -0.07076 
+F-statistic: 0.3722 on 2 and 17 DF,  p-value: 0.6947
+
