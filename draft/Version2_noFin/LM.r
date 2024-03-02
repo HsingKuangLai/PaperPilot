@@ -49,8 +49,8 @@ sink("Result_NICtd.txt")
 
 # Define control variables , "ESG",, "Zscore"
 control_vars <- c("RPA_Ctd","Suspect", "NOA", "INST", "MS", "LEV", "OCF", "MTB", "SG", "ADJROA", "ADJROA_sq", "ADV","LGTA", "Big4")
-control_vars_AM <- c("RPA_Ctd","SEO","NOA","INST","Cycle","Zscore","CL","MS","OCF",  "MTB",  "ADJROA", "ADJROA_sq", "LGTA", "Big4","Year")
-control_vars_RM <- c("RPA_Ctd","SEO","NOA", "INST","Cycle","Zscore","CL", "MS","OCF", "MTB", "ADJROA", "ADJROA_sq", "ADV","RD", "LGTA","Year")
+control_vars_AM <- c("RPA_Ctd","Suspect","SEO","NOA","INST","Cycle","Zscore","CL","MS","OCF","MTB","LEV","ADJROA", "ADJROA_sq", "LGTA", "Big4","Year")
+control_vars_RM <- c("RPA_Ctd","Suspect","SEO","NOA", "INST","Cycle","Zscore","CL", "MS","OCF","LEV", "MTB", "ADJROA", "ADJROA_sq", "ADV","RD", "LGTA","Year")
 
 
 # Proxy names for AM and RM
@@ -73,8 +73,12 @@ control_vars_with_year <- c(control_vars, "Year")
 # Model for RM with AM.hat and control variables
 modelRM_formula <- as.formula(paste(RM_proxy, "~ AMhat +", paste(control_vars_RM, collapse=" + ")))
 modelRM <- lm(modelRM_formula, data = data)
-
+print("Endogenity Test:")
 summary(lm(RM2~ABSDA+AMres,data=data))
+print("1st Stage:")
+summary(modelRM_HAT)
+coeftest(modelRM_HAT, vcov = vcovHC(modelRM_HAT, type = "HC0"))
+print("2nd Stage:")
 summary(modelRM)
 coeftest(modelRM, vcov = vcovHC(modelRM, type = "HC0"))
 
@@ -82,8 +86,12 @@ coeftest(modelRM, vcov = vcovHC(modelRM, type = "HC0"))
 # Model for AM with RM.hat, control variables, and AM proxy
 modelAM_formula <- as.formula(paste(AM_proxy, "~   RMhat + ", paste(control_vars_AM, collapse=" + ")))
 modelAM <- lm(modelAM_formula, data = data)
-
+print("Endogenity Test:")
 summary(lm(ABSDA~RM2+RMres,data=data))
+print("1st Stage:")
+summary(modelAM_HAT)
+coeftest(modelAM_HAT, vcov = vcovHC(modelAM_HAT, type = "HC0"))
+print("2nd Stage:")
 summary(modelAM)
 coeftest(modelAM, vcov = vcovHC(modelAM, type = "HC0"))
 
