@@ -45,12 +45,12 @@ data$Age_sq<-data$Age*data$Age
 data$Year<-(as.numeric(data$Year)+2016)
 #sink("Result_EBITDA_1.txt")
 
-#sink("Result_NICtd.txt")
+sink("Result_NICtd.txt")
 
 # Define control variables , "ESG",, "Zscore"
 control_vars <- c("RPA_Ctd","Suspect", "NOA", "INST", "MS", "LEV", "OCF", "MTB", "SG", "ADJROA", "ADJROA_sq", "ADV","LGTA", "Big4")
-control_vars_AM <- c("RPA_Ctd","NOA","INST","Cycle","Zscore","CL","MS","OCF",  "MTB",  "ADJROA", "ADJROA_sq", "LGTA", "Big4","Year")
-control_vars_RM <- c("RPA_Ctd","NOA", "INST","Cycle","Zscore","CL", "MS","OCF", "MTB", "ADJROA", "ADJROA_sq", "ADV","RD", "LGTA","Year")
+control_vars_AM <- c("RPA_Ctd","SEO","NOA","INST","Cycle","Zscore","CL","MS","OCF",  "MTB",  "ADJROA", "ADJROA_sq", "LGTA", "Big4","Year")
+control_vars_RM <- c("RPA_Ctd","SEO","NOA", "INST","Cycle","Zscore","CL", "MS","OCF", "MTB", "ADJROA", "ADJROA_sq", "ADV","RD", "LGTA","Year")
 
 
 # Proxy names for AM and RM
@@ -87,4 +87,4 @@ summary(lm(ABSDA~RM2+RMres,data=data))
 summary(modelAM)
 coeftest(modelAM, vcov = vcovHC(modelAM, type = "HC0"))
 
-#sink()
+sink()
