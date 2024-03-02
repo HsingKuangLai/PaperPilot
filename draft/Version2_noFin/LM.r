@@ -49,8 +49,8 @@ sink("Result_NICtd.txt")
 
 # Define control variables , "ESG",, "Zscore"
 control_vars <- c("RPA_Ctd","Suspect", "NOA", "INST", "MS", "LEV", "OCF", "MTB", "SG", "ADJROA", "ADJROA_sq", "ADV","LGTA", "Big4")
-control_vars_AM <- c("RPA_Ctd","Suspect","SEO","NOA","INST","Cycle","Zscore","CL","MS","OCF","MTB","LEV","ADJROA", "ADJROA_sq", "LGTA", "Big4","Year")
-control_vars_RM <- c("RPA_Ctd","Suspect","SEO","NOA", "INST","Cycle","Zscore","CL", "MS","OCF","LEV", "MTB", "ADJROA", "ADJROA_sq", "ADV","RD", "LGTA","Year")
+control_vars_AM <- c("RPA_Ctd","SEO","NOA","INST","Cycle","Zscore","CL","MS","OCF","MTB","LEV","ADJROA", "ADJROA_sq", "LGTA", "Big4","Year")
+control_vars_RM <- c("RPA_Ctd","SEO","NOA", "INST","Cycle","Zscore","CL", "MS","OCF","LEV", "MTB", "ADJROA", "ADJROA_sq", "ADV","RD", "LGTA","Year")
 
 
 # Proxy names for AM and RM
