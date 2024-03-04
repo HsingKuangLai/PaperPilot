@@ -42,60 +42,93 @@ data$ADJROA_sq<-data$ADJROA*data$ADJROA
 data$ROA_sq<-data$ROA*data$ROA
 data$Age_sq<-data$Age*data$Age
 data$Year<-(as.numeric(data$Year)+2016)
-#sink("Result_EBITDA_1.txt")
-
-sink("Result_NICtd_withControlGroup_ABPROD.txt")
-
 
 
 # Proxy names for AM and RM
 AM_proxy <- "ABSDA"  # Substitute 'ABSDA1' with any other AM proxy as needed
-RM_proxy <- "ABPROD"      # Substitute 'RM' with any other RM proxy as needed
+RM_proxies <- c("ABPROD","ABEXP","RM2")      # Substitute 'RM' with any other RM proxy as needed
 
-print(RM_proxy)
+model_endo<-list()
+model_fst<-list()
+model_snd<-list()
+rst_endo<-list()
+rst_fst<-list()
+rst_snd<-list()
 
-# Define control variables , "ESG",, "Zscore"
-control_vars <- c("RPA_Ctd","Suspect", "NOA", "INST", "MS", "LEV", "OCF", "MTB", "SG", "ADJROA", "ADJROA_sq", "ADV","LGTA", "Big4")
-control_vars_AM <- c("RPA_Ctd","Adopt","Adopt_RPA","SEO","NOA","INST","Cycle","Zscore","CL","MS","OCF","MTB","LEV","ADJROA", "ADJROA_sq", "LGTA", "Big4","Year")
-control_vars_RM <- c("RPA_Ctd","Adopt","Adopt_RPA","SEO","NOA", "INST","Cycle","Zscore", "CL","MS","OCF","LEV", "MTB", "ADJROA", "ADJROA_sq", "ADV","RD", "LGTA","Year")
+for (RM_proxy in RM_proxies) {
+  
+  # Define control variables , "ESG",, "Zscore"
+  control_vars <- c("RPA_Ctd","Suspect", "NOA", "INST", "MS", "LEV", "OCF", "MTB", "SG", "ADJROA", "ADJROA_sq", "ADV","LGTA", "Big4")
+  control_vars_AM <- c("RPA_Ctd","Adopt","Adopt_RPA","SEO","NOA","INST","Cycle","Zscore","CL","MS","OCF","MTB","LEV","ADJROA", "ADJROA_sq", "LGTA", "Big4","Year")
+  control_vars_RM <- c("RPA_Ctd","Adopt","Adopt_RPA","SEO","NOA", "INST","Cycle","Zscore", "CL","MS","OCF","LEV", "MTB", "ADJROA", "ADJROA_sq", "ADV","RD", "LGTA","Year")
+  
+  # Model for AM with control variables and AM proxy
+  modelAM_HAT_formula <- as.formula(paste(AM_proxy, "~ ", paste(control_vars_AM, collapse=" + ")))
+  modelAM_HAT <- lm(modelAM_HAT_formula, data = data,singular.ok = FALSE)
+  
+  data$AMhat <- fitted.values(modelAM_HAT)
+  data$AMres <- residuals(modelAM_HAT)
+  # Model for RM without AM.hat to get RM.hat
+  modelRM_HAT_formula <- as.formula(paste(RM_proxy, "~", paste(control_vars_RM, collapse=" + ")))
+  modelRM_HAT <- lm(modelRM_HAT_formula, data = data)
+  data$RMhat <- fitted(modelRM_HAT)
+  data$RMres <- residuals(modelRM_HAT)
+  # Include Year in control variables for RM models
+  control_vars_with_year <- c(control_vars, "Year")
+  
+  # Model for RM with AM.hat and control variables
+  modelRM_formula <- as.formula(paste(RM_proxy, "~ AMhat +", paste(control_vars_RM, collapse=" + ")))
+  modelRM <- lm(modelRM_formula, data = data)
+  modelRM_endo<-lm(paste(RM_proxy,"~ABSDA+AMres"),data=data)
+  
+  #RM_endo
+  model_endo[[paste("RM_",RM_proxy)]]<-modelRM_endo
+  cov<-vcovHC(modelRM_endo,type="HC0")
+  rst_endo[[paste("RM_",RM_proxy)]]<-sqrt(diag(cov))
+  
+  #1st
+  model_fst[[paste("RM_",RM_proxy)]]<-modelRM_HAT
+  cov<-vcovHC(modelRM_HAT,type="HC0")
+  rst_fst[[paste("RM_",RM_proxy)]]<-sqrt(diag(cov))
+  
+  #2nd
+  model_snd[[paste("RM_",RM_proxy)]]<-modelRM
+  cov<-vcovHC(modelRM,type="HC0")
+  rst_snd[[paste("RM_",RM_proxy)]]<-sqrt(diag(cov))
+  
+  
+  # Model for AM with RM.hat, control variables, and AM proxy
+  modelAM_formula <- as.formula(paste(AM_proxy, "~   RMhat + ", paste(control_vars_AM, collapse=" + ")))
+  modelAM <- lm(modelAM_formula, data = data)
+  modelAM_endo<-lm(paste("ABSDA ~ RMres + ", RM_proxy),data=data)
+  
+  #AM_endo
+  model_endo[[paste("AM_",RM_proxy)]]<-modelAM_endo
+  cov<-vcovHC(modelAM_endo,type="HC0")
+  rst_endo[[paste("AM_",RM_proxy)]]<-sqrt(diag(cov))
+  
+  #1st
+  model_fst[[paste("AM_",RM_proxy)]]<-modelAM_HAT
+  cov<-vcovHC(modelAM_HAT,type="HC0")
+  rst_fst[[paste("AM_",RM_proxy)]]<-sqrt(diag(cov))
+  
+  #2nd
+  model_snd[[paste("AM_",RM_proxy)]]<-modelAM
+  cov<-vcovHC(modelAM,type="HC0")
+  rst_snd[[paste("AM_",RM_proxy)]]<-sqrt(diag(cov))
+}
 
+# Output all models in a single table
+stargazer(rev(model_endo)[-c(5,3)], type = "html", column.labels = NULL,
+          se = rev(rst_endo)[-c(5,3)], 
+          title = "Endogeneity Test", out = "Endo_Ctrl.html")
 
-# Model for AM with control variables and AM proxy
-modelAM_HAT_formula <- as.formula(paste(AM_proxy, "~ ", paste(control_vars_AM, collapse=" + ")))
-modelAM_HAT <- lm(modelAM_HAT_formula, data = data,singular.ok = FALSE)
-data$AMhat <- fitted.values(modelAM_HAT)
-data$AMres <- residuals(modelAM_HAT)
-# Model for RM without AM.hat to get RM.hat
-modelRM_HAT_formula <- as.formula(paste(RM_proxy, "~ ", paste(control_vars_RM, collapse=" + ")))
-modelRM_HAT <- lm(modelRM_HAT_formula, data = data)
-data$RMhat <- fitted(modelRM_HAT)
-data$RMres <- residuals(modelRM_HAT)
-# Include Year in control variables for RM models
-control_vars_with_year <- c(control_vars, "Year")
+# Output all models in a single table
+stargazer(rev(model_fst)[-c(5,3)], type = "html", column.labels = NULL,
+          se = rev(rst_fst)[-c(5,3)], 
+          title = "First Stage", out = "fst_Ctrl.html")
 
-# Model for RM with AM.hat and control variables
-modelRM_formula <- as.formula(paste(RM_proxy, "~ AMhat +", paste(control_vars_RM, collapse=" + ")))
-modelRM <- lm(modelRM_formula, data = data)
-print("Endogenity Test:")
-summary(lm(paste(RM_proxy,"~ABSDA+AMres"),data=data))
-print("1st Stage:")
-summary(modelRM_HAT)
-coeftest(modelRM_HAT, vcov = vcovHC(modelRM_HAT, type = "HC0"))
-print("2nd Stage:")
-summary(modelRM)
-coeftest(modelRM, vcov = vcovHC(modelRM, type = "HC0"))
-
-
-# Model for AM with RM.hat, control variables, and AM proxy
-modelAM_formula <- as.formula(paste(AM_proxy, "~   RMhat + ", paste(control_vars_AM, collapse=" + ")))
-modelAM <- lm(modelAM_formula, data = data)
-print("Endogenity Test:")
-summary(lm(paste("ABSDA~",RM_proxy,"+RMres"),data=data))
-print("1st Stage:")
-summary(modelAM_HAT)
-coeftest(modelAM_HAT, vcov = vcovHC(modelAM_HAT, type = "HC0"))
-print("2nd Stage:")
-summary(modelAM)
-coeftest(modelAM, vcov = vcovHC(modelAM, type = "HC0"))
-
-sink()
+# Output all models in a single table
+stargazer(rev(model_snd)[-c(5,3)], type = "html", column.labels = NULL,
+          se = rev(rst_snd)[-c(5,3)], 
+          title = "Second Stage", out = "snd_Ctrl.html")

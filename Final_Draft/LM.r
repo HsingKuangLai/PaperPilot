@@ -124,16 +124,16 @@ for (RM_proxy in RM_proxies) {
 }
 
 # Output all models in a single table
-stargazer(rev(model_endo), type = "html", column.labels = NULL,
-          se = rev(rst_endo), 
+stargazer(rev(model_endo)[-c(5,3)], type = "html", column.labels = NULL,
+          se = rev(rst_endo)[-c(5,3)], 
           title = "Endogeneity Test", out = "Endo.html")
 
 # Output all models in a single table
-stargazer(rev(model_fst), type = "html", column.labels = NULL,
-          se = rev(rst_fst), 
+stargazer(rev(model_fst)[-c(5,3)], type = "html", column.labels = NULL,
+          se = rev(rst_fst)[-c(5,3)], 
           title = "First Stage", out = "fst.html")
 
 # Output all models in a single table
-stargazer(rev(model_snd), type = "html", column.labels = NULL,
-          se = rev(rst_snd), 
+stargazer(rev(model_snd)[-c(5,3)], type = "html", column.labels = NULL,
+          se = rev(rst_snd)[-c(5,3)], 
           title = "Second Stage", out = "snd.html")
