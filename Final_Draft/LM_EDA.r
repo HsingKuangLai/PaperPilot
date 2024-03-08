@@ -6,7 +6,7 @@ library(stargazer)
 library(corrtable)
 library(coin)
 # 讀取 CSV 檔案，將 "#N/A" 轉換為真正的 NA（缺失值）
-data <- read.csv("Total.csv")
+data <- read.csv("Ctd_Control.csv")
 
 # 移除含有缺失值的觀測值
 data$ABSDA<-abs(data$DA)
@@ -30,11 +30,13 @@ winsorize <- function(x) {
 }
 
 # Factorize the first 6 columns
-data[1:8] <- lapply(data[1:8], factor)
+data[1:10] <- lapply(data[1:10], factor)
 
 # Apply the winsorize function to the remaining columns
 data <- data %>%
-  mutate(across(.cols = 9:ncol(data), .fns = ~winsorize(.)))
+  mutate(across(.cols = 11:ncol(data), .fns = ~winsorize(.)))
+
+
 
 # Des1
 mydata<-data[,c("ABSDA1","ABCFO","ABPROD","ABEXP","RM","ADJROA","INST","MS","Age","RD","ADV","ESG","MTB","OCF","LEV","LGTA")]
@@ -52,18 +54,20 @@ correlation.matrix <- correlation_matrix(mydata,type="spearman",use = "lower",sh
 stargazer(correlation.matrix,type="html", title="Correlation Matrix",out="des2_1.html")
 
 #Des3
-mydata<-data[,c("RPA_Ctd","ABSDA1","ABCFO","ABPROD","ABEXP","RM","ADJROA","INST","MS","Age","RD","ADV","ESG","MTB","OCF","LEV","LGTA")]
+mydata<-data[,c("POST","RPA","POST_RPA","ABSDA","ABPROD","ABEXP","RM","LEV","OCF","MTB","MS","INST","CYCLE","NOA","ZSCORE","CL","ADJROA","LGTA","BIG4","RD","ADV")]
 # Initialize a list to store results
 
-variables<-c("ABSDA1","ABCFO","ABPROD","ABEXP","RM","ADJROA","INST","MS","Age","RD","ADV","ESG","MTB","OCF","LEV","LGTA")
+variables<-c("ABSDA","ABPROD","ABEXP","RM","LEV","OCF","MTB","MS","INST","CYCLE","NOA","ZSCORE","CL","ADJROA","LGTA","BIG4","RD","ADV")
 
 results <- list()
+
+mydata$BIG4<-as.numeric(mydata$BIG4)
 
 # Loop through each variable to calculate stats and perform tests
 for (var in variables) {
   # Separate the groups
-  group_rpa <- filter(mydata, RPA_Ctd == 1) %>% pull(!!sym(var))
-  group_non_rpa <- filter(mydata, RPA_Ctd == 0) %>% pull(!!sym(var))
+  group_rpa <- filter(mydata, RPA == 0 & POST==1) %>% pull(!!sym(var))
+  group_non_rpa <- filter(mydata, RPA == 1 & POST==1) %>% pull(!!sym(var))
   
   # Calculate statistics
   mean_rpa <- mean(group_rpa, na.rm = TRUE)
@@ -74,20 +78,22 @@ for (var in variables) {
   median_non_rpa <- median(group_non_rpa, na.rm = TRUE)
   sd_non_rpa <- sd(group_non_rpa, na.rm = TRUE)
   
+  mydata<-subset(mydata,mydata$POST==1)
+  
   # Wilcoxon test
-  test_result <- wilcox_test(reformulate('RPA_Ctd', response = var), data = mydata)
+  test_result <- wilcox_test(reformulate("RPA", response = var), data = mydata)
   p_value <- pvalue(test_result)
   
   # Store results
-  results[[var]] <- c(mean_rpa, median_rpa, sd_rpa, mean_non_rpa, median_non_rpa, sd_non_rpa, p_value)
+  results[[var]] <- c(mean_rpa, sd_rpa, mean_non_rpa, sd_non_rpa, p_value)
 }
 
 # Convert results to a dataframe for easier manipulation and display
 results_df <- do.call(rbind, results)
-colnames(results_df) <- c("Mean RPA", "Median RPA", "SD RPA", "Mean Non-RPA", "Median Non-RPA", "SD Non-RPA", "P-Value")
+colnames(results_df) <- c("Mean Control", "SD Control", "Mean Treatment", "SD Treatment", "P-Value")
 rownames(results_df) <- variables
 # Convert the results dataframe to a matrix for stargazer
 results_matrix <- as.matrix(results_df)
 
 # Use stargazer to create a table
-stargazer(results_matrix, type = "html",out="des3.html",digits = 4, title = "Comparative Statistics: RPA vs. Non-RPA Firms", summary = FALSE)
+stargazer(results_matrix, type = "html",out="des31.html",digits = 4, title = "Comparative Statistics: RPA vs. Non-RPA Firms", summary = FALSE)

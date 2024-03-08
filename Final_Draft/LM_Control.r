@@ -56,8 +56,8 @@ for (RM_proxy in RM_proxies) {
   
   # Define control variables , "ESG",, "Zscore"
   control_vars <- c("RPA_Ctd","Suspect", "NOA", "INST", "MS", "LEV", "OCF", "MTB", "SG", "ADJROA", "ADJROA_sq", "ADV","LGTA", "Big4")
-  control_vars_AM <- c("RPA","ADPT","ADPT_RPA","NOA","INST","CYCLE","ZSCORE","CL","MS","OCF","MTB","LEV","ADJROA", "ADJROA_sq", "LGTA", "BIG4","YEAR")
-  control_vars_RM <- c("RPA","ADPT","ADPT_RPA","NOA", "INST","CYCLE","ZSCORE", "CL","MS","OCF","LEV", "MTB", "ADJROA", "ADJROA_sq", "ADV","RD", "LGTA","YEAR")
+  control_vars_AM <- c("POST","RPA","POST_RPA","NOA","INST","CYCLE","ZSCORE","CL","MS","OCF","MTB","LEV","ADJROA", "ADJROA_sq", "LGTA", "BIG4","YEAR")
+  control_vars_RM <- c("POST","RPA","POST_RPA","NOA", "INST","CYCLE","ZSCORE", "CL","MS","OCF","LEV", "MTB", "ADJROA", "ADJROA_sq", "ADV","RD", "LGTA","YEAR")
   
   # Model for AM with control variables and AM proxy
   modelAM_HAT_formula <- as.formula(paste(AM_proxy, "~ ", paste(control_vars_AM, collapse=" + ")))
@@ -116,22 +116,22 @@ for (RM_proxy in RM_proxies) {
 }
 
 # Output all models in a single table
-stargazer(rev(model_endo)[-c(5,3)], type = "html", column.labels = NULL,
+stargazer(rev(model_endo)[-c(5,3)], type = "html", report=('vcstp*'),column.labels = NULL,
           se = rev(rst_endo)[-c(5,3)], 
           title = "Endogeneity Test", out = "Endo_Ctrl.html")
 
 # Output all models in a single table
-stargazer(rev(model_fst)[-c(5,3)], type = "html", column.labels = NULL,
+stargazer(rev(model_fst)[-c(5,3)], type = "html",report=('vcstp*'), column.labels = NULL,
           se = rev(rst_fst)[-c(5,3)], 
           title = "First Stage", out = "fst_Ctrl.html")
 
 # Output all models in a single table
-stargazer(rev(model_snd)[-c(5,3)], type = "html", column.labels = NULL,
+stargazer(rev(model_snd)[-c(5,3)], type = "html",report=('vcstp*'), column.labels = NULL,
           se = rev(rst_snd)[-c(5,3)], 
           title = "Second Stage", out = "snd_Ctrl.html")
 
 
-data<-subset(data,data$ADPT==1)
+data<-subset(data,data$RPA==1)
 
 # Proxy names for AM and RM
 AM_proxy <- "ABSDA"  # Substitute 'ABSDA1' with any other AM proxy as needed
@@ -148,8 +148,8 @@ for (RM_proxy in RM_proxies) {
   
   # Define control variables , "ESG",, "Zscore"
   control_vars <- c("RPA_Ctd","Suspect", "NOA", "INST", "MS", "LEV", "OCF", "MTB", "SG", "ADJROA", "ADJROA_sq", "ADV","LGTA", "Big4")
-  control_vars_AM <- c("RPA","NOA","INST","CYCLE","ZSCORE","CL","MS","OCF","MTB","LEV","ADJROA", "ADJROA_sq", "LGTA", "BIG4","YEAR")
-  control_vars_RM <- c("RPA","NOA", "INST","CYCLE","ZSCORE", "CL","MS","OCF","LEV", "MTB", "ADJROA", "ADJROA_sq", "ADV","RD", "LGTA","YEAR")
+  control_vars_AM <- c("POST","NOA","INST","CYCLE","ZSCORE","CL","MS","OCF","MTB","LEV","ADJROA", "ADJROA_sq", "LGTA", "BIG4","YEAR")
+  control_vars_RM <- c("POST","NOA", "INST","CYCLE","ZSCORE", "CL","MS","OCF","LEV", "MTB", "ADJROA", "ADJROA_sq", "ADV","RD", "LGTA","YEAR")
   
   # Model for AM with control variables and AM proxy
   modelAM_HAT_formula <- as.formula(paste(AM_proxy, "~ ", paste(control_vars_AM, collapse=" + ")))
@@ -208,16 +208,16 @@ for (RM_proxy in RM_proxies) {
 }
 
 # Output all models in a single table
-stargazer(rev(model_endo)[-c(5,3)], type = "html", column.labels = NULL,
+stargazer(rev(model_endo)[-c(5,3)], type = "html",report=('vcstp*'), column.labels = NULL,
           se = rev(rst_endo)[-c(5,3)], 
           title = "Endogeneity Test", out = "Endo.html")
 
 # Output all models in a single table
-stargazer(rev(model_fst)[-c(5,3)], type = "html", column.labels = NULL,
+stargazer(rev(model_fst)[-c(5,3)], type = "html",report=('vcstp*'), column.labels = NULL,
           se = rev(rst_fst)[-c(5,3)], 
           title = "First Stage", out = "fst.html")
 
 # Output all models in a single table
-stargazer(rev(model_snd)[-c(5,3)], type = "html", column.labels = NULL,
+stargazer(rev(model_snd)[-c(5,3)], type = "html",report=('vcstp*'), column.labels = NULL,
           se = rev(rst_snd)[-c(5,3)], 
           title = "Second Stage", out = "snd.html")
