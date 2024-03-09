@@ -1,0 +1,81 @@
+﻿Al-Jabri, I. M. and N. Roztocki (2015). "Adoption of ERP systems: Does information transparency matter?" Telematics and Informatics 32(2): 300-310.
+	
+Asatiani, A., et al. (2020). Knowledge Workers’ Reactions to a Planned Introduction of Robotic Process Automation—Empirical Evidence from an Accounting Firm. Information Systems Outsourcing: The Era of Digital Transformation. R. Hirschheim, A. Heinzl and J. Dibbern. Cham, Springer International Publishing: 413-452.
+	In this paper, we investigate the initial reactions and perceptions of knowledge workers to a planned implementation of robotic process automation (RPA). Using purposive sampling, we conduct a case study in an industry in which workers’ jobs are notoriously vulnerable to automation: we study an accounting firm that is planning to introduce RPA into their core accounting processes. While our informants did raise the expected concerns about job security and loss of control over work, the initial reactions to the technology were surprisingly positive. The informants even expressed enthusiasm and genuine curiosity towards the capabilities of RPA. Overall, our results challenge the views outlined in previous academic literature and popular press concerning the fears and anxieties associated with the introduction of automation technologies in information-intensive knowledge work. To conclude, we theorize on the emerging positively dispersed uncertainty concerning the nature of RPA and the relativistic nature of worker reactions that potentially impact workplace atmosphere.
+
+Ashraf, M. (2024). "Does Automation Improve Financial Reporting? Evidence from Internal Controls." Review of Accounting Studies, Forthcoming.
+	
+Becker, C. L., et al. (2010). "The Effect of Audit Quality on Earnings Management*." Contemporary Accounting Research 15(1): 1-24.
+	
+Brazel, J. F. and L. Dang (2008). "The effect of ERP system implementations on the management of earnings and earnings release dates." Journal of Information Systems 22(2): 1-21.
+	
+Chan, K. C., et al. (2008). "Earnings Management of Firms Reporting Material Internal Control Weaknesses under Section 404 of the Sarbanes-Oxley Act." AUDITING: A Journal of Practice & Theory 27(2): 161-179.
+	
+Chen, C.-L., et al. (2012). "Complementary association between real activities and accruals-based manipulation in earnings reporting." Journal of Economic Policy Reform 15(2): 93-108.
+	
+Chouaibi, J., et al. (2019). "How does the real earnings management affect firms innovative? Evidence from US firms." International Journal of Law and Management 61(1): 151-169.
+	
+Cohen, D. A. and P. Zarowin (2010). "Accrual-based and real earnings management activities around seasoned equity offerings." Journal of Accounting and Economics 50(1): 2-19.
+	
+Fernandez, D. and A. Aman (2018). "Impacts of Robotic Process Automation on Global Accounting Services." Asian Journal of Accounting and Governance 9: 123-132.
+	
+Graham, J. R., et al. (2006). "Information flow and liquidity around anticipated and unanticipated dividend announcements." The Journal of Business 79(5): 2301-2336.
+	
+Hayes, D. C., et al. (2001). "Market reaction to ERP implementation announcements." Journal of Information Systems 15(1): 3-18.
+	
+Healy, P. M. and J. M. Wahlen (1999). "A review of the earnings management literature and its implications for standard setting." Accounting Horizons 13(4): 365-383.
+	
+Hill, R. C., et al. (2018). Principles of econometrics, John Wiley & Sons.
+	
+Hitt, L. M., et al. (2014). "Investment in Enterprise Resource Planning: Business Impact and Productivity Measures." Journal of Management Information Systems 19(1): 71-98.
+	
+Hong, B., et al. (2023). "Robotic Process Automation Risk Management: Points to Consider." Journal of Emerging Technologies in Accounting 20(1): 125-145.
+	
+Hunton, J. E., et al. (2003). "Enterprise resource planning systems: comparing firm performance of adopters and nonadopters." International Journal of Accounting Information Systems 4(3): 165-184.
+	
+Jędrzejka, D. (2019). "Robotic process automation and its impact on accounting." Zeszyty Teoretyczne Rachunkowości 2019(105 (161)): 137-166.
+	
+Jones, J. J. (1991). "Earnings management during import relief investigations." Journal of accounting research 29(2): 193-228.
+	
+Kanellou, A. and C. Spathis (2013). "Accounting benefits and satisfaction in an ERP environment." International Journal of Accounting Information Systems 14(3): 209-234.
+	
+Kim, Y., et al. (2012). "Is Earnings Quality Associated with Corporate Social Responsibility?" The Accounting Review 87(3): 761-796.
+	
+Kothari, S. P., et al. (2005). "Performance matched discretionary accrual measures." Journal of Accounting and Economics 39(1): 163-197.
+	
+Kuhn, J. R. and S. G. Sutton (2010). "Continuous Auditing in ERP System Environments: The Current State and Future Directions." Journal of Information Systems 24(1): 91-112.
+	
+Le Clair, C., et al. (2017). "The forrester wave™: Robotic process automation, q1 2017." Forrester Research 770.
+	
+Lenard, M. J., et al. (2016). "Internal control weaknesses and evidence of real activities manipulation." Advances in Accounting 33: 47-58.
+	
+Moffitt, K. C., et al. (2018). "Robotic Process Automation for Auditing." Journal of Emerging Technologies in Accounting 15(1): 1-10.
+	
+Moll, J. and O. Yigitbasioglu (2019). "The role of internet-related technologies in shaping the work of accountants: New directions for accounting research." The British Accounting Review 51(6).
+	
+Morris, J. J. (2011). "The Impact of Enterprise Resource Planning (ERP) Systems on the Effectiveness of Internal Controls over Financial Reporting." Journal of Information Systems 25(1): 129-157.
+	
+Morris, J. J. and I. Laksmana (2010). "Measuring the Impact of Enterprise Resource Planning (ERP) Systems on Earnings Management." Journal of Emerging Technologies in Accounting 7(1): 47-71.
+	
+Nicolaou, A. and S. Bhattacharya (2008). "Sustainability of ERPS performance outcomes: The role of post-implementation review quality." International Journal of Accounting Information Systems 9(1): 43-60.
+	
+Papanastasopoulos, G., et al. (2011). "Information in balance sheets for future stock returns: Evidence from net operating assets." International Review of Financial Analysis 20(5): 269-282.
+	
+Paredes, A. A. P. and C. M. Wheatley (2017). "Do Enterprise Resource Planning Systems (ERPs) Constrain Real Earnings Management?" Journal of Information Systems 32(3): 65-89.
+	
+Poston, R. and S. Grabski (2001). "Financial impacts of enterprise resource planning implementations." International Journal of Accounting Information Systems 2(4): 271-294.
+	
+Roychowdhury, S. (2006). "Earnings management through real activities manipulation." Journal of Accounting and Economics 42(3): 335-370.
+	
+Scapens, R. W. and M. Jazayeri (2003). "ERP systems and management accounting change: opportunities or impacts? A research note." European Accounting Review 12(1): 201-233.
+	
+Shehab, E. M., et al. (2004). "Enterprise resource planning." Business Process Management Journal 10(4): 359-386.
+	
+Stravinskienė, I. and D. Serafinas (2021). "Process Management and Robotic Process Automation: The Insights from Systematic Literature Review." Management of Organizations: Systematic Research 85(1): 87-106.
+	
+Tanveer, M., et al. (2022). "Influence of Advertising Intensity on Real Earnings Management: Evidence from Four Sectors of Pakistan." Journal of Economic Impact 4(1): 158-164.
+	
+Tiron‐Tudor, A., et al. (2024). "Perspectives on How Robotic Process Automation Is Transforming Accounting and Auditing Services*." Accounting Perspectives 23(1): 7-38.
+	
+Zang, A. Y. (2011). "Evidence on the Trade-Off between Real Activities Manipulation and Accrual-Based Earnings Management." The Accounting Review 87(2): 675-703.
+	
