@@ -3,6 +3,7 @@ library(lmtest)
 library(MASS)
 library(dplyr)
 library(stargazer)
+library(multcomp)
 # 讀取 CSV 檔案，將 "#N/A" 轉換為真正的 NA（缺失值）
 data <- read.csv("Ctd_Control.csv")
 
@@ -113,20 +114,26 @@ for (RM_proxy in RM_proxies) {
   model_snd[[paste("AM_",RM_proxy)]]<-modelAM
   cov<-vcovHC(modelAM,type="HC0")
   rst_snd[[paste("AM_",RM_proxy)]]<-sqrt(diag(cov))
+  # Specify the linear hypothesis
+  glht_mod_AM <- glht(model = modelAM, linfct = c("POST1 + RPA1 + POST_RPA1 = 0"))
+  #print(summary(glht_mod_AM))
+  glht_mod_RM <- glht(model = modelRM, linfct = c("POST1 + RPA1 +POST_RPA1 = 0"))
+  #print(summary(glht_mod_RM))
+  
 }
 
 # Output all models in a single table
-stargazer(rev(model_endo)[-c(5,3)], type = "html", report=('vcstp*'),column.labels = NULL,
+stargazer(rev(model_endo)[-c(5,3)], type = "html", report=('vc*stp'),column.labels = NULL,
           se = rev(rst_endo)[-c(5,3)], 
           title = "Endogeneity Test", out = "Endo_Ctrl.html")
 
 # Output all models in a single table
-stargazer(rev(model_fst)[-c(5,3)], type = "html",report=('vcstp*'), column.labels = NULL,
+stargazer(rev(model_fst)[-c(5,3)], type = "html",report=('vc*stp'), column.labels = NULL,
           se = rev(rst_fst)[-c(5,3)], 
           title = "First Stage", out = "fst_Ctrl.html")
 
 # Output all models in a single table
-stargazer(rev(model_snd)[-c(5,3)], type = "html",report=('vcstp*'), column.labels = NULL,
+stargazer(rev(model_snd)[-c(5,3)], type = "html",report=('vc*stp'), column.labels = NULL,
           se = rev(rst_snd)[-c(5,3)], 
           title = "Second Stage", out = "snd_Ctrl.html")
 
@@ -208,16 +215,16 @@ for (RM_proxy in RM_proxies) {
 }
 
 # Output all models in a single table
-stargazer(rev(model_endo)[-c(5,3)], type = "html",report=('vcstp*'), column.labels = NULL,
+stargazer(rev(model_endo)[-c(5,3)], type = "html",report=('vc*stp'), column.labels = NULL,
           se = rev(rst_endo)[-c(5,3)], 
           title = "Endogeneity Test", out = "Endo.html")
 
 # Output all models in a single table
-stargazer(rev(model_fst)[-c(5,3)], type = "html",report=('vcstp*'), column.labels = NULL,
+stargazer(rev(model_fst)[-c(5,3)], type = "html",report=('vc*stp'), column.labels = NULL,
           se = rev(rst_fst)[-c(5,3)], 
           title = "First Stage", out = "fst.html")
 
 # Output all models in a single table
-stargazer(rev(model_snd)[-c(5,3)], type = "html",report=('vcstp*'), column.labels = NULL,
+stargazer(rev(model_snd)[-c(5,3)], type = "html",report=('vc*stp'), column.labels = NULL,
           se = rev(rst_snd)[-c(5,3)], 
           title = "Second Stage", out = "snd.html")

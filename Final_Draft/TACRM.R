@@ -34,9 +34,9 @@ data$A1<-1/data$Asset_1
 data$A21<-(data$S-data$S_1)/data$Asset_1
 data$A2<-(data$S-data$S_1-(data$AR-data$AR_1))/data$Asset_1
 data$A3<-data$PPE/data$Asset_1
-data$A4<-data$NI_Ctd_1/data$Asset_1
+data$A4<-data$NI_Ctd/data$Asset_1
 data$A6<-data$OCF/data$Asset_1
-data$ROA<-data$NI_Ctd_1/data$Asset_1
+data$ROA<-data$NI_Ctd/data$Asset_1
 
 
 
