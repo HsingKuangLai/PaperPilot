@@ -1,0 +1,5 @@
+1. Find the company that are still listed before 2023 year end
+2. Collect the AR to get the RPA-disclosured firms
+3. Collect the data for models and use the data only for industries of these firms
+4. Adjust the POST indicator for the continuing adoption assumption
+5. Use matchit to match the control firm and adjust POST for these firms manually.
