@@ -4,6 +4,7 @@ library(MASS)
 library(dplyr)
 library(stargazer)
 library(multcomp)
+library(MatchIt)
 # 讀取 CSV 檔案，將 "#N/A" 轉換為真正的 NA（缺失值）
 data <- read.csv("total.csv")
 data<-subset(data,data$Code_Count==6)
@@ -13,6 +14,7 @@ data$ABSDA<-abs(data$DA)
 data$ABSDA1<-abs(data$DA1)
 data$ABEXP<-data$ABEXP*(-1)
 data$RM<-data$ABEXP+data$ABPROD
+data$LGTA<-log(data$MV)
 
 ########### winsorize 1% 
 # Define a function for winsorize
@@ -26,11 +28,11 @@ winsorize <- function(x) {
 
 
 # Factorize the first 6 columns
-data[1:10] <- lapply(data[1:10], factor)
+#data[1:10] <- lapply(data[1:10], factor)
 
 # Apply the winsorize function to the remaining columns
-data <- data %>%
-  mutate(across(.cols = 11:ncol(data), .fns = ~winsorize(.)))
+#data <- data %>%
+  #mutate(across(.cols = 11:ncol(data), .fns = ~winsorize(.)))
 
 data$ADJROA_sq<-data$ADJROA*data$ADJROA
 data$YEAR<-(as.numeric(data$YEAR)+2016)

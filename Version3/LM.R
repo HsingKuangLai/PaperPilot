@@ -11,7 +11,8 @@ data <- read.csv("total_paired.csv")
 data$ABSDA<-abs(data$DA)
 data$ABSDA1<-abs(data$DA1)
 data$ABEXP<-data$ABEXP*(-1)
-data$RM<-data$ABEXP+data$ABOPCOST
+data$RM<-data$ABEXP+data$ABPROD
+data$SIZE<-log(data$MV)
 
 ########### winsorize 1% 
 # Define a function for winsorize
@@ -48,9 +49,9 @@ rst_snd<-list()
 for (RM_proxy in RM_proxies) {
   
   # Define control variables , "ESG",, "Zscore"
-  control_vars <- c("RPA_Ctd","Suspect", "NOA", "INST", "MS", "LEV", "OCF", "MTB", "SG", "ADJROA", "ADJROA_sq", "ADV","LGTA", "Big4")
-  control_vars_AM <- c("POST","RPA","POST_RPA","NOA","INST","CYCLE","ZSCORE","CL","MS","OCF","MTB","LEV","ADJROA", "ADJROA_sq", "LGTA", "BIG4","YEAR")
-  control_vars_RM <- c("POST","RPA","POST_RPA","NOA", "INST","CYCLE","ZSCORE", "CL","MS","OCF","LEV", "MTB", "ADJROA", "ADJROA_sq", "ADV","RD", "LGTA","YEAR")
+  control_vars <- c("RPA_Ctd", "NOA", "INST", "MS", "LEV", "OCF", "MTB", "SG", "ADJROA", "ADJROA_sq", "ADV","SIZE", "Big4")
+  control_vars_AM <- c("POST","RPA","POST_RPA","LEV","OCF","MTB","MS","INST","CYCLE","NOA","ZSCORE","CL", "ADJROA", "ADJROA_sq","SIZE","BIG4","YEAR")
+  control_vars_RM <- c("POST","RPA","POST_RPA","LEV","OCF","MTB","MS","INST","CYCLE","NOA","ZSCORE","CL", "MTB", "ADJROA", "ADJROA_sq", "SIZE", "ADV","RD","YEAR")
   
   # Model for AM with control variables and AM proxy
   modelAM_HAT_formula <- as.formula(paste(AM_proxy, "~ ", paste(control_vars_AM, collapse=" + ")))
@@ -107,10 +108,11 @@ for (RM_proxy in RM_proxies) {
   cov<-vcovHC(modelAM,type="HC0")
   rst_snd[[paste("AM_",RM_proxy)]]<-sqrt(diag(cov))
   # Specify the linear hypothesis
-  glht_mod_AM <- glht(model = modelAM, linfct = c("POST1 + RPA1 + POST_RPA1 = 0"))
-  print(summary(glht_mod_AM))
-  glht_mod_RM <- glht(model = modelRM, linfct = c("POST1 + RPA1 +POST_RPA1 = 0"))
-  print(summary(glht_mod_RM))
+  #glht_mod_AM <- glht(model = modelAM, linfct = c("POST1 + POST_RPA1 = 0"))
+  #print(RM_proxy)
+  #print(summary(glht_mod_AM))
+  #glht_mod_RM <- glht(model = modelRM, linfct = c("POST1 +POST_RPA1 = 0"))
+  #print(summary(glht_mod_RM))
   
 }
 
@@ -146,9 +148,9 @@ rst_snd<-list()
 for (RM_proxy in RM_proxies) {
   
   # Define control variables , "ESG",, "Zscore"
-  control_vars <- c("RPA_Ctd","Suspect", "NOA", "INST", "MS", "LEV", "OCF", "MTB", "SG", "ADJROA", "ADJROA_sq", "ADV","LGTA", "Big4")
-  control_vars_AM <- c("POST","NOA","INST","CYCLE","ZSCORE","CL","MS","OCF","MTB","LEV","ADJROA", "ADJROA_sq", "LGTA", "BIG4","YEAR")
-  control_vars_RM <- c("POST","NOA", "INST","CYCLE","ZSCORE", "CL","MS","OCF","LEV", "MTB", "ADJROA", "ADJROA_sq", "ADV","RD", "LGTA","YEAR")
+  control_vars <- c("RPA_Ctd", "NOA", "INST", "MS", "LEV", "OCF", "MTB", "SG", "ADJROA", "ADJROA_sq", "ADV","SIZE", "Big4")
+  control_vars_AM <- c("POST","LEV","OCF","MTB","MS","INST","CYCLE","NOA","ZSCORE","CL", "ADJROA", "ADJROA_sq","SIZE","BIG4","YEAR")
+  control_vars_RM <- c("POST","LEV","OCF","MTB","MS","INST","CYCLE","NOA","ZSCORE","CL", "MTB", "ADJROA", "ADJROA_sq", "SIZE", "ADV","RD","YEAR")
   
   # Model for AM with control variables and AM proxy
   modelAM_HAT_formula <- as.formula(paste(AM_proxy, "~ ", paste(control_vars_AM, collapse=" + ")))

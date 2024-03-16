@@ -14,7 +14,6 @@ data <- data %>%
   ungroup() %>%
   add_count(IndustryY, name = "IndustryY_Count") # Count the frequency of each Code and add it as a new column
 
-
 data<-subset(data,data$IndustryY_Count>=15)
 
 # calculation
