@@ -17,7 +17,7 @@
 (3) 刪除產業年樣本數小於15的樣本
 (4) 計算變數以及EM proxy
 (5) 篩選出有6年資料的樣本
-(6) Winsorize LGTA 後，計算六年平均資產，取出每一家公司資料，採matchit by distance = "mahalanobis"，用六年平均資產及產業跑出匹配分數
+(6) Winsorize LGTA 後，計算六年平均資產，取出每一家公司資料，採matchit by distance = "mahalanobis"，用六年平均資產及產業跑出匹配分數 (依據subclass呈現配對)
 (7) 將分配結果併回(5)的資料，最後篩出treament 以及 control sample
 (8) 計算control firm的POST indicator by matched treatment firm，最後將RPA*POST
 (9) 跑回歸
