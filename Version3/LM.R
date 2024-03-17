@@ -11,7 +11,7 @@ data <- read.csv("total_paired.csv")
 data$ABSDA<-abs(data$DA)
 data$ABSDA1<-abs(data$DA1)
 data$ABEXP<-data$ABEXP*(-1)
-data$RM<-data$ABEXP+data$ABPROD
+data$RM<-(data$ABEXP+data$ABPROD)
 data$SIZE<-log(data$MV)
 
 ########### winsorize 1% 
@@ -70,7 +70,7 @@ for (RM_proxy in RM_proxies) {
   # Model for RM with AM.hat and control variables
   modelRM_formula <- as.formula(paste(RM_proxy, "~ AMhat +", paste(control_vars_RM, collapse=" + ")))
   modelRM <- lm(modelRM_formula, data = data)
-  modelRM_endo<-lm(paste(RM_proxy,"~ABSDA+AMres"),data=data)
+  modelRM_endo<-lm(paste(RM_proxy,"~ABSDA+AMres+", paste(control_vars_RM, collapse=" + ")),data=data)
   
   #RM_endo
   model_endo[[paste("RM_",RM_proxy)]]<-modelRM_endo
@@ -91,7 +91,7 @@ for (RM_proxy in RM_proxies) {
   # Model for AM with RM.hat, control variables, and AM proxy
   modelAM_formula <- as.formula(paste(AM_proxy, "~   RMhat + ", paste(control_vars_AM, collapse=" + ")))
   modelAM <- lm(modelAM_formula, data = data)
-  modelAM_endo<-lm(paste("ABSDA ~ RMres + ", RM_proxy),data=data)
+  modelAM_endo<-lm(paste("ABSDA ~ RMres + ", RM_proxy, "+",paste(control_vars_AM, collapse=" + ")),data=data)
   
   #AM_endo
   model_endo[[paste("AM_",RM_proxy)]]<-modelAM_endo
@@ -169,7 +169,7 @@ for (RM_proxy in RM_proxies) {
   # Model for RM with AM.hat and control variables
   modelRM_formula <- as.formula(paste(RM_proxy, "~ AMhat +", paste(control_vars_RM, collapse=" + ")))
   modelRM <- lm(modelRM_formula, data = data)
-  modelRM_endo<-lm(paste(RM_proxy,"~ABSDA+AMres"),data=data)
+  modelRM_endo<-lm(paste(RM_proxy,"~ABSDA+AMres+", paste(control_vars_RM, collapse=" + ")),data=data)
   
   #RM_endo
   model_endo[[paste("RM_",RM_proxy)]]<-modelRM_endo
@@ -190,7 +190,7 @@ for (RM_proxy in RM_proxies) {
   # Model for AM with RM.hat, control variables, and AM proxy
   modelAM_formula <- as.formula(paste(AM_proxy, "~   RMhat + ", paste(control_vars_AM, collapse=" + ")))
   modelAM <- lm(modelAM_formula, data = data)
-  modelAM_endo<-lm(paste("ABSDA ~ RMres + ", RM_proxy),data=data)
+  modelAM_endo<-lm(paste("ABSDA ~ RMres + ", RM_proxy, "+",paste(control_vars_AM, collapse=" + ")),data=data)
   
   #AM_endo
   model_endo[[paste("AM_",RM_proxy)]]<-modelAM_endo
