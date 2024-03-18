@@ -14,7 +14,7 @@ data$ABSDA<-abs(data$DA)
 data$ABSDA1<-abs(data$DA1)
 data$ABEXP<-data$ABEXP*(-1)
 data$RM<-data$ABEXP+data$ABPROD
-data$LGTA<-log(data$MV)
+data$LGTA<-log(data$Asset)
 
 ########### winsorize 1% 
 # Define a function for winsorize
