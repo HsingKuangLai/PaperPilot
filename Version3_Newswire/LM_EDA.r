@@ -14,7 +14,7 @@ data$ABSDA1<-abs(data$DA1)
 data$ABCFO<-data$ABCFO*(-1)
 data$ABEXP<-data$ABEXP*(-1)
 data$RM<-data$ABPROD+data$ABEXP
-data$SIZE<-log(data$MV)
+data$SIZE<-data$LGTA
 
 
 ########### winsorizing 1% 
@@ -39,12 +39,12 @@ data <- data %>%
 # Des1
 mydata<-data[,c("ABSDA","ABPROD","ABEXP","RM","LEV","OCF","MTB","MS","INST","CYCLE","NOA","ZSCORE","CL","ADJROA","SIZE","BIG4","RD","ADV")]
 mydata$BIG4<-as.numeric(data$BIG4)-1
-stargazer(mydata, type = "html", title="Descriptive statistics", digits=5, out="des1.html",summary.stat = c("mean","median","sd","min","max","p25","p75","n"))
+stargazer(mydata, type = "html", title="Descriptive statistics", digits=5, out="Table2 PanelA.html",summary.stat = c("mean","median","sd","min","max","p25","p75","n"))
 
 
 #Des2
 correlation.matrix <- correlation_matrix(mydata,type="spearman",use = "lower",show_significance = TRUE,digits = 3)
-stargazer(correlation.matrix,type="html", title="Correlation Matrix",out="des2.html")
+stargazer(correlation.matrix,type="html", title="Correlation Matrix",out="Table2 PanelB.html")
 
 
 
@@ -85,13 +85,13 @@ for (var in variables) {
 
 # Convert results to a dataframe for easier manipulation and display
 results_df <- do.call(rbind, results)
-colnames(results_df) <- c("Mean Control", "SD Control", "Mean Treatment", "SD Treatment", "P-Value")
+colnames(results_df) <- c("Mean", "SD", "Mean-Post", "SD-Post", "P-Value")
 rownames(results_df) <- variables
 # Convert the results dataframe to a matrix for stargazer
 results_matrix <- as.matrix(results_df)
 
 # Use stargazer to create a table
-stargazer(results_matrix, type = "html",out="desA.html",digits = 4, title = "Comparative Statistics: RPA vs. Non-RPA Firms", summary = FALSE)
+stargazer(results_matrix, type = "html",out="Table3 PanelA.html",digits = 4, title = "RPA Implementers’ Pre- versus Post-Implementation", summary = FALSE)
 
 
 #Des3B
@@ -137,7 +137,7 @@ rownames(results_df) <- variables
 results_matrix <- as.matrix(results_df)
 
 # Use stargazer to create a table
-stargazer(results_matrix, type = "html",out="desB.html",digits = 4, title = "Comparative Statistics: RPA vs. Non-RPA Firms", summary = FALSE)
+stargazer(results_matrix, type = "html",out="Tabel3 PanelB.html",digits = 4, title = "RPA Implementers versus Control Group in the Pre-Implementation Period", summary = FALSE)
 
 
 #Des3C
@@ -183,4 +183,4 @@ rownames(results_df) <- variables
 results_matrix <- as.matrix(results_df)
 
 # Use stargazer to create a table
-stargazer(results_matrix, type = "html",out="desC.html",digits = 4, title = "Comparative Statistics: RPA vs. Non-RPA Firms", summary = FALSE)
+stargazer(results_matrix, type = "html",out="Table3 PanelC.html",digits = 4, title = "RPA Implementers versus Control Group in the Post-Implementation Period", summary = FALSE)
