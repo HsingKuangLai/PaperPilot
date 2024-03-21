@@ -23,8 +23,10 @@ data$MTB <- data$MV/data$Equity
 data$INST <- data$INST_1
 data$CYCLE <- data$CYCLE_1
 data$NOA <- (data$Asset-data$Cash-data$Debt+data$SLTD)/data$Asset_1
-data$CL <- data$CL/data$Asset
+##Zscor: applying CL first
 data$ZSCORE <- 1.2*(data$CA-data$CL)/data$Asset + 1.4*(data$RE/data$Asset) + 3.3*(data$EBIT/data$Asset) + 0.6*(data$MV/data$Debt) + data$S/data$Asset
+##coverage
+data$CL <- (data$CL-data$STD)/data$Asset
 data$LGTA <- log(data$Asset)
 data$ROA <- data$NI_Ctd/data$Asset_1
 data$ADV<-data$ADV/data$S
