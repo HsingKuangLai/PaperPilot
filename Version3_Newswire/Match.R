@@ -8,9 +8,8 @@ library(MatchIt)
 # 讀取 CSV 檔案，將 "#N/A" 轉換為真正的 NA（缺失值）
 data <- read.csv("total.csv")
 data<-subset(data,data$Code_Count==6)
-data<-subset(data,data$Code!="4904")
-data<-subset(data,data$Code!="2347")
-data<-subset(data,data$Code!="2610")
+data <- subset(data, !Code %in% c("4904", "2347", "2610"))
+
 
 # 移除含有缺失值的觀測值
 data$ABSDA<-abs(data$DA)
@@ -72,3 +71,5 @@ matched$PairedCode <- as.factor(matched$weights)
 
 # Alternatively, if you need a numeric or more customized code
 matched$PairedCode <- seq_len(nrow(matched))
+
+write.csv(matched,"matched2.csv")

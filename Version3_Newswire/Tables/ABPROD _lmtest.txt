@@ -1,0 +1,23 @@
+[1] "ABPROD"
+
+	 Simultaneous Tests for General Linear Hypotheses
+
+Fit: lm(formula = modelAM_formula, data = data)
+
+Linear Hypotheses:
+                       Estimate Std. Error t value Pr(>|t|)  
+POST1 + POST_RPA1 == 0 0.009495   0.004855   1.956   0.0507 .
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+(Adjusted p values reported -- single-step method)
+
+
+	 Simultaneous Tests for General Linear Hypotheses
+
+Fit: lm(formula = modelRM_formula, data = data)
+
+Linear Hypotheses:
+                       Estimate Std. Error t value Pr(>|t|)
+POST1 + POST_RPA1 == 0  0.04610    0.03224    1.43    0.153
+(Adjusted p values reported -- single-step method)
+

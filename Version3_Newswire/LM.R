@@ -5,7 +5,7 @@ library(dplyr)
 library(stargazer)
 library(multcomp)
 # 讀取 CSV 檔案，將 "#N/A" 轉換為真正的 NA（缺失值）
-data <- read.csv("total - 複製.csv")
+data <- read.csv("total - 複製2.csv")
 
 # 移除含有缺失值的觀測值
 data$ABSDA<-abs(data$DA)
@@ -13,6 +13,7 @@ data$ABSDA1<-abs(data$DA1)
 data$ABEXP<-data$ABEXP*(-1)
 data$RM<-(data$ABEXP+data$ABPROD)
 data$SIZE<-log(data$MV)
+
 
 ########### winsorize 1% 
 # Define a function for winsorize
