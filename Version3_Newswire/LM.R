@@ -109,11 +109,13 @@ for (RM_proxy in RM_proxies) {
   cov<-vcovHC(modelAM,type="HC0")
   rst_snd[[paste("AM_",RM_proxy)]]<-sqrt(diag(cov))
   # Specify the linear hypothesis
+  sink(paste(RM_proxy,"_lmtest.txt"))
   glht_mod_AM <- glht(model = modelAM, linfct = c("POST1 + POST_RPA1 = 0"))
   print(RM_proxy)
   print(summary(glht_mod_AM))
   glht_mod_RM <- glht(model = modelRM, linfct = c("POST1 +POST_RPA1 = 0"))
   print(summary(glht_mod_RM))
+  sink()
   
 }
 

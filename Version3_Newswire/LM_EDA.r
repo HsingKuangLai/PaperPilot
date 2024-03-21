@@ -6,7 +6,7 @@ library(stargazer)
 library(corrtable)
 library(coin)
 # 讀取 CSV 檔案，將 "#N/A" 轉換為真正的 NA（缺失值）
-data <- read.csv("total_paired.csv")
+data <- read.csv("total - 複製2.csv")
 
 # 移除含有缺失值的觀測值
 data$ABSDA<-abs(data$DA)

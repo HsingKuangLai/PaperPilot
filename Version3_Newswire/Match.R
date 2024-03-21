@@ -9,7 +9,7 @@ library(MatchIt)
 data <- read.csv("total.csv")
 data<-subset(data,data$Code_Count==6)
 data <- subset(data, !Code %in% c("4904", "2347", "2610"))
-
+data <- subset(data, !Code %in% c("3036", "2412"))
 
 # 移除含有缺失值的觀測值
 data$ABSDA<-abs(data$DA)
