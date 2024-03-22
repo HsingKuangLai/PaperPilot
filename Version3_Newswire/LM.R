@@ -120,19 +120,19 @@ for (RM_proxy in RM_proxies) {
 }
 
 # Output all models in a single table
-stargazer(rev(model_endo)[-c(5,3)], type = "html", report=('vc*stp'),column.labels = NULL,
+stargazer(rev(model_endo)[-c(5,3)], type = "html", report=('vc*t'),column.labels = NULL,
           se = rev(rst_endo)[-c(5,3)], 
-          title = "Endogeneity Test", out = "Endo_Ctrl.html")
+          title = "Endogeneity Test", out = "Table7.html")
 
 # Output all models in a single table
-stargazer(rev(model_fst)[-c(5,3)], type = "html",report=('vc*stp'), column.labels = NULL,
+stargazer(rev(model_fst)[-c(5,3)], type = "html",report=('vc*t'), column.labels = NULL,
           se = rev(rst_fst)[-c(5,3)], 
-          title = "First Stage", out = "fst_Ctrl.html")
+          title = "First Stage", out = "Table5.html")
 
 # Output all models in a single table
-stargazer(rev(model_snd)[-c(5,3)], type = "html",report=('vc*stp'), column.labels = NULL,
+stargazer(rev(model_snd)[-c(5,3)], type = "html",report=('vc*t'), column.labels = NULL,
           se = rev(rst_snd)[-c(5,3)], 
-          title = "Second Stage", out = "snd_Ctrl.html")
+          title = "Second Stage", out = "Table9.html")
 
 
 data<-subset(data,data$RPA==1)
@@ -212,16 +212,16 @@ for (RM_proxy in RM_proxies) {
 }
 
 # Output all models in a single table
-stargazer(rev(model_endo)[-c(5,3)], type = "html",report=('vc*stp'), column.labels = NULL,
+stargazer(rev(model_endo)[-c(5,3)], type = "html",report=('vc*t'), column.labels = NULL,
           se = rev(rst_endo)[-c(5,3)], 
-          title = "Endogeneity Test", out = "Endo.html")
+          title = "Endogeneity Test", out = "Table6.html")
 
 # Output all models in a single table
-stargazer(rev(model_fst)[-c(5,3)], type = "html",report=('vc*stp'), column.labels = NULL,
+stargazer(rev(model_fst)[-c(5,3)], type = "html",report=('vc*t'), column.labels = NULL,
           se = rev(rst_fst)[-c(5,3)], 
-          title = "First Stage", out = "fst.html")
+          title = "First Stage", out = "Table4.html")
 
 # Output all models in a single table
-stargazer(rev(model_snd)[-c(5,3)], type = "html",report=('vc*stp'), column.labels = NULL,
+stargazer(rev(model_snd)[-c(5,3)], type = "html",report=('vc*t'), column.labels = NULL,
           se = rev(rst_snd)[-c(5,3)], 
-          title = "Second Stage", out = "snd.html")
+          title = "Second Stage", out = "Table8.html")

@@ -6,7 +6,7 @@ Fit: lm(formula = modelAM_formula, data = data)
 
 Linear Hypotheses:
                        Estimate Std. Error t value Pr(>|t|)  
-POST1 + POST_RPA1 == 0 0.008845   0.004850   1.824   0.0685 .
+POST1 + POST_RPA1 == 0 0.008768   0.004844    1.81   0.0706 .
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 (Adjusted p values reported -- single-step method)
@@ -18,7 +18,7 @@ Fit: lm(formula = modelRM_formula, data = data)
 
 Linear Hypotheses:
                        Estimate Std. Error t value Pr(>|t|)   
-POST1 + POST_RPA1 == 0  0.07742    0.02630   2.943  0.00332 **
+POST1 + POST_RPA1 == 0  0.08935    0.03207   2.786  0.00544 **
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 (Adjusted p values reported -- single-step method)
