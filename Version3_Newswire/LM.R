@@ -11,6 +11,7 @@ data <- read.csv("total - 複製2.csv")
 data$ABSDA<-abs(data$DA)
 data$ABSDA1<-abs(data$DA1)
 data$ABEXP<-data$ABEXP*(-1)
+data$ABCFO<-data$ABCFO*(-1)
 data$RM<-(data$ABEXP+data$ABPROD)
 data$SIZE<-log(data$MV)
 
