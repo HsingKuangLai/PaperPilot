@@ -1,0 +1,25 @@
+[1] "ABEXP"
+
+	 Simultaneous Tests for General Linear Hypotheses
+
+Fit: lm(formula = modelAM_formula, data = data)
+
+Linear Hypotheses:
+                       Estimate Std. Error t value Pr(>|t|)  
+POST1 + POST_RPA1 == 0 0.008688   0.004844   1.794   0.0732 .
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+(Adjusted p values reported -- single-step method)
+
+
+	 Simultaneous Tests for General Linear Hypotheses
+
+Fit: lm(formula = modelRM_formula, data = data)
+
+Linear Hypotheses:
+                       Estimate Std. Error t value Pr(>|t|)   
+POST1 + POST_RPA1 == 0  0.07800    0.02915   2.676  0.00758 **
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+(Adjusted p values reported -- single-step method)
+
