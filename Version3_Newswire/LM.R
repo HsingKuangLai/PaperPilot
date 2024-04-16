@@ -13,7 +13,7 @@ data$ABSDA1<-abs(data$DA1)
 data$ABEXP<-data$ABEXP*(-1)
 data$ABCFO<-data$ABCFO*(-1)
 data$RM<-(data$ABEXP+data$ABPROD)
-data$SIZE<-data$LGTA
+data$SIZE<-log(data$MV)
 
 
 ########### winsorize 1% 
