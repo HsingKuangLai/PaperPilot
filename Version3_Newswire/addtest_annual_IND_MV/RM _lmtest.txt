@@ -14,11 +14,11 @@ Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’
 
 	 Simultaneous Tests for General Linear Hypotheses
 
-Fit: lm(formula = modelRM_HAT_formula, data = data)
+Fit: lm(formula = modelRM_formula, data = data)
 
 Linear Hypotheses:
-                       Estimate Std. Error t value Pr(>|t|)  
-POST1 + POST_RPA1 == 0  0.03133    0.01280   2.447   0.0146 *
+                       Estimate Std. Error t value Pr(>|t|)    
+POST1 + POST_RPA1 == 0  0.07360    0.02215   3.323 0.000925 ***
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 (Adjusted p values reported -- single-step method)
