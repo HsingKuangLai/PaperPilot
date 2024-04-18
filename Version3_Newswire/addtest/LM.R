@@ -5,7 +5,10 @@ library(dplyr)
 library(stargazer)
 library(multcomp)
 # 讀取 CSV 檔案，將 "#N/A" 轉換為真正的 NA（缺失值）
-data <- read.csv("total - 複製2.csv")
+data <- read.csv("base.csv")
+AQdata<-read.csv("SecondEq.csv")
+AQdata<-AQdata[,c("KEY","AQ","IAQ","DAQ")]
+data<-inner_join(data,AQdata,by="KEY")
 
 # 移除含有缺失值的觀測值
 data$ABSDA<-abs(data$DA)
@@ -38,7 +41,7 @@ data$ADJROA_sq<-data$ADJROA*data$ADJROA
 data$YEAR<-(as.numeric(data$YEAR)+2016)
 
 # Proxy names for AM and RM
-AM_proxy <- "AQ"  # Substitute 'ABSDA1' with any other AM proxy as needed
+AM_proxy <- "DAQ"  # Substitute 'ABSDA1' with any other AM proxy as needed
 RM_proxies <- c("ABPROD","ABEXP","RM")      # Substitute 'RM' with any other RM proxy as needed
 
 model_endo<-list()
@@ -72,7 +75,7 @@ for (RM_proxy in RM_proxies) {
   # Model for RM with AM.hat and control variables
   modelRM_formula <- as.formula(paste(RM_proxy, "~ AMhat +", paste(control_vars_RM, collapse=" + ")))
   modelRM <- lm(modelRM_formula, data = data)
-  modelRM_endo<-lm(paste(RM_proxy,"~AQ+AMres+", paste(control_vars_RM, collapse=" + ")),data=data)
+  modelRM_endo<-lm(paste(RM_proxy,"~",AM_proxy,"+AMres+", paste(control_vars_RM, collapse=" + ")),data=data)
   
   #RM_endo
   model_endo[[paste("RM_",RM_proxy)]]<-modelRM_endo
@@ -93,7 +96,7 @@ for (RM_proxy in RM_proxies) {
   # Model for AM with RM.hat, control variables, and AM proxy
   modelAM_formula <- as.formula(paste(AM_proxy, "~   RMhat + ", paste(control_vars_AM, collapse=" + ")))
   modelAM <- lm(modelAM_formula, data = data)
-  modelAM_endo<-lm(paste("AQ ~ RMres + ", RM_proxy, "+",paste(control_vars_AM, collapse=" + ")),data=data)
+  modelAM_endo<-lm(paste(AM_proxy," ~ RMres + ", RM_proxy, "+",paste(control_vars_AM, collapse=" + ")),data=data)
   
   #AM_endo
   model_endo[[paste("AM_",RM_proxy)]]<-modelAM_endo
@@ -138,9 +141,6 @@ stargazer(rev(model_snd)[-c(5,3)], type = "html",report=('vc*t'), column.labels 
 
 data<-subset(data,data$RPA==1)
 
-# Proxy names for AM and RM
-AM_proxy <- "AQ"  # Substitute 'ABSDA1' with any other AM proxy as needed
-RM_proxies <- c("ABPROD","ABEXP","RM")      # Substitute 'RM' with any other RM proxy as needed
 
 model_endo<-list()
 model_fst<-list()
@@ -173,7 +173,7 @@ for (RM_proxy in RM_proxies) {
   # Model for RM with AM.hat and control variables
   modelRM_formula <- as.formula(paste(RM_proxy, "~ AMhat +", paste(control_vars_RM, collapse=" + ")))
   modelRM <- lm(modelRM_formula, data = data)
-  modelRM_endo<-lm(paste(RM_proxy,"~AQ+AMres+", paste(control_vars_RM, collapse=" + ")),data=data)
+  modelRM_endo<-lm(paste(RM_proxy,"~",AM_proxy,"+AMres+", paste(control_vars_RM, collapse=" + ")),data=data)
   
   #RM_endo
   model_endo[[paste("RM_",RM_proxy)]]<-modelRM_endo
@@ -194,7 +194,7 @@ for (RM_proxy in RM_proxies) {
   # Model for AM with RM.hat, control variables, and AM proxy
   modelAM_formula <- as.formula(paste(AM_proxy, "~   RMhat + ", paste(control_vars_AM, collapse=" + ")))
   modelAM <- lm(modelAM_formula, data = data)
-  modelAM_endo<-lm(paste("AQ ~ RMres + ", RM_proxy, "+",paste(control_vars_AM, collapse=" + ")),data=data)
+  modelAM_endo<-lm(paste(AM_proxy," ~ RMres + ", RM_proxy, "+",paste(control_vars_AM, collapse=" + ")),data=data)
   
   #AM_endo
   model_endo[[paste("AM_",RM_proxy)]]<-modelAM_endo

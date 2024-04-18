@@ -1,0 +1,25 @@
+[1] "RM"
+
+	 Simultaneous Tests for General Linear Hypotheses
+
+Fit: lm(formula = modelAM_HAT_formula, data = data, singular.ok = FALSE)
+
+Linear Hypotheses:
+                       Estimate Std. Error t value Pr(>|t|)  
+POST1 + POST_RPA1 == 0  0.04981    0.02153   2.314   0.0209 *
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+(Adjusted p values reported -- single-step method)
+
+
+	 Simultaneous Tests for General Linear Hypotheses
+
+Fit: lm(formula = modelRM_HAT_formula, data = data)
+
+Linear Hypotheses:
+                       Estimate Std. Error t value Pr(>|t|)  
+POST1 + POST_RPA1 == 0  0.03133    0.01280   2.447   0.0146 *
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+(Adjusted p values reported -- single-step method)
+

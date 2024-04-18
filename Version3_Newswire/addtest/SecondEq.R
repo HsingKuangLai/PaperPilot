@@ -76,8 +76,8 @@ for(industry in unique_industries) {
     # Perform your Jones model and Roychowdhury measures calculations here, adjusted for year_data
     # Example for a simplified Jones model
     IAQ_model <- lm(sigAQ ~ LGTA + sigCFO + sigS + LGCYCLE + NegNI , data = year_data)
-    year_data$IAQ <- residuals(IAQ_model)
-    year_data$DAQ <- predict(IAQ_model)
+    year_data$DAQ <- residuals(IAQ_model)
+    year_data$IAQ <- predict(IAQ_model)
     
  
     

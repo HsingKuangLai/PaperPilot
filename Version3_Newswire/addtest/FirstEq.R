@@ -29,7 +29,7 @@ data$AvgA<-0.5*(data$A+data$A_1)
 data$deltaWC<-((data$CA-data$CA_1)-(data$CL-data$CL_1)-(data$Cash-data$Cash_1)+(data$STD-data$STD_1))/data$AvgA
 data$CFO_pre<-data$CFO_pre/data$AvgA
 data$CFO<-data$CFO/data$AvgA
-data$CFO_post<-data$AvgA
+data$CFO_post<-data$CFO_post/data$AvgA
 data$deltaS<-(data$S-data$S_1)/data$AvgA
 data$PPE<-data$PPE/data$AvgA
 
