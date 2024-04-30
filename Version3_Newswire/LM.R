@@ -4,6 +4,7 @@ library(MASS)
 library(dplyr)
 library(stargazer)
 library(multcomp)
+library(car)
 # 讀取 CSV 檔案，將 "#N/A" 轉換為真正的 NA（缺失值）
 data <- read.csv("total - 複製2.csv")
 
@@ -116,6 +117,9 @@ for (RM_proxy in RM_proxies) {
   print(summary(glht_mod_AM))
   glht_mod_RM <- glht(model = modelRM, linfct = c("POST1 +POST_RPA1 = 0"))
   print(summary(glht_mod_RM))
+  
+  print(vif(modelAM))
+  print(vif(modelRM))
   sink()
   
 }
@@ -210,6 +214,11 @@ for (RM_proxy in RM_proxies) {
   model_snd[[paste("AM_",RM_proxy)]]<-modelAM
   cov<-vcovHC(modelAM,type="HC0")
   rst_snd[[paste("AM_",RM_proxy)]]<-sqrt(diag(cov))
+  
+  sink(paste(RM_proxy,"_vif.txt"))
+  print(vif(modelAM))
+  print(vif(modelRM))
+  sink()
 }
 
 # Output all models in a single table

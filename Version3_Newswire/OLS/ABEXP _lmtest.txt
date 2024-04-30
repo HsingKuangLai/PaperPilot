@@ -1,0 +1,39 @@
+[1] "ABEXP"
+
+	 Simultaneous Tests for General Linear Hypotheses
+
+Fit: lm(formula = paste("ABSDA ~  ", RM_proxy, "+", paste(control_vars_AM, 
+    collapse = " + ")), data = data)
+
+Linear Hypotheses:
+                       Estimate Std. Error t value Pr(>|t|)  
+POST1 + POST_RPA1 == 0 0.008643   0.004827   1.791   0.0736 .
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+(Adjusted p values reported -- single-step method)
+
+
+	 Simultaneous Tests for General Linear Hypotheses
+
+Fit: lm(formula = paste(RM_proxy, "~ABSDA+", paste(control_vars_RM, 
+    collapse = " + ")), data = data)
+
+Linear Hypotheses:
+                       Estimate Std. Error t value Pr(>|t|)  
+POST1 + POST_RPA1 == 0 0.016701   0.006484   2.576   0.0101 *
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+(Adjusted p values reported -- single-step method)
+
+    ABEXP      POST       RPA  POST_RPA       LEV       OCF       MTB 
+ 1.109562  3.010633  2.022588  2.962293  3.113830  1.800589  2.581958 
+       MS      INST     CYCLE       NOA    ZSCORE        CL    ADJROA 
+ 1.749322  1.829270  1.112321  1.720664  3.932459  2.256660  2.219499 
+ADJROA_sq      SIZE      BIG4      YEAR 
+ 1.293709  2.712377  1.077402  1.979703 
+    ABSDA      POST       RPA  POST_RPA       LEV       OCF       MTB 
+ 1.191324  3.055772  2.037951  2.997626  3.262163  1.872654  2.651472 
+       MS      INST     CYCLE       NOA    ZSCORE        CL    ADJROA 
+ 1.859395  1.880388  1.151518  1.727877  4.171311  2.249501  2.793637 
+ADJROA_sq      SIZE       ADV        RD      YEAR 
+ 1.473248  2.891784  1.390660  1.864797  1.995434 

@@ -1,0 +1,481 @@
+[1] "ABPROD"
+
+	 Simultaneous Tests for General Linear Hypotheses
+
+Fit: lm(formula = modelAM_formula, data = data)
+
+Linear Hypotheses:
+                       Estimate Std. Error t value Pr(>|t|)  
+POST1 + POST_RPA1 == 0 0.008960   0.004849   1.848   0.0649 .
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+(Adjusted p values reported -- single-step method)
+
+
+	 Simultaneous Tests for General Linear Hypotheses
+
+Fit: lm(formula = modelRM_formula, data = data)
+
+Linear Hypotheses:
+                       Estimate Std. Error t value Pr(>|t|)  
+POST1 + POST_RPA1 == 0  0.07002    0.03996   1.752   0.0801 .
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+(Adjusted p values reported -- single-step method)
+
+
+<table style="text-align:center"><caption><strong>Endogeneity Test</strong></caption>
+<tr><td colspan="5" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left"></td><td colspan="4"><em>Dependent variable:</em></td></tr>
+<tr><td></td><td colspan="4" style="border-bottom: 1px solid black"></td></tr>
+<tr><td style="text-align:left"></td><td>ABSDA ~ RMres +</td><td colspan="3">RM_proxy</td></tr>
+<tr><td style="text-align:left"></td><td>(1)</td><td>(2)</td><td>(3)</td><td>(4)</td></tr>
+<tr><td colspan="5" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left">RMres</td><td>0.049<sup>*</sup></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left"></td><td>t = 1.934</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">RM</td><td>-0.042<sup>*</sup></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left"></td><td>t = -1.787</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">ABSDA</td><td></td><td>-14.904<sup>**</sup></td><td>-8.857<sup>**</sup></td><td>-6.545</td></tr>
+<tr><td style="text-align:left"></td><td></td><td>t = -2.332</td><td>t = -2.509</td><td>t = -1.568</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">AMres</td><td></td><td>14.953<sup>**</sup></td><td>8.751<sup>**</sup></td><td>6.663</td></tr>
+<tr><td style="text-align:left"></td><td></td><td>t = 2.341</td><td>t = 2.480</td><td>t = 1.597</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">POST1</td><td>-0.009<sup>*</sup></td><td>-0.113<sup>*</sup></td><td>-0.065<sup>**</sup></td><td>-0.050</td></tr>
+<tr><td style="text-align:left"></td><td>t = -1.762</td><td>t = -1.930</td><td>t = -1.994</td><td>t = -1.306</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">RPA1</td><td>-0.006</td><td>-0.093<sup>***</sup></td><td>-0.050<sup>***</sup></td><td>-0.041<sup>*</sup></td></tr>
+<tr><td style="text-align:left"></td><td>t = -1.501</td><td>t = -2.620</td><td>t = -2.588</td><td>t = -1.816</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">POST_RPA1</td><td>0.018<sup>***</sup></td><td>0.268<sup>**</sup></td><td>0.154<sup>**</sup></td><td>0.120<sup>*</sup></td></tr>
+<tr><td style="text-align:left"></td><td>t = 3.160</td><td>t = 2.406</td><td>t = 2.511</td><td>t = 1.649</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">LEV</td><td>0.021</td><td>0.186</td><td>0.131<sup>**</sup></td><td>0.054</td></tr>
+<tr><td style="text-align:left"></td><td>t = 1.394</td><td>t = 1.628</td><td>t = 2.106</td><td>t = 0.717</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">OCF</td><td>-0.100<sup>***</sup></td><td>-1.672<sup>***</sup></td><td>-0.839<sup>***</sup></td><td>-0.875<sup>**</sup></td></tr>
+<tr><td style="text-align:left"></td><td>t = -3.055</td><td>t = -2.855</td><td>t = -2.589</td><td>t = -2.285</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">MTB</td><td>0.004<sup>**</sup></td><td>0.062<sup>**</sup></td><td>0.036<sup>**</sup></td><td>0.029</td></tr>
+<tr><td style="text-align:left"></td><td>t = 2.121</td><td>t = 2.050</td><td>t = 2.157</td><td>t = 1.452</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">MS</td><td>-0.0001</td><td>-0.0004</td><td>0.0001</td><td>-0.0004</td></tr>
+<tr><td style="text-align:left"></td><td>t = -0.443</td><td>t = -0.640</td><td>t = 0.244</td><td>t = -1.004</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">INST</td><td>0.0003</td><td>0.005</td><td>0.008</td><td>-0.005</td></tr>
+<tr><td style="text-align:left"></td><td>t = 0.040</td><td>t = 0.208</td><td>t = 0.694</td><td>t = -0.336</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">CYCLE</td><td>-0.00001<sup>**</sup></td><td>-0.0001<sup>**</sup></td><td>-0.00004<sup>*</sup></td><td>-0.00004<sup>*</sup></td></tr>
+<tr><td style="text-align:left"></td><td>t = -2.046</td><td>t = -2.249</td><td>t = -1.947</td><td>t = -1.827</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">NOA</td><td>0.017<sup>*</sup></td><td>0.266<sup>***</sup></td><td>0.127<sup>***</sup></td><td>0.140<sup>**</sup></td></tr>
+<tr><td style="text-align:left"></td><td>t = 1.873</td><td>t = 3.061</td><td>t = 2.639</td><td>t = 2.461</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">ZSCORE</td><td>-0.002<sup>*</sup></td><td>-0.027<sup>**</sup></td><td>-0.013<sup>*</sup></td><td>-0.015<sup>*</sup></td></tr>
+<tr><td style="text-align:left"></td><td>t = -1.749</td><td>t = -2.139</td><td>t = -1.924</td><td>t = -1.849</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">CL</td><td>0.028<sup>**</sup></td><td>0.460<sup>***</sup></td><td>0.189<sup>**</sup></td><td>0.281<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td>t = 1.975</td><td>t = 2.902</td><td>t = 2.181</td><td>t = 2.718</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">ADJROA</td><td>0.102<sup>**</sup></td><td>1.126</td><td>0.873<sup>**</sup></td><td>0.301</td></tr>
+<tr><td style="text-align:left"></td><td>t = 2.553</td><td>t = 1.547</td><td>t = 2.213</td><td>t = 0.629</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">ADJROA_sq</td><td>0.889<sup>***</sup></td><td>13.478<sup>**</sup></td><td>7.982<sup>**</sup></td><td>6.088</td></tr>
+<tr><td style="text-align:left"></td><td>t = 4.874</td><td>t = 2.221</td><td>t = 2.343</td><td>t = 1.550</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">SIZE</td><td>-0.004<sup>***</sup></td><td>-0.064<sup>**</sup></td><td>-0.038<sup>**</sup></td><td>-0.028</td></tr>
+<tr><td style="text-align:left"></td><td>t = -2.821</td><td>t = -2.247</td><td>t = -2.441</td><td>t = -1.490</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">BIG41</td><td>0.003</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left"></td><td>t = 0.431</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">ADV</td><td></td><td>-0.969<sup>***</sup></td><td>-0.525<sup>***</sup></td><td>-0.472<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td></td><td>t = -12.688</td><td>t = -10.661</td><td>t = -11.016</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">RD</td><td></td><td>-0.119<sup>**</sup></td><td>-0.067<sup>*</sup></td><td>-0.045</td></tr>
+<tr><td style="text-align:left"></td><td></td><td>t = -1.962</td><td>t = -1.679</td><td>t = -1.370</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">YEAR</td><td>0.002<sup>**</sup></td><td>0.034<sup>**</sup></td><td>0.019<sup>**</sup></td><td>0.016</td></tr>
+<tr><td style="text-align:left"></td><td>t = 2.141</td><td>t = 2.139</td><td>t = 2.206</td><td>t = 1.520</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">Constant</td><td>-4.895<sup>**</sup></td><td>-67.305<sup>**</sup></td><td>-38.397<sup>**</sup></td><td>-31.067</td></tr>
+<tr><td style="text-align:left"></td><td>t = -2.103</td><td>t = -2.133</td><td>t = -2.198</td><td>t = -1.518</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td colspan="5" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left">Observations</td><td>1,032</td><td>1,032</td><td>1,032</td><td>1,032</td></tr>
+<tr><td style="text-align:left">R<sup>2</sup></td><td>0.161</td><td>0.428</td><td>0.364</td><td>0.445</td></tr>
+<tr><td style="text-align:left">Adjusted R<sup>2</sup></td><td>0.145</td><td>0.417</td><td>0.351</td><td>0.434</td></tr>
+<tr><td style="text-align:left">Residual Std. Error</td><td>0.045 (df = 1012)</td><td>0.116 (df = 1011)</td><td>0.060 (df = 1011)</td><td>0.075 (df = 1011)</td></tr>
+<tr><td style="text-align:left">F Statistic</td><td>10.223<sup>***</sup> (df = 19; 1012)</td><td>37.798<sup>***</sup> (df = 20; 1011)</td><td>28.922<sup>***</sup> (df = 20; 1011)</td><td>40.454<sup>***</sup> (df = 20; 1011)</td></tr>
+<tr><td colspan="5" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left"><em>Note:</em></td><td colspan="4" style="text-align:right"><sup>*</sup>p<0.1; <sup>**</sup>p<0.05; <sup>***</sup>p<0.01</td></tr>
+</table>
+
+<table style="text-align:center"><caption><strong>First Stage</strong></caption>
+<tr><td colspan="5" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left"></td><td colspan="4"><em>Dependent variable:</em></td></tr>
+<tr><td></td><td colspan="4" style="border-bottom: 1px solid black"></td></tr>
+<tr><td style="text-align:left"></td><td>ABSDA</td><td>RM</td><td>ABEXP</td><td>ABPROD</td></tr>
+<tr><td style="text-align:left"></td><td>(1)</td><td>(2)</td><td>(3)</td><td>(4)</td></tr>
+<tr><td colspan="5" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left">POST1</td><td>-0.009<sup>*</sup></td><td>0.020</td><td>0.014<sup>**</sup></td><td>0.008</td></tr>
+<tr><td style="text-align:left"></td><td>t = -1.715</td><td>t = 1.605</td><td>t = 2.020</td><td>t = 1.088</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">RPA1</td><td>-0.005</td><td>-0.016</td><td>-0.005</td><td>-0.008</td></tr>
+<tr><td style="text-align:left"></td><td>t = -1.338</td><td>t = -1.487</td><td>t = -0.785</td><td>t = -1.193</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">POST_RPA1</td><td>0.017<sup>***</sup></td><td>0.012</td><td>0.002</td><td>0.008</td></tr>
+<tr><td style="text-align:left"></td><td>t = 3.043</td><td>t = 0.822</td><td>t = 0.232</td><td>t = 0.811</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">LEV</td><td>0.018</td><td>-0.077<sup>*</sup></td><td>-0.026</td><td>-0.061<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td>t = 1.204</td><td>t = -1.946</td><td>t = -1.253</td><td>t = -2.608</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">OCF</td><td>-0.091<sup>***</sup></td><td>-0.312<sup>***</sup></td><td>-0.032</td><td>-0.277<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td>t = -2.773</td><td>t = -5.011</td><td>t = -0.912</td><td>t = -6.801</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">MTB</td><td>0.005<sup>***</sup></td><td>-0.008<sup>*</sup></td><td>-0.005<sup>*</sup></td><td>-0.002</td></tr>
+<tr><td style="text-align:left"></td><td>t = 2.746</td><td>t = -1.715</td><td>t = -1.866</td><td>t = -0.721</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">MS</td><td>0.00004</td><td>-0.001</td><td>-0.0002</td><td>-0.001<sup>*</sup></td></tr>
+<tr><td style="text-align:left"></td><td>t = 0.171</td><td>t = -1.644</td><td>t = -0.572</td><td>t = -1.807</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">INST</td><td>0.0003</td><td>0.002</td><td>0.007</td><td>-0.006</td></tr>
+<tr><td style="text-align:left"></td><td>t = 0.031</td><td>t = 0.088</td><td>t = 0.556</td><td>t = -0.423</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">CYCLE</td><td>-0.00001<sup>*</sup></td><td>0.00000</td><td>0.00001<sup>**</sup></td><td>-0.00001</td></tr>
+<tr><td style="text-align:left"></td><td>t = -1.739</td><td>t = 0.194</td><td>t = 2.314</td><td>t = -1.414</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">NOA</td><td>0.013</td><td>0.076<sup>***</sup></td><td>0.014</td><td>0.056<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td>t = 1.392</td><td>t = 3.014</td><td>t = 0.973</td><td>t = 3.495</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">ZSCORE</td><td>-0.002<sup>*</sup></td><td>0.001</td><td>0.003<sup>*</sup></td><td>-0.003</td></tr>
+<tr><td style="text-align:left"></td><td>t = -1.817</td><td>t = 0.355</td><td>t = 1.784</td><td>t = -1.428</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">CL</td><td>0.023<sup>*</sup></td><td>0.110<sup>***</sup></td><td>-0.019</td><td>0.128<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td>t = 1.679</td><td>t = 2.707</td><td>t = -0.942</td><td>t = 4.929</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">ADJROA</td><td>0.115<sup>***</sup></td><td>-0.591<sup>***</sup></td><td>-0.149<sup>***</sup></td><td>-0.452<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td>t = 2.853</td><td>t = -6.619</td><td>t = -2.855</td><td>t = -8.046</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">ADJROA_sq</td><td>0.945<sup>***</sup></td><td>-0.568</td><td>-0.361</td><td>-0.083</td></tr>
+<tr><td style="text-align:left"></td><td>t = 5.452</td><td>t = -1.376</td><td>t = -1.526</td><td>t = -0.296</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">SIZE</td><td>-0.005<sup>***</sup></td><td>0.003</td><td>0.001</td><td>0.002</td></tr>
+<tr><td style="text-align:left"></td><td>t = -3.282</td><td>t = 0.690</td><td>t = 0.668</td><td>t = 0.648</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">BIG41</td><td>0.002</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left"></td><td>t = 0.336</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">ADV</td><td></td><td>-0.964<sup>***</sup></td><td>-0.528<sup>***</sup></td><td>-0.466<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td></td><td>t = -12.577</td><td>t = -10.661</td><td>t = -10.855</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">RD</td><td></td><td>-0.118<sup>**</sup></td><td>-0.067<sup>*</sup></td><td>-0.044</td></tr>
+<tr><td style="text-align:left"></td><td></td><td>t = -1.975</td><td>t = -1.682</td><td>t = -1.360</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">YEAR</td><td>0.002<sup>**</sup></td><td>-0.002</td><td>-0.002</td><td>-0.0002</td></tr>
+<tr><td style="text-align:left"></td><td>t = 2.089</td><td>t = -0.724</td><td>t = -1.413</td><td>t = -0.092</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">Constant</td><td>-4.776<sup>**</sup></td><td>4.311</td><td>4.203</td><td>0.355</td></tr>
+<tr><td style="text-align:left"></td><td>t = -2.046</td><td>t = 0.729</td><td>t = 1.422</td><td>t = 0.095</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td colspan="5" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left">Observations</td><td>1,032</td><td>1,032</td><td>1,032</td><td>1,032</td></tr>
+<tr><td style="text-align:left">R<sup>2</sup></td><td>0.157</td><td>0.425</td><td>0.356</td><td>0.441</td></tr>
+<tr><td style="text-align:left">Adjusted R<sup>2</sup></td><td>0.143</td><td>0.415</td><td>0.345</td><td>0.431</td></tr>
+<tr><td style="text-align:left">Residual Std. Error</td><td>0.045 (df = 1014)</td><td>0.116 (df = 1013)</td><td>0.060 (df = 1013)</td><td>0.075 (df = 1013)</td></tr>
+<tr><td style="text-align:left">F Statistic</td><td>11.122<sup>***</sup> (df = 17; 1014)</td><td>41.648<sup>***</sup> (df = 18; 1013)</td><td>31.166<sup>***</sup> (df = 18; 1013)</td><td>44.347<sup>***</sup> (df = 18; 1013)</td></tr>
+<tr><td colspan="5" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left"><em>Note:</em></td><td colspan="4" style="text-align:right"><sup>*</sup>p<0.1; <sup>**</sup>p<0.05; <sup>***</sup>p<0.01</td></tr>
+</table>
+
+<table style="text-align:center"><caption><strong>Second Stage</strong></caption>
+<tr><td colspan="5" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left"></td><td colspan="4"><em>Dependent variable:</em></td></tr>
+<tr><td></td><td colspan="4" style="border-bottom: 1px solid black"></td></tr>
+<tr><td style="text-align:left"></td><td>ABSDA</td><td>RM</td><td>ABEXP</td><td>ABPROD</td></tr>
+<tr><td style="text-align:left"></td><td>(1)</td><td>(2)</td><td>(3)</td><td>(4)</td></tr>
+<tr><td colspan="5" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left">RMhat</td><td>-0.042<sup>*</sup></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left"></td><td>t = -1.790</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">AMhat</td><td></td><td>-14.896<sup>**</sup></td><td>-8.875<sup>**</sup></td><td>-6.525</td></tr>
+<tr><td style="text-align:left"></td><td></td><td>t = -2.327</td><td>t = -2.524</td><td>t = -1.555</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">POST1</td><td>-0.009<sup>*</sup></td><td>-0.113<sup>*</sup></td><td>-0.065<sup>**</sup></td><td>-0.050</td></tr>
+<tr><td style="text-align:left"></td><td>t = -1.766</td><td>t = -1.927</td><td>t = -2.004</td><td>t = -1.298</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">RPA1</td><td>-0.006</td><td>-0.093<sup>***</sup></td><td>-0.050<sup>***</sup></td><td>-0.041<sup>*</sup></td></tr>
+<tr><td style="text-align:left"></td><td>t = -1.503</td><td>t = -2.615</td><td>t = -2.604</td><td>t = -1.802</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">POST_RPA1</td><td>0.018<sup>***</sup></td><td>0.268<sup>**</sup></td><td>0.154<sup>**</sup></td><td>0.120</td></tr>
+<tr><td style="text-align:left"></td><td>t = 3.159</td><td>t = 2.401</td><td>t = 2.529</td><td>t = 1.635</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">LEV</td><td>0.021</td><td>0.187</td><td>0.131<sup>**</sup></td><td>0.055</td></tr>
+<tr><td style="text-align:left"></td><td>t = 1.393</td><td>t = 1.628</td><td>t = 2.107</td><td>t = 0.718</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">OCF</td><td>-0.100<sup>***</sup></td><td>-1.671<sup>***</sup></td><td>-0.842<sup>***</sup></td><td>-0.873<sup>**</sup></td></tr>
+<tr><td style="text-align:left"></td><td>t = -3.051</td><td>t = -2.849</td><td>t = -2.604</td><td>t = -2.268</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">MTB</td><td>0.004<sup>**</sup></td><td>0.062<sup>**</sup></td><td>0.036<sup>**</sup></td><td>0.028</td></tr>
+<tr><td style="text-align:left"></td><td>t = 2.125</td><td>t = 2.044</td><td>t = 2.174</td><td>t = 1.435</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">MS</td><td>-0.0001</td><td>-0.0004</td><td>0.0001</td><td>-0.0004</td></tr>
+<tr><td style="text-align:left"></td><td>t = -0.446</td><td>t = -0.651</td><td>t = 0.268</td><td>t = -1.042</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">INST</td><td>0.0003</td><td>0.005</td><td>0.008</td><td>-0.005</td></tr>
+<tr><td style="text-align:left"></td><td>t = 0.039</td><td>t = 0.208</td><td>t = 0.696</td><td>t = -0.336</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">CYCLE</td><td>-0.00001<sup>**</sup></td><td>-0.0001<sup>**</sup></td><td>-0.00004<sup>*</sup></td><td>-0.00004<sup>*</sup></td></tr>
+<tr><td style="text-align:left"></td><td>t = -2.041</td><td>t = -2.247</td><td>t = -1.953</td><td>t = -1.819</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">NOA</td><td>0.017<sup>*</sup></td><td>0.266<sup>***</sup></td><td>0.127<sup>***</sup></td><td>0.140<sup>**</sup></td></tr>
+<tr><td style="text-align:left"></td><td>t = 1.877</td><td>t = 3.056</td><td>t = 2.652</td><td>t = 2.448</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">ZSCORE</td><td>-0.002<sup>*</sup></td><td>-0.027<sup>**</sup></td><td>-0.013<sup>*</sup></td><td>-0.015<sup>*</sup></td></tr>
+<tr><td style="text-align:left"></td><td>t = -1.747</td><td>t = -2.135</td><td>t = -1.935</td><td>t = -1.834</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">CL</td><td>0.028<sup>**</sup></td><td>0.460<sup>***</sup></td><td>0.189<sup>**</sup></td><td>0.281<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td>t = 1.984</td><td>t = 2.894</td><td>t = 2.198</td><td>t = 2.694</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">ADJROA</td><td>0.102<sup>**</sup></td><td>1.126</td><td>0.874<sup>**</sup></td><td>0.300</td></tr>
+<tr><td style="text-align:left"></td><td>t = 2.546</td><td>t = 1.545</td><td>t = 2.223</td><td>t = 0.624</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">ADJROA_sq</td><td>0.888<sup>***</sup></td><td>13.468<sup>**</sup></td><td>8.002<sup>**</sup></td><td>6.065</td></tr>
+<tr><td style="text-align:left"></td><td>t = 4.873</td><td>t = 2.215</td><td>t = 2.359</td><td>t = 1.535</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">SIZE</td><td>-0.004<sup>***</sup></td><td>-0.064<sup>**</sup></td><td>-0.038<sup>**</sup></td><td>-0.028</td></tr>
+<tr><td style="text-align:left"></td><td>t = -2.817</td><td>t = -2.241</td><td>t = -2.457</td><td>t = -1.474</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">BIG41</td><td>0.002</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left"></td><td>t = 0.395</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">ADV</td><td></td><td>-0.967<sup>***</sup></td><td>-0.529<sup>***</sup></td><td>-0.467<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td></td><td>t = -12.583</td><td>t = -10.659</td><td>t = -10.910</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">RD</td><td></td><td>-0.119<sup>**</sup></td><td>-0.068<sup>*</sup></td><td>-0.045</td></tr>
+<tr><td style="text-align:left"></td><td></td><td>t = -1.963</td><td>t = -1.672</td><td>t = -1.367</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">YEAR</td><td>0.002<sup>**</sup></td><td>0.034<sup>**</sup></td><td>0.019<sup>**</sup></td><td>0.016</td></tr>
+<tr><td style="text-align:left"></td><td>t = 2.144</td><td>t = 2.136</td><td>t = 2.216</td><td>t = 1.509</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">Constant</td><td>-4.898<sup>**</sup></td><td>-67.279<sup>**</sup></td><td>-38.453<sup>**</sup></td><td>-31.005</td></tr>
+<tr><td style="text-align:left"></td><td>t = -2.106</td><td>t = -2.130</td><td>t = -2.208</td><td>t = -1.507</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td colspan="5" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left">Observations</td><td>1,032</td><td>1,032</td><td>1,032</td><td>1,032</td></tr>
+<tr><td style="text-align:left">R<sup>2</sup></td><td>0.161</td><td>0.428</td><td>0.360</td><td>0.442</td></tr>
+<tr><td style="text-align:left">Adjusted R<sup>2</sup></td><td>0.146</td><td>0.417</td><td>0.348</td><td>0.431</td></tr>
+<tr><td style="text-align:left">Residual Std. Error</td><td>0.045 (df = 1013)</td><td>0.116 (df = 1012)</td><td>0.060 (df = 1012)</td><td>0.075 (df = 1012)</td></tr>
+<tr><td style="text-align:left">F Statistic</td><td>10.778<sup>***</sup> (df = 18; 1013)</td><td>39.793<sup>***</sup> (df = 19; 1012)</td><td>29.944<sup>***</sup> (df = 19; 1012)</td><td>42.151<sup>***</sup> (df = 19; 1012)</td></tr>
+<tr><td colspan="5" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left"><em>Note:</em></td><td colspan="4" style="text-align:right"><sup>*</sup>p<0.1; <sup>**</sup>p<0.05; <sup>***</sup>p<0.01</td></tr>
+</table>
+
+<table style="text-align:center"><caption><strong>Endogeneity Test</strong></caption>
+<tr><td colspan="5" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left"></td><td colspan="4"><em>Dependent variable:</em></td></tr>
+<tr><td></td><td colspan="4" style="border-bottom: 1px solid black"></td></tr>
+<tr><td style="text-align:left"></td><td>ABSDA ~ RMres +</td><td colspan="3">RM_proxy</td></tr>
+<tr><td style="text-align:left"></td><td>(1)</td><td>(2)</td><td>(3)</td><td>(4)</td></tr>
+<tr><td colspan="5" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left">RMres</td><td>0.070<sup>*</sup></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left"></td><td>t = 1.852</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">RM</td><td>-0.051</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left"></td><td>t = -1.541</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">ABSDA</td><td></td><td>-9.268<sup>***</sup></td><td>-5.443<sup>***</sup></td><td>-3.913<sup>**</sup></td></tr>
+<tr><td style="text-align:left"></td><td></td><td>t = -3.546</td><td>t = -5.395</td><td>t = -2.040</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">AMres</td><td></td><td>9.390<sup>***</sup></td><td>5.421<sup>***</sup></td><td>4.043<sup>**</sup></td></tr>
+<tr><td style="text-align:left"></td><td></td><td>t = 3.591</td><td>t = 5.371</td><td>t = 2.101</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">POST1</td><td>0.012<sup>**</sup></td><td>0.138<sup>***</sup></td><td>0.075<sup>***</sup></td><td>0.065<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td>t = 2.328</td><td>t = 4.407</td><td>t = 5.985</td><td>t = 2.887</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">LEV</td><td>-0.015</td><td>-0.210<sup>**</sup></td><td>-0.105<sup>**</sup></td><td>-0.109<sup>*</sup></td></tr>
+<tr><td style="text-align:left"></td><td>t = -0.701</td><td>t = -2.214</td><td>t = -2.489</td><td>t = -1.748</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">OCF</td><td>-0.030</td><td>-0.426<sup>***</sup></td><td>-0.150<sup>***</sup></td><td>-0.266<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td>t = -0.701</td><td>t = -4.693</td><td>t = -3.692</td><td>t = -4.045</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">MTB</td><td>0.006<sup>***</sup></td><td>0.057<sup>***</sup></td><td>0.033<sup>***</sup></td><td>0.023</td></tr>
+<tr><td style="text-align:left"></td><td>t = 2.890</td><td>t = 2.841</td><td>t = 4.175</td><td>t = 1.594</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">MS</td><td>0.00002</td><td>0.002<sup>**</sup></td><td>0.001<sup>**</sup></td><td>0.001</td></tr>
+<tr><td style="text-align:left"></td><td>t = 0.060</td><td>t = 2.087</td><td>t = 2.449</td><td>t = 1.330</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">INST</td><td>0.009</td><td>0.095<sup>**</sup></td><td>0.065<sup>***</sup></td><td>0.033</td></tr>
+<tr><td style="text-align:left"></td><td>t = 0.814</td><td>t = 2.214</td><td>t = 3.343</td><td>t = 1.161</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">CYCLE</td><td>-0.00002</td><td>-0.0002<sup>***</sup></td><td>-0.0001<sup>***</sup></td><td>-0.0002<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td>t = -0.856</td><td>t = -5.043</td><td>t = -3.597</td><td>t = -4.950</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">NOA</td><td>0.016</td><td>0.227<sup>***</sup></td><td>0.091<sup>***</sup></td><td>0.144<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td>t = 1.322</td><td>t = 4.695</td><td>t = 4.409</td><td>t = 4.050</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">ZSCORE</td><td>-0.002</td><td>-0.008</td><td>-0.002</td><td>-0.005</td></tr>
+<tr><td style="text-align:left"></td><td>t = -1.274</td><td>t = -1.025</td><td>t = -0.789</td><td>t = -0.958</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">CL</td><td>0.054<sup>***</sup></td><td>0.562<sup>***</sup></td><td>0.257<sup>***</sup></td><td>0.317<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td>t = 2.837</td><td>t = 3.375</td><td>t = 3.816</td><td>t = 2.690</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">ADJROA</td><td>-0.010</td><td>-0.762<sup>***</sup></td><td>-0.188<sup>***</sup></td><td>-0.580<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td>t = -0.157</td><td>t = -6.237</td><td>t = -3.494</td><td>t = -6.727</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">ADJROA_sq</td><td>1.192<sup>***</sup></td><td>11.396<sup>***</sup></td><td>6.751<sup>***</sup></td><td>4.989<sup>**</sup></td></tr>
+<tr><td style="text-align:left"></td><td>t = 3.581</td><td>t = 3.609</td><td>t = 5.548</td><td>t = 2.153</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">SIZE</td><td>-0.005<sup>**</sup></td><td>-0.055<sup>***</sup></td><td>-0.032<sup>***</sup></td><td>-0.024<sup>**</sup></td></tr>
+<tr><td style="text-align:left"></td><td>t = -2.550</td><td>t = -3.659</td><td>t = -5.276</td><td>t = -2.181</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">BIG41</td><td>0.008</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left"></td><td>t = 1.101</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">ADV</td><td></td><td>-1.153<sup>***</sup></td><td>-0.637<sup>***</sup></td><td>-0.524<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td></td><td>t = -10.035</td><td>t = -10.873</td><td>t = -7.603</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">RD</td><td></td><td>-0.139</td><td>-0.057</td><td>-0.083</td></tr>
+<tr><td style="text-align:left"></td><td></td><td>t = -1.511</td><td>t = -1.115</td><td>t = -1.603</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">YEAR</td><td>0.001</td><td>0.006</td><td>0.004<sup>*</sup></td><td>0.002</td></tr>
+<tr><td style="text-align:left"></td><td>t = 0.715</td><td>t = 1.241</td><td>t = 1.826</td><td>t = 0.578</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">Constant</td><td>-2.147</td><td>-11.507</td><td>-7.560<sup>*</sup></td><td>-3.523</td></tr>
+<tr><td style="text-align:left"></td><td>t = -0.687</td><td>t = -1.158</td><td>t = -1.715</td><td>t = -0.524</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td colspan="5" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left">Observations</td><td>516</td><td>516</td><td>516</td><td>516</td></tr>
+<tr><td style="text-align:left">R<sup>2</sup></td><td>0.200</td><td>0.456</td><td>0.460</td><td>0.426</td></tr>
+<tr><td style="text-align:left">Adjusted R<sup>2</sup></td><td>0.172</td><td>0.437</td><td>0.440</td><td>0.405</td></tr>
+<tr><td style="text-align:left">Residual Std. Error</td><td>0.044 (df = 498)</td><td>0.112 (df = 497)</td><td>0.052 (df = 497)</td><td>0.075 (df = 497)</td></tr>
+<tr><td style="text-align:left">F Statistic</td><td>7.310<sup>***</sup> (df = 17; 498)</td><td>23.191<sup>***</sup> (df = 18; 497)</td><td>23.512<sup>***</sup> (df = 18; 497)</td><td>20.480<sup>***</sup> (df = 18; 497)</td></tr>
+<tr><td colspan="5" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left"><em>Note:</em></td><td colspan="4" style="text-align:right"><sup>*</sup>p<0.1; <sup>**</sup>p<0.05; <sup>***</sup>p<0.01</td></tr>
+</table>
+
+<table style="text-align:center"><caption><strong>First Stage</strong></caption>
+<tr><td colspan="5" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left"></td><td colspan="4"><em>Dependent variable:</em></td></tr>
+<tr><td></td><td colspan="4" style="border-bottom: 1px solid black"></td></tr>
+<tr><td style="text-align:left"></td><td>ABSDA</td><td>RM</td><td>ABEXP</td><td>ABPROD</td></tr>
+<tr><td style="text-align:left"></td><td>(1)</td><td>(2)</td><td>(3)</td><td>(4)</td></tr>
+<tr><td colspan="5" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left">POST1</td><td>0.011<sup>**</sup></td><td>0.040<sup>***</sup></td><td>0.017<sup>**</sup></td><td>0.023<sup>**</sup></td></tr>
+<tr><td style="text-align:left"></td><td>t = 2.155</td><td>t = 2.893</td><td>t = 2.573</td><td>t = 2.556</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">LEV</td><td>-0.022</td><td>0.007</td><td>0.022</td><td>-0.017</td></tr>
+<tr><td style="text-align:left"></td><td>t = -1.084</td><td>t = 0.107</td><td>t = 0.715</td><td>t = -0.453</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">OCF</td><td>-0.022</td><td>-0.226<sup>***</sup></td><td>-0.034</td><td>-0.182<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td>t = -0.504</td><td>t = -3.043</td><td>t = -0.974</td><td>t = -3.432</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">MTB</td><td>0.007<sup>***</sup></td><td>-0.011<sup>**</sup></td><td>-0.007<sup>**</sup></td><td>-0.005</td></tr>
+<tr><td style="text-align:left"></td><td>t = 3.878</td><td>t = -2.092</td><td>t = -2.125</td><td>t = -1.460</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">MS</td><td>0.0002</td><td>-0.0001</td><td>-0.00001</td><td>-0.0001</td></tr>
+<tr><td style="text-align:left"></td><td>t = 0.863</td><td>t = -0.105</td><td>t = -0.031</td><td>t = -0.139</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">INST</td><td>0.009</td><td>-0.001</td><td>0.008</td><td>-0.007</td></tr>
+<tr><td style="text-align:left"></td><td>t = 0.812</td><td>t = -0.033</td><td>t = 0.509</td><td>t = -0.345</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">CYCLE</td><td>-0.00000</td><td>-0.0002<sup>***</sup></td><td>-0.00005<sup>**</sup></td><td>-0.0001<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td>t = -0.213</td><td>t = -4.409</td><td>t = -2.526</td><td>t = -4.702</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">NOA</td><td>0.011</td><td>0.109<sup>***</sup></td><td>0.021</td><td>0.094<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td>t = 0.933</td><td>t = 3.523</td><td>t = 1.461</td><td>t = 4.132</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">ZSCORE</td><td>-0.002<sup>*</sup></td><td>0.014<sup>***</sup></td><td>0.010<sup>***</sup></td><td>0.004</td></tr>
+<tr><td style="text-align:left"></td><td>t = -1.671</td><td>t = 3.479</td><td>t = 5.422</td><td>t = 1.449</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">CL</td><td>0.052<sup>***</sup></td><td>0.051</td><td>-0.043</td><td>0.101<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td>t = 2.703</td><td>t = 0.842</td><td>t = -1.605</td><td>t = 2.648</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">ADJROA</td><td>0.019</td><td>-0.910<sup>***</sup></td><td>-0.277<sup>***</sup></td><td>-0.641<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td>t = 0.280</td><td>t = -7.643</td><td>t = -5.216</td><td>t = -7.729</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">ADJROA_sq</td><td>1.211<sup>***</sup></td><td>0.233</td><td>0.199</td><td>0.273</td></tr>
+<tr><td style="text-align:left"></td><td>t = 3.713</td><td>t = 0.343</td><td>t = 0.751</td><td>t = 0.553</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">SIZE</td><td>-0.006<sup>***</sup></td><td>-0.003</td><td>-0.001</td><td>-0.002</td></tr>
+<tr><td style="text-align:left"></td><td>t = -2.991</td><td>t = -0.631</td><td>t = -0.454</td><td>t = -0.641</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">BIG41</td><td>0.007</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left"></td><td>t = 0.897</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">ADV</td><td></td><td>-1.138<sup>***</sup></td><td>-0.633<sup>***</sup></td><td>-0.514<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td></td><td>t = -9.836</td><td>t = -10.814</td><td>t = -7.416</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">RD</td><td></td><td>-0.143</td><td>-0.060</td><td>-0.083</td></tr>
+<tr><td style="text-align:left"></td><td></td><td>t = -1.559</td><td>t = -1.173</td><td>t = -1.617</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">YEAR</td><td>0.001</td><td>-0.004</td><td>-0.002</td><td>-0.002</td></tr>
+<tr><td style="text-align:left"></td><td>t = 0.706</td><td>t = -1.093</td><td>t = -1.203</td><td>t = -0.950</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">Constant</td><td>-2.121</td><td>8.715</td><td>4.359</td><td>4.979</td></tr>
+<tr><td style="text-align:left"></td><td>t = -0.673</td><td>t = 1.100</td><td>t = 1.212</td><td>t = 0.953</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td colspan="5" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left">Observations</td><td>516</td><td>516</td><td>516</td><td>516</td></tr>
+<tr><td style="text-align:left">R<sup>2</sup></td><td>0.192</td><td>0.444</td><td>0.442</td><td>0.418</td></tr>
+<tr><td style="text-align:left">Adjusted R<sup>2</sup></td><td>0.168</td><td>0.426</td><td>0.424</td><td>0.399</td></tr>
+<tr><td style="text-align:left">Residual Std. Error</td><td>0.044 (df = 500)</td><td>0.113 (df = 499)</td><td>0.053 (df = 499)</td><td>0.075 (df = 499)</td></tr>
+<tr><td style="text-align:left">F Statistic</td><td>7.928<sup>***</sup> (df = 15; 500)</td><td>24.916<sup>***</sup> (df = 16; 499)</td><td>24.698<sup>***</sup> (df = 16; 499)</td><td>22.376<sup>***</sup> (df = 16; 499)</td></tr>
+<tr><td colspan="5" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left"><em>Note:</em></td><td colspan="4" style="text-align:right"><sup>*</sup>p<0.1; <sup>**</sup>p<0.05; <sup>***</sup>p<0.01</td></tr>
+</table>
+
+<table style="text-align:center"><caption><strong>Second Stage</strong></caption>
+<tr><td colspan="5" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left"></td><td colspan="4"><em>Dependent variable:</em></td></tr>
+<tr><td></td><td colspan="4" style="border-bottom: 1px solid black"></td></tr>
+<tr><td style="text-align:left"></td><td>ABSDA</td><td>RM</td><td>ABEXP</td><td>ABPROD</td></tr>
+<tr><td style="text-align:left"></td><td>(1)</td><td>(2)</td><td>(3)</td><td>(4)</td></tr>
+<tr><td colspan="5" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left">RMhat</td><td>-0.051</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left"></td><td>t = -1.553</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">AMhat</td><td></td><td>-9.263<sup>***</sup></td><td>-5.444<sup>***</sup></td><td>-3.908<sup>**</sup></td></tr>
+<tr><td style="text-align:left"></td><td></td><td>t = -3.523</td><td>t = -5.408</td><td>t = -2.021</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">POST1</td><td>0.012<sup>**</sup></td><td>0.138<sup>***</sup></td><td>0.075<sup>***</sup></td><td>0.065<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td>t = 2.306</td><td>t = 4.374</td><td>t = 6.001</td><td>t = 2.856</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">LEV</td><td>-0.015</td><td>-0.210<sup>**</sup></td><td>-0.106<sup>**</sup></td><td>-0.108<sup>*</sup></td></tr>
+<tr><td style="text-align:left"></td><td>t = -0.713</td><td>t = -2.195</td><td>t = -2.496</td><td>t = -1.722</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">OCF</td><td>-0.030</td><td>-0.425<sup>***</sup></td><td>-0.150<sup>***</sup></td><td>-0.265<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td>t = -0.695</td><td>t = -4.649</td><td>t = -3.702</td><td>t = -3.998</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">MTB</td><td>0.006<sup>***</sup></td><td>0.057<sup>***</sup></td><td>0.033<sup>***</sup></td><td>0.023</td></tr>
+<tr><td style="text-align:left"></td><td>t = 2.902</td><td>t = 2.817</td><td>t = 4.190</td><td>t = 1.573</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">MS</td><td>0.00001</td><td>0.002<sup>**</sup></td><td>0.001<sup>**</sup></td><td>0.001</td></tr>
+<tr><td style="text-align:left"></td><td>t = 0.055</td><td>t = 2.070</td><td>t = 2.461</td><td>t = 1.294</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">INST</td><td>0.010</td><td>0.095<sup>**</sup></td><td>0.065<sup>***</sup></td><td>0.034</td></tr>
+<tr><td style="text-align:left"></td><td>t = 0.826</td><td>t = 2.206</td><td>t = 3.349</td><td>t = 1.156</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">CYCLE</td><td>-0.00002</td><td>-0.0002<sup>***</sup></td><td>-0.0001<sup>***</sup></td><td>-0.0002<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td>t = -0.854</td><td>t = -5.064</td><td>t = -3.592</td><td>t = -4.977</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">NOA</td><td>0.017</td><td>0.227<sup>***</sup></td><td>0.091<sup>***</sup></td><td>0.144<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td>t = 1.339</td><td>t = 4.685</td><td>t = 4.414</td><td>t = 4.041</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">ZSCORE</td><td>-0.002</td><td>-0.008</td><td>-0.002</td><td>-0.005</td></tr>
+<tr><td style="text-align:left"></td><td>t = -1.270</td><td>t = -1.023</td><td>t = -0.788</td><td>t = -0.957</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">CL</td><td>0.055<sup>***</sup></td><td>0.561<sup>***</sup></td><td>0.257<sup>***</sup></td><td>0.317<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td>t = 2.861</td><td>t = 3.353</td><td>t = 3.824</td><td>t = 2.663</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">ADJROA</td><td>-0.011</td><td>-0.760<sup>***</sup></td><td>-0.189<sup>***</sup></td><td>-0.578<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td>t = -0.166</td><td>t = -6.353</td><td>t = -3.472</td><td>t = -6.904</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">ADJROA_sq</td><td>1.191<sup>***</sup></td><td>11.385<sup>***</sup></td><td>6.753<sup>***</sup></td><td>4.978<sup>**</sup></td></tr>
+<tr><td style="text-align:left"></td><td>t = 3.603</td><td>t = 3.586</td><td>t = 5.561</td><td>t = 2.133</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">SIZE</td><td>-0.005<sup>**</sup></td><td>-0.055<sup>***</sup></td><td>-0.032<sup>***</sup></td><td>-0.024<sup>**</sup></td></tr>
+<tr><td style="text-align:left"></td><td>t = -2.543</td><td>t = -3.629</td><td>t = -5.297</td><td>t = -2.154</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">BIG41</td><td>0.007</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left"></td><td>t = 0.947</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">ADV</td><td></td><td>-1.147<sup>***</sup></td><td>-0.638<sup>***</sup></td><td>-0.517<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td></td><td>t = -10.032</td><td>t = -10.878</td><td>t = -7.590</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">RD</td><td></td><td>-0.138</td><td>-0.057</td><td>-0.081</td></tr>
+<tr><td style="text-align:left"></td><td></td><td>t = -1.512</td><td>t = -1.114</td><td>t = -1.589</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">YEAR</td><td>0.001</td><td>0.006</td><td>0.004<sup>*</sup></td><td>0.002</td></tr>
+<tr><td style="text-align:left"></td><td>t = 0.716</td><td>t = 1.238</td><td>t = 1.827</td><td>t = 0.578</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">Constant</td><td>-2.160</td><td>-11.552</td><td>-7.552<sup>*</sup></td><td>-3.571</td></tr>
+<tr><td style="text-align:left"></td><td>t = -0.688</td><td>t = -1.156</td><td>t = -1.715</td><td>t = -0.526</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td></tr>
+<tr><td colspan="5" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left">Observations</td><td>516</td><td>516</td><td>516</td><td>516</td></tr>
+<tr><td style="text-align:left">R<sup>2</sup></td><td>0.198</td><td>0.455</td><td>0.460</td><td>0.422</td></tr>
+<tr><td style="text-align:left">Adjusted R<sup>2</sup></td><td>0.172</td><td>0.437</td><td>0.441</td><td>0.403</td></tr>
+<tr><td style="text-align:left">Residual Std. Error</td><td>0.044 (df = 499)</td><td>0.112 (df = 498)</td><td>0.052 (df = 498)</td><td>0.075 (df = 498)</td></tr>
+<tr><td style="text-align:left">F Statistic</td><td>7.692<sup>***</sup> (df = 16; 499)</td><td>24.480<sup>***</sup> (df = 17; 498)</td><td>24.926<sup>***</sup> (df = 17; 498)</td><td>21.430<sup>***</sup> (df = 17; 498)</td></tr>
+<tr><td colspan="5" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left"><em>Note:</em></td><td colspan="4" style="text-align:right"><sup>*</sup>p<0.1; <sup>**</sup>p<0.05; <sup>***</sup>p<0.01</td></tr>
+</table>

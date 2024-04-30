@@ -1,0 +1,39 @@
+[1] "RM"
+
+	 Simultaneous Tests for General Linear Hypotheses
+
+Fit: lm(formula = modelAM_formula, data = data)
+
+Linear Hypotheses:
+                       Estimate Std. Error t value Pr(>|t|)  
+POST1 + POST_RPA1 == 0 0.008887   0.004847   1.833    0.067 .
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+(Adjusted p values reported -- single-step method)
+
+
+	 Simultaneous Tests for General Linear Hypotheses
+
+Fit: lm(formula = modelRM_formula, data = data)
+
+Linear Hypotheses:
+                       Estimate Std. Error t value Pr(>|t|)  
+POST1 + POST_RPA1 == 0  0.15509    0.06206   2.499   0.0126 *
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+(Adjusted p values reported -- single-step method)
+
+    RMhat      POST       RPA  POST_RPA       LEV       OCF       MTB 
+ 2.063402  3.011963  2.035011  2.972686  3.125197  1.889202  2.736247 
+       MS      INST     CYCLE       NOA    ZSCORE        CL    ADJROA 
+ 1.858380  1.828901  1.134219  1.835432  3.915043  2.320275  2.346242 
+ADJROA_sq      SIZE      BIG4      YEAR 
+ 1.334443  2.782209  1.076048  1.980740 
+      AMhat        POST         RPA    POST_RPA         LEV         OCF 
+1530.235027   85.057110   29.536819  225.597311   44.709778  346.918759 
+        MTB          MS        INST       CYCLE         NOA      ZSCORE 
+ 193.690715    2.182933    1.888302   22.883853   34.363817  111.693757 
+         CL      ADJROA   ADJROA_sq        SIZE         ADV          RD 
+  60.874637  332.560978  612.932830  231.218637    1.386394    1.864924 
+       YEAR 
+  72.911147 

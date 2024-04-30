@@ -1,0 +1,12 @@
+    RMhat      POST       LEV       OCF       MTB        MS      INST 
+ 1.906385  2.016813  3.659365  1.780438  2.365559  2.155198  1.893663 
+    CYCLE       NOA    ZSCORE        CL    ADJROA ADJROA_sq      SIZE 
+ 1.370679  1.777177  3.752108  2.302436  2.797490  1.526396  2.849679 
+     BIG4      YEAR 
+ 1.132778  1.992235 
+     AMhat       POST        LEV        OCF        MTB         MS       INST 
+157.004873  11.798425   9.391165   3.205191  41.690465   3.602012   4.143045 
+     CYCLE        NOA     ZSCORE         CL     ADJROA  ADJROA_sq       SIZE 
+  1.266852   4.088424  16.726357  28.441631   3.549777  76.176954  32.846046 
+       ADV         RD       YEAR 
+  1.685751   2.305949   3.304884 

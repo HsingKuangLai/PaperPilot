@@ -4,6 +4,7 @@ library(MASS)
 library(dplyr)
 library(stargazer)
 library(multcomp)
+library(car)
 # 讀取 CSV 檔案，將 "#N/A" 轉換為真正的 NA（缺失值）
 data <- read.csv("base.csv")
 AQdata<-read.csv("SecondEq.csv")
@@ -75,7 +76,7 @@ for (RM_proxy in RM_proxies) {
   # Model for RM with AM.hat and control variables
   modelRM_formula <- as.formula(paste(RM_proxy, "~ AMhat +", paste(control_vars_RM, collapse=" + ")))
   modelRM <- lm(modelRM_formula, data = data)
-  modelRM_endo<-lm(paste(RM_proxy,"~",AM_proxy,"+AMres+", paste(control_vars_RM, collapse=" + ")),data=data)
+  modelRM_endo<-lm(paste(RM_proxy,"~",AM_proxy,"+", paste(control_vars_RM, collapse=" + ")),data=data)
   
   #RM_endo
   model_endo[[paste("RM_",RM_proxy)]]<-modelRM_endo
@@ -96,7 +97,7 @@ for (RM_proxy in RM_proxies) {
   # Model for AM with RM.hat, control variables, and AM proxy
   modelAM_formula <- as.formula(paste(AM_proxy, "~   RMhat + ", paste(control_vars_AM, collapse=" + ")))
   modelAM <- lm(modelAM_formula, data = data)
-  modelAM_endo<-lm(paste(AM_proxy," ~ RMres + ", RM_proxy, "+",paste(control_vars_AM, collapse=" + ")),data=data)
+  modelAM_endo<-lm(paste(AM_proxy," ~", RM_proxy, "+",paste(control_vars_AM, collapse=" + ")),data=data)
   
   #AM_endo
   model_endo[[paste("AM_",RM_proxy)]]<-modelAM_endo
@@ -115,11 +116,14 @@ for (RM_proxy in RM_proxies) {
   
   # Specify the linear hypothesis for AM-first stage regression, RM-Second stage regression
   sink(paste(RM_proxy,"_lmtest.txt"))
-  glht_mod_AM <- glht(model = modelAM_HAT, linfct = c("POST1 + POST_RPA1 = 0"))
+  glht_mod_AM <- glht(model = modelAM_endo, linfct = c("POST1 + POST_RPA1 = 0"))
   print(RM_proxy)
   print(summary(glht_mod_AM))
-  glht_mod_RM <- glht(model = modelRM, linfct = c("POST1 +POST_RPA1 = 0"))
+  glht_mod_RM <- glht(model = modelRM_endo, linfct = c("POST1 +POST_RPA1 = 0"))
   print(summary(glht_mod_RM))
+  
+  print(vif(modelAM_endo))
+  print(vif(modelRM_endo))
   sink()
   
 }
@@ -174,7 +178,7 @@ for (RM_proxy in RM_proxies) {
   # Model for RM with AM.hat and control variables
   modelRM_formula <- as.formula(paste(RM_proxy, "~ AMhat +", paste(control_vars_RM, collapse=" + ")))
   modelRM <- lm(modelRM_formula, data = data)
-  modelRM_endo<-lm(paste(RM_proxy,"~",AM_proxy,"+AMres+", paste(control_vars_RM, collapse=" + ")),data=data)
+  modelRM_endo<-lm(paste(RM_proxy,"~",AM_proxy,"+", paste(control_vars_RM, collapse=" + ")),data=data)
   
   #RM_endo
   model_endo[[paste("RM_",RM_proxy)]]<-modelRM_endo
@@ -195,7 +199,7 @@ for (RM_proxy in RM_proxies) {
   # Model for AM with RM.hat, control variables, and AM proxy
   modelAM_formula <- as.formula(paste(AM_proxy, "~   RMhat + ", paste(control_vars_AM, collapse=" + ")))
   modelAM <- lm(modelAM_formula, data = data)
-  modelAM_endo<-lm(paste(AM_proxy," ~ RMres + ", RM_proxy, "+",paste(control_vars_AM, collapse=" + ")),data=data)
+  modelAM_endo<-lm(paste(AM_proxy," ~  ", RM_proxy, "+",paste(control_vars_AM, collapse=" + ")),data=data)
   
   #AM_endo
   model_endo[[paste("AM_",RM_proxy)]]<-modelAM_endo
@@ -211,6 +215,12 @@ for (RM_proxy in RM_proxies) {
   model_snd[[paste("AM_",RM_proxy)]]<-modelAM
   cov<-vcovHC(modelAM,type="HC0")
   rst_snd[[paste("AM_",RM_proxy)]]<-sqrt(diag(cov))
+  
+  sink(paste(RM_proxy,"_vif.txt"))
+  print(vif(modelAM_endo))
+  print(vif(modelRM_endo))
+  sink()
+  
 }
 
 # Output all models in a single table
