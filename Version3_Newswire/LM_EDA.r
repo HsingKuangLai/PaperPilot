@@ -37,8 +37,10 @@ data <- data %>%
 
 
 # Des1
-mydata<-data[,c("ABSDA","ABPROD","ABEXP","RM","LEV","OCF","MTB","MS","INST","CYCLE","NOA","ZSCORE","CL","ADJROA","SIZE","BIG4","RD","ADV")]
+mydata<-data[,c("POST","RPA","ABSDA","ABPROD","ABEXP","RM","LEV","OCF","MTB","MS","INST","CYCLE","NOA","ZSCORE","CL","ADJROA","SIZE","BIG4","RD","ADV")]
 mydata$BIG4<-as.numeric(data$BIG4)-1
+mydata$RPA<-as.numeric(data$RPA)-1
+mydata$POST<-as.numeric(data$POST)-1
 stargazer(mydata, type = "html", title="Descriptive statistics", digits=5, out="Table2 PanelA.html",summary.stat = c("mean","median","sd","min","max","p25","p75","n"))
 
 
