@@ -78,8 +78,8 @@ for (var in variables) {
   mydata<-subset(mydata,mydata$RPA==1)
   
   # Wilcoxon test
-  test_result <- wilcox_test(reformulate("POST", response = var), data = mydata)
-  p_value <- pvalue(test_result)
+  test_result <- t.test(reformulate("POST", response = var), data = mydata)
+  p_value <- (test_result)$p.value
   
   # Store results
   results[[var]] <- c(mean_rpa, sd_rpa, mean_non_rpa, sd_non_rpa, p_value)
@@ -124,8 +124,8 @@ for (var in variables) {
   mydata<-subset(mydata,mydata$POST==0)
   
   # Wilcoxon test
-  test_result <- wilcox_test(reformulate("RPA", response = var), data = mydata)
-  p_value <- pvalue(test_result)
+  test_result <- t.test(reformulate("RPA", response = var), data = mydata)
+  p_value <- (test_result)$p.value
   
   # Store results
   results[[var]] <- c(mean_rpa, sd_rpa, mean_non_rpa, sd_non_rpa, p_value)
@@ -170,8 +170,8 @@ for (var in variables) {
   mydata<-subset(mydata,mydata$POST==1)
   
   # Wilcoxon test
-  test_result <- wilcox_test(reformulate("RPA", response = var), data = mydata)
-  p_value <- pvalue(test_result)
+  test_result <- t.test(reformulate("RPA", response = var), data = mydata)
+  p_value <- (test_result)$p.value
   
   # Store results
   results[[var]] <- c(mean_rpa, sd_rpa, mean_non_rpa, sd_non_rpa, p_value)
