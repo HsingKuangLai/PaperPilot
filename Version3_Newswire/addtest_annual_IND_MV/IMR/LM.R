@@ -6,7 +6,7 @@ library(stargazer)
 library(multcomp)
 library(car)
 # 讀取 CSV 檔案，將 "#N/A" 轉換為真正的 NA（缺失值）
-data <- read.csv("base.csv")
+data <- read.csv("base - C2.csv")
 AQdata<-read.csv("SecondEq.csv")
 AQdata<-AQdata[,c("KEY","AQ","IAQ","DAQ")]
 IMRdata<-read.csv("data_IMR_complete.csv")
@@ -36,11 +36,11 @@ winsorize <- function(x) {
 
 
 # Factorize the first 6 columns
-data[1:12] <- lapply(data[1:12], factor)
+data[1:14] <- lapply(data[1:14], factor)
 
 # Apply the winsorize function to the remaining columns
 data <- data %>%
-  mutate(across(.cols = 13:ncol(data), .fns = ~winsorize(.)))
+  mutate(across(.cols = 15:ncol(data), .fns = ~winsorize(.)))
 
 data$ADJROA_sq<-data$ADJROA*data$ADJROA
 data$YEAR<-(as.numeric(data$YEAR)+2016)
@@ -60,8 +60,8 @@ for (RM_proxy in RM_proxies) {
   
   # Define control variables , "ESG",, "Zscore"
   control_vars <- c("RPA_Ctd", "NOA", "INST", "MS", "LEV", "OCF", "MTB", "SG", "ADJROA", "ADJROA_sq", "ADV","SIZE", "Big4")
-  control_vars_AM <- c("POST","RPA","POST_RPA","LEV","OCF","MTB","MS","INST","CYCLE","NOA","ZSCORE","CL", "ADJROA", "ADJROA_sq","SIZE","BIG4","YEAR")
-  control_vars_RM <- c("POST","RPA","POST_RPA","LEV","OCF","MTB","MS","INST","CYCLE","NOA","ZSCORE","CL", "MTB", "ADJROA", "ADJROA_sq", "SIZE", "ADV","RD","YEAR")
+  control_vars_AM <- c("POST","AIPOST","AIRPAPOST","RPA","POST_RPA","LEV","OCF","MTB","MS","INST","CYCLE","NOA","ZSCORE","CL", "ADJROA", "ADJROA_sq","SIZE","BIG4","YEAR")
+  control_vars_RM <- c("POST","AIPOST","AIRPAPOST","RPA","POST_RPA","LEV","OCF","MTB","MS","INST","CYCLE","NOA","ZSCORE","CL", "MTB", "ADJROA", "ADJROA_sq", "SIZE", "ADV","RD","YEAR")
   
   # Model for AM with control variables and AM proxy
   modelAM_HAT_formula <- as.formula(paste(AM_proxy, "~ ", paste(control_vars_AM, collapse=" + ")))
@@ -162,8 +162,8 @@ for (RM_proxy in RM_proxies) {
   
   # Define control variables , "ESG",, "Zscore"
   control_vars <- c("RPA_Ctd", "NOA", "INST", "MS", "LEV", "OCF", "MTB", "SG", "ADJROA", "ADJROA_sq", "ADV","SIZE", "Big4")
-  control_vars_AM <- c("POST","LEV","OCF","MTB","MS","INST","CYCLE","NOA","ZSCORE","CL", "ADJROA", "ADJROA_sq","SIZE","BIG4","YEAR")
-  control_vars_RM <- c("POST","LEV","OCF","MTB","MS","INST","CYCLE","NOA","ZSCORE","CL", "MTB", "ADJROA", "ADJROA_sq", "SIZE", "ADV","RD","YEAR")
+  control_vars_AM <- c("POST","AIPOST","AIRPAPOST","LEV","OCF","MTB","MS","INST","CYCLE","NOA","ZSCORE","CL", "ADJROA", "ADJROA_sq","SIZE","BIG4","YEAR")
+  control_vars_RM <- c("POST","AIPOST","AIRPAPOST","LEV","OCF","MTB","MS","INST","CYCLE","NOA","ZSCORE","CL", "MTB", "ADJROA", "ADJROA_sq", "SIZE", "ADV","RD","YEAR")
   
   # Model for AM with control variables and AM proxy
   modelAM_HAT_formula <- as.formula(paste(AM_proxy, "~ ", paste(control_vars_AM, collapse=" + ")))

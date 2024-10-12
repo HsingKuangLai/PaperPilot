@@ -1,0 +1,33 @@
+[1] "ABEXP"
+
+	 Simultaneous Tests for General Linear Hypotheses
+
+Fit: lm(formula = modelAM_formula, data = data)
+
+Linear Hypotheses:
+                       Estimate Std. Error t value Pr(>|t|)
+POST1 + POST_RPA1 == 0 0.007819   0.004993   1.566    0.118
+(Adjusted p values reported -- single-step method)
+
+
+	 Simultaneous Tests for General Linear Hypotheses
+
+Fit: lm(formula = modelRM_formula, data = data)
+
+Linear Hypotheses:
+                       Estimate Std. Error t value Pr(>|t|)  
+POST1 + POST_RPA1 == 0  0.08953    0.03847   2.327   0.0202 *
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+(Adjusted p values reported -- single-step method)
+
+    RMhat      POST    AIPOST AIRPAPOST       RPA  POST_RPA       LEV       OCF       MTB        MS      INST 
+ 1.456886  3.079984  3.222679  3.329331  2.031692  2.994293  3.247591  1.813904  3.017809  1.864624  1.843137 
+    CYCLE       NOA    ZSCORE        CL    ADJROA ADJROA_sq      SIZE      BIG4      YEAR       IMR 
+ 1.122587  1.749731  4.010309  2.308420  2.229856  1.348769  3.261175  1.082958  5.641252  5.686521 
+      AMhat        POST      AIPOST   AIRPAPOST         RPA    POST_RPA         LEV         OCF         MTB 
+3048.331551  179.856254    4.992683   26.803865   56.157433  412.617633   89.133719  658.947735  409.518405 
+         MS        INST       CYCLE         NOA      ZSCORE          CL      ADJROA   ADJROA_sq        SIZE 
+   2.010560    1.933319   43.356125   74.106566  213.339026  124.813068  648.444559 1191.253677  493.311267 
+        ADV          RD        YEAR         IMR 
+   1.427197    1.928072  128.116696    5.887004 

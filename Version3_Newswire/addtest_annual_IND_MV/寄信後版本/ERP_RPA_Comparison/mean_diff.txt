@@ -1,0 +1,20 @@
+Welch Two Sample t-test
+
+data:  data$Study and data$Peer
+t = 2.3236, df = 169.21, p-value = 0.02134
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ 0.06854553 0.84293162
+sample estimates:
+mean of x mean of y 
+ 15.99633  15.54059 
+
+
+#Note:
+
+Bench mark: Averge size calculated as the mean of log (market value at the end of the year) from 2017 to 2022 
+
+Peer: 72 companies with ERP implementation
+
+Study: 172 companies with RPA adoption and its control group
+

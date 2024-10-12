@@ -2,7 +2,7 @@
   "name": "PaperPilot",
   "projectId": "fe85620f-88b2-4f03-bbfe-5d960817165f",
   "description": "Blank Process",
-  "main": "LDA.xaml",
+  "main": "AR.xaml",
   "dependencies": {
     "UiPath.Excel.Activities": "[2.22.0-preview]",
     "UiPath.GSuite.Activities": "2.2.5",
@@ -51,7 +51,6 @@
       "ignoredFiles": []
     },
     "fileInfoCollection": [],
-    "modernBehavior": true,
     "saveToCloud": false
   },
   "expressionLanguage": "VisualBasic",
