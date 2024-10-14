@@ -6,9 +6,9 @@ Fit: lm(formula = modelAM_formula, data = data)
 
 Linear Hypotheses:
                        Estimate Std. Error t value Pr(>|t|)  
-POST1 + POST_RPA1 == 0 0.008760   0.004858   1.803   0.0717 .
+POST1 + POST_RPA1 == 0 0.008764   0.004859   1.804   0.0716 .
 ---
-Signif. codes:  0 â€˜***â€™ 0.001 â€˜**â€™ 0.01 â€˜*â€™ 0.05 â€˜.â€™ 0.1 â€˜ â€™ 1
+Signif. codes:  0 ¡¥***¡¦ 0.001 ¡¥**¡¦ 0.01 ¡¥*¡¦ 0.05 ¡¥.¡¦ 0.1 ¡¥ ¡¦ 1
 (Adjusted p values reported -- single-step method)
 
 
@@ -18,18 +18,22 @@ Fit: lm(formula = modelRM_formula, data = data)
 
 Linear Hypotheses:
                        Estimate Std. Error t value Pr(>|t|)  
-POST1 + POST_RPA1 == 0  0.15824    0.07713   2.052   0.0405 *
+POST1 + POST_RPA1 == 0  0.15853    0.07728   2.051   0.0405 *
 ---
-Signif. codes:  0 â€˜***â€™ 0.001 â€˜**â€™ 0.01 â€˜*â€™ 0.05 â€˜.â€™ 0.1 â€˜ â€™ 1
+Signif. codes:  0 ¡¥***¡¦ 0.001 ¡¥**¡¦ 0.01 ¡¥*¡¦ 0.05 ¡¥.¡¦ 0.1 ¡¥ ¡¦ 1
 (Adjusted p values reported -- single-step method)
 
-    RMhat      POST    AIPOST    MLPOST       RPA  POST_RPA       LEV       OCF       MTB        MS      INST 
- 2.187526  3.021292  1.280331  1.128850  2.036077  2.985215  3.226099  1.925431  2.968530  1.906109  1.835344 
-    CYCLE       NOA    ZSCORE        CL    ADJROA ADJROA_sq      SIZE      BIG4      YEAR       IMR 
- 1.146112  1.831515  3.928912  2.373230  2.346199  1.342034  3.250835  1.082311  5.662631  5.682761 
-      AMhat        POST      AIPOST      MLPOST         RPA    POST_RPA         LEV         OCF         MTB 
-2625.083279  140.098230   27.672061    2.520710   51.285189  369.606538   79.150328  562.772583  349.559065 
-         MS        INST       CYCLE         NOA      ZSCORE          CL      ADJROA   ADJROA_sq        SIZE 
-   1.939723    1.883049   38.569700   62.297337  188.190594  102.469188  555.835575 1030.308572  413.909765 
-        ADV          RD        YEAR         IMR 
-   1.426831    1.932113  110.753000    5.881231 
+    RMhat      POST    AIPOST    MLPOST       RPA  POST_RPA       LEV       OCF       MTB 
+ 2.190154  3.024652  1.314363  1.172346  2.036005  2.985584  3.239947  1.929494  2.966768 
+       MS      INST     CYCLE       NOA    ZSCORE        CL    ADJROA ADJROA_sq      SIZE 
+ 1.910027  1.835248  1.145966  1.831653  3.929476  2.379188  2.347651  1.344196  3.251557 
+     BIG4      YEAR       IMR 
+ 1.082314  5.669242  5.697055 
+      AMhat        POST      AIPOST      MLPOST         RPA    POST_RPA         LEV 
+2629.038452  139.739313   27.601347    2.187459   51.301089  369.936682   79.805110 
+        OCF         MTB          MS        INST       CYCLE         NOA      ZSCORE 
+ 563.403069  350.423565    1.945166    1.882717   38.597375   62.318872  188.513097 
+         CL      ADJROA   ADJROA_sq        SIZE         ADV          RD        YEAR 
+ 102.091136  556.928167 1032.192581  414.134606    1.426717    1.930774  110.082684 
+        IMR 
+   5.892519 
