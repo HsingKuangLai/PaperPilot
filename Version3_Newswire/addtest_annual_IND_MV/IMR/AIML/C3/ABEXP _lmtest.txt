@@ -1,0 +1,75 @@
+[1] "ABEXP"
+
+	 Simultaneous Tests for General Linear Hypotheses
+
+Fit: lm(formula = paste(AM_proxy, " ~", RM_proxy, "+", paste(control_vars_AM, 
+    collapse = " + ")), data = data)
+
+Linear Hypotheses:
+                       Estimate Std. Error t value Pr(>|t|)  
+POST1 + POST_RPA1 == 0  0.04941    0.02161   2.287   0.0224 *
+---
+Signif. codes:  0 ．***・ 0.001 ．**・ 0.01 ．*・ 0.05 ．.・ 0.1 ． ・ 1
+(Adjusted p values reported -- single-step method)
+
+
+	 Simultaneous Tests for General Linear Hypotheses
+
+Fit: lm(formula = paste(RM_proxy, "~", AM_proxy, "+", paste(control_vars_RM, 
+    collapse = " + ")), data = data)
+
+Linear Hypotheses:
+                       Estimate Std. Error t value Pr(>|t|)  
+POST1 + POST_RPA1 == 0  0.01666    0.00656    2.54   0.0112 *
+---
+Signif. codes:  0 ．***・ 0.001 ．**・ 0.01 ．*・ 0.05 ．.・ 0.1 ． ・ 1
+(Adjusted p values reported -- single-step method)
+
+[1] "ABEXP"
+
+	 Simultaneous Tests for General Linear Hypotheses
+
+Fit: lm(formula = paste(AM_proxy, " ~", RM_proxy, "+", paste(control_vars_AM, 
+    collapse = " + ")), data = data)
+
+Linear Hypotheses:
+                           Estimate Std. Error t value Pr(>|t|)
+AIPOST1 + AIPOST_RPA1 == 0  0.02138    0.02928    0.73    0.465
+(Adjusted p values reported -- single-step method)
+
+
+	 Simultaneous Tests for General Linear Hypotheses
+
+Fit: lm(formula = paste(RM_proxy, "~", AM_proxy, "+", paste(control_vars_RM, 
+    collapse = " + ")), data = data)
+
+Linear Hypotheses:
+                            Estimate Std. Error t value Pr(>|t|)   
+AIPOST1 + AIPOST_RPA1 == 0 -0.024719   0.008816  -2.804  0.00515 **
+---
+Signif. codes:  0 ．***・ 0.001 ．**・ 0.01 ．*・ 0.05 ．.・ 0.1 ． ・ 1
+(Adjusted p values reported -- single-step method)
+
+[1] "ABEXP"
+
+	 Simultaneous Tests for General Linear Hypotheses
+
+Fit: lm(formula = paste(AM_proxy, " ~", RM_proxy, "+", paste(control_vars_AM, 
+    collapse = " + ")), data = data)
+
+Linear Hypotheses:
+                            Estimate Std. Error t value Pr(>|t|)
+MLPOST1 + MLPOST_RPA1 == 0 -0.005108   0.079031  -0.065    0.948
+(Adjusted p values reported -- single-step method)
+
+
+	 Simultaneous Tests for General Linear Hypotheses
+
+Fit: lm(formula = paste(RM_proxy, "~", AM_proxy, "+", paste(control_vars_RM, 
+    collapse = " + ")), data = data)
+
+Linear Hypotheses:
+                           Estimate Std. Error t value Pr(>|t|)
+MLPOST1 + MLPOST_RPA1 == 0 0.008733   0.023922   0.365    0.715
+(Adjusted p values reported -- single-step method)
+

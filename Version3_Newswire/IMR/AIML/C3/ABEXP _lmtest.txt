@@ -1,0 +1,67 @@
+[1] "ABEXP"
+
+	 Simultaneous Tests for General Linear Hypotheses
+
+Fit: lm(formula = modelAM_formula, data = data)
+
+Linear Hypotheses:
+                       Estimate Std. Error t value Pr(>|t|)  
+POST1 + POST_RPA1 == 0 0.008547   0.004876   1.753   0.0799 .
+---
+Signif. codes:  0 ．***・ 0.001 ．**・ 0.01 ．*・ 0.05 ．.・ 0.1 ． ・ 1
+(Adjusted p values reported -- single-step method)
+
+
+	 Simultaneous Tests for General Linear Hypotheses
+
+Fit: lm(formula = modelRM_formula, data = data)
+
+Linear Hypotheses:
+                       Estimate Std. Error t value Pr(>|t|)  
+POST1 + POST_RPA1 == 0  0.09324    0.04033   2.312    0.021 *
+---
+Signif. codes:  0 ．***・ 0.001 ．**・ 0.01 ．*・ 0.05 ．.・ 0.1 ． ・ 1
+(Adjusted p values reported -- single-step method)
+
+[1] "ABEXP"
+
+	 Simultaneous Tests for General Linear Hypotheses
+
+Fit: lm(formula = modelAM_formula, data = data)
+
+Linear Hypotheses:
+                           Estimate Std. Error t value Pr(>|t|)
+AIPOST1 + AIPOST_RPA1 == 0 0.006199   0.006763   0.917     0.36
+(Adjusted p values reported -- single-step method)
+
+
+	 Simultaneous Tests for General Linear Hypotheses
+
+Fit: lm(formula = modelRM_formula, data = data)
+
+Linear Hypotheses:
+                           Estimate Std. Error t value Pr(>|t|)
+AIPOST1 + AIPOST_RPA1 == 0  0.05598    0.04394   1.274    0.203
+(Adjusted p values reported -- single-step method)
+
+[1] "ABEXP"
+
+	 Simultaneous Tests for General Linear Hypotheses
+
+Fit: lm(formula = modelAM_formula, data = data)
+
+Linear Hypotheses:
+                            Estimate Std. Error t value Pr(>|t|)
+MLPOST1 + MLPOST_RPA1 == 0 -0.003769   0.018255  -0.206    0.836
+(Adjusted p values reported -- single-step method)
+
+
+	 Simultaneous Tests for General Linear Hypotheses
+
+Fit: lm(formula = modelRM_formula, data = data)
+
+Linear Hypotheses:
+                           Estimate Std. Error t value Pr(>|t|)
+MLPOST1 + MLPOST_RPA1 == 0 -0.02746    0.03461  -0.794    0.428
+(Adjusted p values reported -- single-step method)
+
